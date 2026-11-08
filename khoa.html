@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Khoa - CTAS</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1F0607;--navy2:#3A0B0D;--blue:#B3151B;--cream:#FFFEF4;--grey:#BABABA;--bg:#FFFEF4;--fg:#1F0607;--mut:#5a5f7a;--line:rgba(31,6,7,.12);--card:#fff;--soft:rgba(179,21,27,.07)}
+[data-theme=dark]{--bg:#1F0607;--fg:#FFFEF4;--mut:#d6b1ae;--line:rgba(255,180,168,.16);--card:#3A0B0D;--soft:rgba(255,180,168,.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:clip}
+body{font-family:Montserrat,sans-serif;background:var(--bg);color:var(--fg);transition:background .4s,color .4s}
+a{color:inherit;text-decoration:none}
+.c{width:min(1240px,calc(100% - 48px));margin:auto}
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nv{display:flex;align-items:center;justify-content:space-between;height:70px;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px}.logo span{width:32px;height:32px;border-radius:0;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:15px}
+.nr{display:flex;gap:10px;align-items:center;font-size:14px;font-weight:500}
+.pill{border:1px solid var(--line);border-radius:0;padding:8px 14px;background:none;color:inherit;font:600 13px Montserrat;cursor:pointer}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}.tabs a{padding:8px 14px;border-radius:0;font-size:13px;font-weight:600;border:1px solid var(--line)}.tabs a.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:14px}
+[data-theme=dark] .eyebrow{color:#FFB4A8}
+h1{font-size:clamp(34px,4.4vw,62px);line-height:1.08;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:clamp(26px,3vw,40px);line-height:1.15;margin-bottom:26px;text-wrap:balance}
+p{line-height:1.65;text-wrap:pretty}
+section{padding:80px 0}
+/* hero map */
+.hero{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center;padding:60px 0 40px}
+.hero p.lead{font-size:17px;color:var(--mut);margin:20px 0 26px;max-width:540px}
+.facts{display:flex;gap:30px;flex-wrap:wrap}.facts b{display:block;font-size:30px;color:var(--blue)}[data-theme=dark] .facts b{color:#FFB4A8}.facts span{font-size:13px;color:var(--mut)}
+.map{position:relative;aspect-ratio:1/0.82;border-radius:0;background:radial-gradient(70% 70% at 50% 50%,var(--soft),transparent);border:1px solid var(--line);overflow:hidden}
+.map svg{width:100%;height:100%;display:block}
+.map .ln{stroke:var(--blue);stroke-width:1.6;stroke-dasharray:5 7;fill:none;opacity:.55;animation:dash 1.4s linear infinite}
+.map .ln.on{opacity:1;stroke-width:2.6}
+@keyframes dash{to{stroke-dashoffset:-24}}
+.map .pulse{fill:var(--blue)}
+.node{cursor:pointer}.node rect{fill:var(--card);stroke:var(--line);stroke-width:1.5;transition:.3s}.node:hover rect,.node.on rect{stroke:var(--blue);stroke-width:2.5}
+.node text{fill:var(--fg);font:600 15px Montserrat;text-anchor:middle}.node .sm{font-size:11px;fill:var(--mut);font-weight:500}
+.core circle{fill:var(--blue)}.core text{fill:#fff;font:700 15px Montserrat;text-anchor:middle}
+.panel{position:absolute;left:18px;right:18px;bottom:18px;padding:18px 20px;border-radius:0;background:var(--card);border:1px solid var(--line);box-shadow:0 14px 40px rgba(31,6,7,.12);transition:.35s;font-size:14px}
+.panel h4{font-size:15px;margin-bottom:6px}.panel p{color:var(--mut);font-size:13.5px}.panel a{display:inline-block;margin-top:8px;font-weight:600;color:var(--blue)}[data-theme=dark] .panel a{color:#FFB4A8}
+.panel ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin-top:8px}.panel li{font-size:12px;padding:5px 10px;border-radius:0;background:var(--soft)}
+/* blocks */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.duties{display:grid;gap:12px}.duties div{padding:18px 20px;border-left:3px solid var(--blue);background:var(--soft);border-radius:0;font-size:15px}
+.units{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.unit{padding:28px;border-radius:0;border:1px solid var(--line);background:var(--card)}.unit small{font-size:12px;letter-spacing:.14em;color:var(--blue);font-weight:700}[data-theme=dark] .unit small{color:#FFB4A8}
+.unit h3{font-size:21px;margin:10px 0 8px}.unit p{font-size:14px;color:var(--mut)}
+.filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.person{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:0;border:1px solid var(--line);background:var(--card);transition:.3s}
+.person:hover{border-color:var(--blue);transform:translateY(-3px)}
+.av{flex:none;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#3A0B0D);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px}
+.person h4{font-size:15px;line-height:1.3}.person .r{font-size:12px;color:var(--blue);font-weight:600;margin:3px 0}[data-theme=dark] .person .r{color:#FFB4A8}.person p{font-size:12.5px;color:var(--mut);line-height:1.45}
+.courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));border-top:1px solid var(--line)}
+.courses div{padding:18px 4px;border-bottom:1px solid var(--line);font-weight:600;font-size:15px;display:flex;gap:14px}.courses i{font-style:normal;color:var(--blue);font-size:12px;padding-top:3px;min-width:22px}
+.acts{display:grid;gap:0;border-top:1px solid var(--line)}
+.act{display:grid;grid-template-columns:130px 1fr auto;gap:24px;padding:22px 4px;border-bottom:1px solid var(--line);align-items:baseline;transition:.3s}
+.act:hover{padding-left:12px;color:var(--blue)}.act time{font-size:13px;color:var(--mut);font-weight:600}.act h4{font-size:16px}.act p{font-size:13.5px;color:var(--mut);margin-top:4px}
+.contact{display:flex;justify-content:space-between;align-items:center;gap:30px;padding:46px;border-radius:0;background:#3A0B0D;color:#FFFEF4;flex-wrap:wrap}
+.contact p{color:#FFD9D3}.btn{display:inline-block;padding:13px 22px;border-radius:0;background:var(--blue);color:#fff;font-weight:600;font-size:14px}
+.empty{padding:30px;border:1px dashed var(--line);border-radius:0;color:var(--mut);font-size:14px}
+.src{font-size:12px;color:var(--mut);margin-top:18px}.src a{text-decoration:underline}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+@media(max-width:900px){.hero,.grid2{grid-template-columns:1fr}.act{grid-template-columns:1fr}.tabs{display:none}}
+</style>
+<style>
+.ftu-bar{background:#1F0607;color:#FFFEF4;font:500 12.5px Montserrat,sans-serif;position:relative;z-index:60}
+.fb-in{width:min(1280px,calc(100% - 40px));margin:auto;height:40px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.fb-ftu{display:flex;align-items:center;gap:10px;color:#FFFEF4;text-decoration:none}.fb-ftu i{font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;padding:3px 7px;border-radius:0;background:#FFB4A8;color:#1F0607}
+.fb-ftu span{font-weight:700;letter-spacing:.06em;text-transform:uppercase}.fb-ftu em{font-style:normal;color:#FFB4A8}
+.fb-r{display:flex;gap:22px}.fb-r a{color:#FFD9D3;text-decoration:none}.fb-r a:hover,.fb-ftu:hover em{color:#fff}
+.lk{display:flex;flex-direction:column;line-height:1.05}.lk small{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-bottom:3px}
+.ftu-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:30px;padding:18px 22px;border-radius:0;border:1px solid rgba(255,254,244,.15);font-size:14px}
+.ftu-foot b{padding:4px 9px;border-radius:0;background:#FFB4A8;color:#1F0607;font-size:12px}.ftu-foot a{margin-left:auto;font-weight:600;color:#FFB4A8}
+@media(max-width:700px){.fb-r,.fb-ftu em{display:none}}
+</style>
+<style>.seal{border-radius:50%;display:block;flex:none}
+.fb-ftu .seal{width:26px;height:26px}.ftu-foot .seal{width:46px;height:46px}
+.logo .seal,.brand .seal{width:38px;height:38px;margin-right:2px}
+.logo .sep,.brand .sep{width:1px;height:30px;background:currentColor;opacity:.25;margin:0 4px}
+</style>
+<style>
+nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(31,6,7,.08);font-family:Montserrat,sans-serif;color:#3A0B0D;height:auto}
+[data-theme=dark] nav.gh{background:rgba(31,6,7,.85);border-color:rgba(255,180,168,.16);color:#FFFEF4}
+.gh .container{width:min(1280px,calc(100% - 40px));margin:auto}
+.gh .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px}
+.gh .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:inherit}
+.gh .logo span{width:34px;height:34px;border-radius:0;background:#B3151B;display:grid;place-items:center;color:#FFFEF4;font-size:16px}
+.gh .logo .seal{width:38px;height:38px;border-radius:50%}.gh .sep{width:1px;height:30px;background:currentColor;opacity:.25;margin:0 4px}
+.gh .lk{display:flex;flex-direction:column;line-height:1.05}.gh .lk small{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-bottom:3px}
+.gh .menu{display:flex;gap:24px;white-space:nowrap;font-size:14px;font-weight:500}.gh .menu a:hover{color:#B3151B}
+.gh .nav-r{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:600}
+.gh .btn{display:inline-flex;align-items:center;background:#3A0B0D;color:#FFFEF4;padding:12px 26px;border-radius:0;font-weight:600;font-size:14px}.gh .btn:hover{background:#B3151B}
+[data-theme=dark] .gh .btn{background:transparent;border:1.5px solid #B3151B;box-shadow:0 0 18px rgba(200,32,42,.35)}
+.gh .theme-btn{width:40px;height:40px;border-radius:50%;border:1px solid #BABABA;background:none;cursor:pointer;font-size:16px;color:inherit;display:grid;place-items:center}
+.gh .lang-btn{height:40px;padding:0 4px;border-radius:0;border:1px solid #BABABA;background:none;display:flex;align-items:center;gap:2px;cursor:pointer;font:600 12px Montserrat;color:inherit}
+.gh .lang-btn span{padding:6px 10px;border-radius:0}.gh .lang-btn span.on{background:#B3151B;color:#fff}
+[data-theme=dark] .gh .lang-btn,[data-theme=dark] .gh .theme-btn{border-color:rgba(255,180,168,.25)}
+.gh .dd{position:relative}.gh .dd>a{padding:10px 0;display:inline-block}
+.gh .dd-pan{position:absolute;top:100%;left:-18px;min-width:220px;padding:14px;border-radius:0;background:#FFFEF4;color:#1F0607;box-shadow:0 20px 50px rgba(31,6,7,.18);border:1px solid rgba(186,186,186,.4);opacity:0;visibility:hidden;transform:translateY(8px);transition:.25s;white-space:normal}
+.gh .dd:hover .dd-pan,.gh .dd:focus-within .dd-pan{opacity:1;visibility:visible;transform:none}
+.gh .dd-pan.wide{display:grid;grid-template-columns:1fr 1.3fr;gap:18px;min-width:520px}
+.gh .dd-pan h6{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#B3151B;margin:4px 10px 6px}
+.gh .dd-pan a{display:block;padding:9px 10px;border-radius:0;font-size:14px}.gh .dd-pan a:hover{background:rgba(179,21,27,.08);color:#B3151B}
+.gh .dd-pan b{font-weight:600}.gh .dd-pan small{display:block;font-size:12px;color:#777;margin-top:2px}
+[data-theme=dark] .gh .dd-pan{background:#3A0B0D;color:#FFFEF4;border-color:rgba(255,180,168,.25)}[data-theme=dark] .gh .dd-pan h6{color:#FFB4A8}
+.subbar{border-bottom:1px solid rgba(128,128,160,.18);font-family:Montserrat,sans-serif}
+.sb-in{width:min(1280px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:54px}
+.sb-in #back{font-size:13px;font-weight:600;opacity:.7}.sb-in #back:hover{opacity:1}
+.sb-in .tabs{display:flex;gap:6px;flex-wrap:wrap}.sb-in .tabs a{padding:7px 14px;border-radius:0;font-size:13px;font-weight:700;border:1px solid rgba(128,128,160,.3)}.sb-in .tabs a.on{background:#B3151B;color:#fff;border-color:#B3151B}
+@media(max-width:1000px){.gh .menu{display:none}}@media(max-width:640px){.gh .nav-r>a{display:none}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/extra.css">
+</head>
+<body>
+<div class="ftu-bar"><div class="fb-in"><a href="https://ftu.edu.vn" target="_blank" class="fb-ftu"><img src="assets/ftu-logo.png" alt="FTU" class="seal"><span>Trường Đại học Ngoại thương</span><em>ftu.edu.vn ↗</em></a><div class="fb-r"><a href="mailto:cnkhdl@ftu.edu.vn">Hợp tác</a><a href="mailto:cnkhdl@ftu.edu.vn">Tài trợ</a><a href="tel:0947396248">Liên hệ</a></div></div></div>
+<nav class="gh">
+  <div class="container nav">
+    <a href="index.html" class="logo"><img src="assets/ftu-logo.png" alt="FTU" class="seal"><i class="sep"></i><span>C</span><div class="lk"><small>Đại học Ngoại thương</small>CTAS</div></a>
+    <div class="menu">
+      <div class="dd"><a href="gioi-thieu.html">Giới thiệu ▾</a><div class="dd-pan">
+        <a href="gioi-thieu.html#about"><b>Lịch sử</b><small>Gần 40 năm phát triển</small></a>
+        <a href="tin-tuc.html"><b>Tin tức</b><small>Hoạt động mới nhất</small></a>
+      </div></div>
+      <div class="dd"><a href="dao-tao.html">Đào tạo &amp; Khoa ▾</a><div class="dd-pan wide">
+        <div><h6>Đào tạo</h6>
+          <a href="nganh.html?m=cs"><b>Khoa học máy tính</b></a>
+          <a href="nganh.html?m=ds"><b>Khoa học dữ liệu</b></a>
+          <a href="nganh.html?m=ai"><b>Trí tuệ nhân tạo</b></a></div>
+        <div><h6>Khoa</h6>
+          <a href="khoa.html?k=cs"><b>Khoa Khoa học máy tính</b><small>Quản lý ngành Khoa học máy tính</small></a>
+          <a href="khoa.html?k=dsai"><b>Khoa Khoa học dữ liệu và Trí tuệ nhân tạo</b><small>Quản lý ngành Khoa học dữ liệu, Trí tuệ nhân tạo</small></a>
+          <a href="khoa.html?k=qt"><b>Khoa Khoa học tính toán và định lượng</b><small>Nền tảng toán, thống kê, định lượng</small></a>
+          <a href="khoa.html?k=ln"><b>Khoa Liên ngành</b></a></div>
+      </div></div>
+      <div class="dd"><a href="nghien-cuu.html">Nghiên cứu ▾</a><div class="dd-pan wide">
+        <div><h6>Sản phẩm công nghệ</h6>
+          <a href="nghien-cuu.html#lms"><b>LMS</b></a>
+          <a href="nghien-cuu.html#ftullm"><b>FTULLM</b></a>
+          <a href="nghien-cuu.html#cloud"><b>Cloud</b></a></div>
+        <div><h6>Nghiên cứu</h6>
+          <a href="khong-gian.html"><b>Không gian học tập &amp; nghiên cứu</b></a>
+          <a href="nghien-cuu.html#conf"><b>Hội thảo khoa học 2026</b></a>
+          <a href="nghien-cuu.html#student"><b>Dự án sinh viên</b></a></div>
+      </div></div>
+    </div>
+    <div class="nav-r"><button class="lang-btn" id="langBtn" aria-label="Ngôn ngữ"><span data-l="vi">VI</span><span data-l="en">EN</span></button><button class="theme-btn" id="themeBtn" aria-label="Đổi giao diện">☾</button><a href="index.html">Đăng nhập</a><a href="gioi-thieu.html#apply" class="btn">Đăng ký ngay</a></div>
+  </div>
+</nav>
+<div class="subbar"><div class="sb-in"><a id="back" href="index.html">← Về trang chủ</a><div class="tabs" id="tabs"></div></div></div>
+<main id="app"></main>
+<script>
+const root=document.documentElement;
+const LANG=new URLSearchParams(location.search).get('lang')||localStorage.getItem('ctas-lang')||'vi';localStorage.setItem('ctas-lang',LANG);root.lang=LANG;
+root.dataset.theme=localStorage.getItem('ctas-theme')||'light';
+const E=LANG==='en';const t=(vi,en)=>E&&en?en:vi;
+const SRC='bai-viet.html?id=';
+const MAJ={cs:[t('Khoa học máy tính','Computer Science'),'nganh.html?m=cs'],ds:[t('Khoa học dữ liệu','Data Science'),'nganh.html?m=ds'],ai:[t('Trí tuệ nhân tạo','Artificial Intelligence'),'nganh.html?m=ai']};
+const D={
+ qt:{name:t('Khoa Khoa học tính toán và định lượng','Faculty of Computational & Quantitative Science'),short:t('KHTT&ĐL','CQS'),
+  lead:t('Khoa nền tảng của Trường Công nghệ và Khoa học ứng dụng: cung cấp toán học, xác suất – thống kê và mô hình định lượng cho cả ba ngành đào tạo và cho toàn Trường Đại học Ngoại thương.','The foundational faculty of CTAS: mathematics, probability & statistics and quantitative modelling for all three majors and for Foreign Trade University as a whole.'),
+  serve:['cs','ds','ai'],
+  rel:{cs:t('Toán rời rạc, đại số tuyến tính và giải tích làm nền cho thuật toán và hệ thống.','Discrete maths, linear algebra and calculus underpin algorithms and systems.'),
+       ds:t('Xác suất – thống kê, chuỗi thời gian và mô hình định lượng để phân tích dữ liệu kinh tế.','Probability, statistics, time series and quantitative models for economic data.'),
+       ai:t('Toán học trong học máy – học sâu: tối ưu, đại số tuyến tính, xác suất.','Mathematics of machine & deep learning: optimisation, linear algebra, probability.')},
+  facts:[['9',t('giảng viên Bộ môn Toán','Mathematics lecturers')],['5',t('tiến sĩ','PhDs')],['3',t('ngành được hỗ trợ','majors supported')]],
+  duties:[t('Giảng dạy Toán cao cấp, Lý thuyết xác suất và thống kê toán, Toán kinh tế cho các hệ đào tạo của Trường.','Teaching Advanced Mathematics, Probability & Mathematical Statistics and Mathematical Economics across the University.'),
+          t('Giảng dạy bằng tiếng Anh: Toán trong khoa học quản lý; Đại số và Giải tích trong kinh tế và kinh doanh (chương trình tiên tiến).','English-taught: Mathematics for Management Science; Algebra & Calculus in Economics and Business (advanced programmes).'),
+          t('Nghiên cứu ứng dụng mô hình toán học trong khoa học dữ liệu cho các bài toán kinh tế – xã hội.','Research on mathematical models in data science for socio-economic problems.')],
+  units:[[t('Bộ môn Toán','Mathematics Division'),t('Xác suất – thống kê, giải tích, đại số tuyến tính, toán ứng dụng và toán kinh tế. Tổ chức semina thường kỳ hằng tháng.','Probability & statistics, analysis, linear algebra, applied and economic mathematics. Monthly regular seminars.'),'?cat=20']],
+  people:[['TS GVC Phùng Duy Quang',t('Trưởng Bộ môn Toán','Head of Mathematics'),t('Lý thuyết xác suất và thống kê','Probability & statistics'),119],
+   ['TS Nguyễn Văn Minh','',t('Toán giải tích','Mathematical analysis'),159],
+   ['TS GVC Hà Thị Thu Hiền','',t('Đại số tuyến tính','Linear algebra'),140],
+   ['TS Nguyễn Dương Nguyễn','',t('Toán ứng dụng','Applied mathematics'),177],
+   ['TS GVC Lâm Văn Sơn','',t('Toán kinh tế','Mathematical economics'),699],
+   ['ThS NCS Phan Thị Hương','',t('Phương trình vi phân và đạo hàm riêng','Differential & partial differential equations'),148],
+   ['ThS NCS Vũ Thị Hương Sắc','',t('Toán kinh tế','Mathematical economics'),150],
+   ['ThS NCS Phạm Ngọc Mai','',t('Toán giải tích','Mathematical analysis'),146],
+   ['ThS NCS Nguyễn Hữu Thịnh','',t('Toán kinh tế','Mathematical economics'),144]],
+  courses:[t('Toán cao cấp','Advanced Mathematics'),t('Lý thuyết xác suất và thống kê toán','Probability & Mathematical Statistics'),t('Toán kinh tế','Mathematical Economics'),t('Toán, xác suất và thống kê trong kinh tế','Mathematics, Probability and Statistics in Economics'),t('Mô hình chuỗi thời gian trong kinh tế và kinh doanh (TOA206)','Time-series Models in Economics and Business (TOA206)'),t('Toán trong khoa học quản lý (tiếng Anh)','Mathematics for Management Science (English)'),t('Đại số và Giải tích trong kinh tế và kinh doanh (tiếng Anh)','Algebra & Calculus in Economics and Business (English)')],
+  acts:[['31.05.2025',t('Semina Bộ môn Toán thường kỳ tháng 5/2025','Mathematics regular seminar, May 2025'),t('Phương pháp hiệu chỉnh cho hệ phương trình toán tử không chỉnh; LSTM kết hợp trung bình động dự báo giá Bitcoin.','Regularisation for ill-posed operator equations; LSTM with moving averages for Bitcoin forecasting.'),1091],
+   ['21.03.2025',t('Semina thường kỳ tháng 2 và 3/2025','Regular seminar, Feb–Mar 2025'),t('Tổ chức tại phòng B411.','Held in room B411.'),null,'?cat=20'],
+   ['22.11.2024',t('Semina thường kỳ tháng 11/2024','Regular seminar, Nov 2024'),t('Hướng nghiên cứu mới về Toán trong khoa học máy tính và khoa học dữ liệu (NCS Đỗ Hoàng Khôi Nguyên – Đại học Florida).','New directions in mathematics for CS and data science (Đỗ Hoàng Khôi Nguyên – University of Florida).'),886],
+   ['27.07.2024',t('Toạ đàm “Một số hướng nghiên cứu mới về khoa học dữ liệu, thống kê và học máy”','Seminar: “New research directions in data science, statistics and machine learning”'),t('Thuộc chương trình nghiên cứu FTURP02-2023 do TS Phùng Duy Quang chủ nhiệm.','Part of research programme FTURP02-2023 led by Dr. Phùng Duy Quang.'),639],
+   ['13.07.2024',t('Toạ đàm “Toán học trong học máy – học sâu”','Seminar: “Mathematics in machine & deep learning”'),t('Diễn giả PGS. TS Nguyễn Minh Tân – Đại học Quốc gia Singapore.','Speaker: Assoc. Prof. Nguyễn Minh Tân – National University of Singapore.'),634]]},
+ cs:{name:t('Khoa Khoa học máy tính','Faculty of Computer Science'),short:t('KHMT','CS'),
+  lead:t('Khoa quản lý ngành Khoa học máy tính - ngành được xây dựng đề án và tuyển sinh thành công từ năm học 2024–2025.','The faculty managing the Computer Science major - launched and first enrolled in 2024–2025.'),
+  serve:['cs'],rel:{cs:t('Quản lý chương trình tích hợp Khoa học máy tính và Dữ liệu trong Kinh tế và Kinh doanh.','Manages the integrated programme in Computer Science and Data for Economics and Business.')},
+  facts:[['2024',t('tuyển sinh khoá đầu','first intake')],['1',t('ngành quản lý','major managed')]],
+  duties:[t('Đào tạo ngành Khoa học máy tính gắn với kinh tế và kinh doanh.','Training Computer Science linked with economics and business.'),t('Kết nối doanh nghiệp: WorldQuant (học phần iTEC1), DEHA Việt Nam.','Industry links: WorldQuant (iTEC1 course), DEHA Vietnam.'),t('Bồi dưỡng đội tuyển Olympic Tin học, Olympic AI, ICPC và hackathon.','Coaching teams for the Informatics and AI Olympiads, ICPC and hackathons.')],
+  units:[[t('Bộ môn Khoa học máy tính và Dữ liệu','Computer Science & Data Division'),t('Seminar định kỳ, hướng nghiệp và các đội tuyển thi đấu.','Regular seminars, career orientation and competition teams.'),'?cat=22'],[t('Bộ môn Tin học','Informatics Division'),t('Tin học, tin học ứng dụng, công nghệ số và ứng dụng AI cho toàn Trường.','Informatics, applied computing, digital technology and AI for the University.'),'?cat=21']],
+  people:[['TS Nguyễn Văn Tăng',t('Phó trưởng Khoa','Deputy Dean'),t('Khoa học máy tính','Computer science'),651],['TS Đoàn Quang Hưng','',t('Công nghệ thông tin','Information technology'),191],['TS Phạm Thị Kim Dung','',t('Khoa học máy tính','Computer science'),725],['TS Trần Trọng Huy','',t('Toán tin ứng dụng','Applied informatics'),128],['ThS NCS Trần Thị Thu Ngân','',t('Tin học','Informatics'),132],['ThS Trần Công Minh',t('Huấn luyện đội tuyển Olympic AI','Olympic AI team coach'),'',945],['CN Bùi Hải Đăng','',t('Khoa học máy tính','Computer science'),658],
+   ['ThS GVC Tô Thị Hải Yến',t('Trưởng Bộ môn Tin học','Head of Informatics'),t('Đảm bảo toán học cho hệ thống tính toán','Mathematical foundations of computing systems'),120],['TS GVC Phùng Thị Thu Hiền','',t('Cơ sở toán học cho tin học','Mathematical foundations of informatics'),125],['ThS GVC Trần Phương Chi','',t('Đảm bảo toán học cho hệ thống tính toán','Mathematical foundations of computing systems'),130],['ThS GVC Lê Thanh Nguyệt','',t('Xử lý thông tin và truyền thông','Information processing & communication'),134]],
+  courses:[t('iTEC1 – Định hướng nghề nghiệp','iTEC1 – Career orientation'),t('Tư duy thiết kế','Design thinking'),t('Tin học','Informatics'),t('Tin học ứng dụng','Applied informatics'),t('Công nghệ số và ứng dụng trí tuệ nhân tạo','Digital technology & applied AI')],
+  acts:[['13.12.2025',t('Olympic Tin học, Olympic AI & ICPC 2025','Informatics Olympiad, AI Olympiad & ICPC 2025'),t('Giải Nhì, Giải Ba Olympic Tin học; Giải Ba miền Bắc Olympic AI.','Second & Third Prizes in Informatics; Northern Third Prize in AI.'),1168],['29.10.2025',t('Tham quan thực tế tại DEHA Việt Nam','Field visit to DEHA Vietnam'),'',1142],['02.06.2025',t('K63 định hướng nghề nghiệp cùng WorldQuant','K63 career orientation with WorldQuant'),'',1096],['25.05.2025',t('Giải Nhất toàn quốc AI for Accessibility Hackathon 2025','National First Prize, AI for Accessibility Hackathon 2025'),t('Cuộc thi do Microsoft Việt Nam tổ chức.','Organised by Microsoft Vietnam.'),1080]]},
+ dsai:{name:t('Khoa Khoa học dữ liệu và Trí tuệ nhân tạo','Faculty of Data Science & AI'),short:t('KHDL&AI','DS&AI'),
+  lead:t('Khoa quản lý hai ngành Khoa học dữ liệu và Trí tuệ nhân tạo cho đổi mới sáng tạo trong kinh tế và kinh doanh.','The faculty managing Data Science and Artificial Intelligence for innovation in economics and business.'),
+  serve:['ds','ai'],rel:{ds:t('Chương trình Khoa học dữ liệu trong Đổi mới sáng tạo Kinh tế và Kinh doanh - hội thảo lấy ý kiến mở ngành ngày 22/8/2025.','Data Science for Innovation in Economics and Business - consultation workshop on 22/8/2025.'),ai:t('Chương trình Trí tuệ nhân tạo cho đổi mới sáng tạo trong kinh tế và kinh doanh.','Artificial Intelligence for innovation in economics and business.')},
+  facts:[['2',t('ngành quản lý','majors managed')]],duties:[],units:[],people:[],courses:[],
+  acts:[['16.06.2026',t('Hội thảo khoa học 2026','Scientific Conference 2026'),t('31 bài viết về Toán, KHMT, KHDL và AI.','31 papers in mathematics, CS, data science and AI.'),1189],['22.08.2025',t('Hội thảo lấy ý kiến mở ngành Khoa học dữ liệu','Consultation workshop on the Data Science programme'),'',1102]]},
+ ln:{name:t('Khoa Liên ngành','Interdisciplinary Department'),short:t('Liên ngành','Interdisc.'),lead:t('Thông tin về Khoa Liên ngành đang được cập nhật.','Information about this department is coming soon.'),serve:[],rel:{},facts:[],duties:[],units:[],people:[],courses:[],acts:[]}};
+const TX=E?{map:'Faculty ↔ Majors',click:'Click a major to see how the faculty supports it',open:'Open major page →',about:'Mission',units:'Divisions',people:'Faculty members',all:'All',courses:'Courses taught',acts:'Academic activities',contact:'Contact the faculty',upd:'Content coming soon.',src:'Source: cnkhdl.ftu.edu.vn - staff list as published by the former Faculty of Technology and Data Science.',back:'← Home',read:'Read ↗',more:'More ↗'}
+:{map:'Khoa ↔ Ngành',click:'Bấm vào một ngành để xem khoa hỗ trợ ngành đó thế nào',open:'Mở trang ngành →',about:'Chức năng – nhiệm vụ',units:'Bộ môn',people:'Đội ngũ giảng viên',all:'Tất cả',courses:'Học phần phụ trách',acts:'Hoạt động học thuật',contact:'Liên hệ khoa',upd:'Nội dung đang được cập nhật.',src:'Nguồn: cnkhdl.ftu.edu.vn - danh sách giảng viên theo công bố của Khoa Công nghệ và Khoa học dữ liệu (tiền thân).',back:'← Trang chủ',read:'Đọc ↗',more:'Xem thêm ↗'};
+const k=D[new URLSearchParams(location.search).get('k')]?new URLSearchParams(location.search).get('k'):'qt',d=D[k];
+document.title=d.name+' - CTAS';
+document.getElementById('tabs').innerHTML=Object.entries(D).map(([x,v])=>`<a href="?k=${x}&lang=${LANG}" class="${x===k?'on':''}">${v.short}</a>`).join('');
+const lb=document.getElementById('langBtn');lb.onclick=()=>{const q=new URLSearchParams(location.search);q.set('lang',E?'vi':'en');localStorage.setItem('ctas-lang',q.get('lang'));location.search=q};
+const th=document.getElementById('themeBtn');const st=()=>th.textContent=root.dataset.theme==='dark'?'☀':'☾';st();th.onclick=()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('ctas-theme',root.dataset.theme);st()};
+const ini=n=>n.split(' ').slice(-2).map(w=>w[0]).join('');
+const empty=`<div class="empty">${TX.upd}</div>`;
+// map svg
+const POS=[[-240,-120],[240,-120],[0,170]];const sv=d.serve.map((m,i)=>({m,p:d.serve.length===1?[0,-150]:d.serve.length===2?[[-230,-60],[230,-60]][i]:POS[i]}));
+const svg=`<svg viewBox="-330 -240 660 520">${sv.map(s=>`<path class="ln" data-m="${s.m}" d="M0 0 L${s.p[0]} ${s.p[1]}"/><circle class="pulse" r="4"><animateMotion dur="2.4s" repeatCount="indefinite" path="M0 0 L${s.p[0]} ${s.p[1]}"/></circle>`).join('')}
+<g class="core"><circle r="74" opacity=".15"><animate attributeName="r" values="70;86;70" dur="3s" repeatCount="indefinite"/></circle><circle r="62"/><text y="-4">${d.short}</text><text y="16" style="font-size:11px;font-weight:500">${t('Khoa','Faculty')}</text></g>
+${sv.map(s=>`<g class="node" data-m="${s.m}" transform="translate(${s.p[0]} ${s.p[1]})"><rect x="-92" y="-30" width="184" height="60" rx="16"/><text y="-2">${MAJ[s.m][0]}</text><text class="sm" y="16">${t('Ngành đào tạo','Major')}</text></g>`).join('')}</svg>`;
+const app=document.getElementById('app');
+app.innerHTML=`
+<div class="c hero">
+ <div><div class="eyebrow">${t('Giới thiệu khoa','Faculty profile')}</div><h1>${d.name}</h1><p class="lead">${d.lead}</p>
+ <div class="facts">${d.facts.map(f=>`<div><b>${f[0]}</b><span>${f[1]}</span></div>`).join('')}</div></div>
+ <div class="map">${sv.length?svg:''}<div class="panel" id="panel">${sv.length?`<h4>${TX.map}</h4><p>${TX.click}</p>`:`<p>${TX.upd}</p>`}</div></div>
+</div>
+<section><div class="c grid2">
+ <div><div class="eyebrow">${TX.about}</div><h2>${d.name}</h2></div>
+ <div class="duties rv">${d.duties.length?d.duties.map(x=>`<div>${x}</div>`).join(''):empty}</div>
+</div></section>
+<section style="padding-top:0"><div class="c"><div class="eyebrow">${TX.units}</div><h2>${TX.units}</h2>
+ <div class="units">${d.units.length?d.units.map((u,i)=>`<a class="unit rv" href="https://cnkhdl.ftu.edu.vn/${u[2]}" target="_blank"><small>0${i+1}</small><h3>${u[0]}</h3><p>${u[1]}</p></a>`).join(''):empty}</div></div></section>
+<section style="padding-top:0"><div class="c"><div class="eyebrow">${TX.people}</div><h2>${TX.people}</h2>
+ <div class="people">${d.people.length?d.people.map(p=>`<a class="person rv" href="${SRC}${p[3]}"><div class="av">${ini(p[0])}</div><div><h4>${p[0]}</h4>${p[1]?`<div class="r">${p[1]}</div>`:''}<p>${p[2]}</p></div></a>`).join(''):empty}</div>
+ ${d.people.length?`<p class="src">${TX.src} <a href="${SRC}200">${TX.more}</a></p>`:''}</div></section>
+<section style="padding-top:0"><div class="c"><div class="eyebrow">${TX.courses}</div><h2>${TX.courses}</h2>
+ <div class="courses">${d.courses.length?d.courses.map((c,i)=>`<div class="rv"><i>${String(i+1).padStart(2,'0')}</i>${c}</div>`).join(''):empty}</div></div></section>
+<section style="padding-top:0"><div class="c"><div class="eyebrow">${TX.acts}</div><h2>${TX.acts}</h2>
+ <div class="acts">${d.acts.length?d.acts.map(a=>`<a class="act rv" href="${a[3]?'bai-viet.html?id='+a[3]:'https://cnkhdl.ftu.edu.vn/'+a[4]}"><time>${a[0]}</time><div><h4>${a[1]}</h4>${a[2]?`<p>${a[2]}</p>`:''}</div><span>${TX.read}</span></a>`).join(''):empty}</div></div></section>
+<section style="padding-top:0"><div class="c"><div class="contact"><div><h2 style="margin-bottom:8px">${TX.contact}</h2><p>${t('Nhà B, Trường Đại học Ngoại thương - 91 Chùa Láng, Đống Đa, Hà Nội','Building B, Foreign Trade University - 91 Chua Lang, Dong Da, Hanoi')}</p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="mailto:cnkhdl@ftu.edu.vn">cnkhdl@ftu.edu.vn</a><a class="btn" style="background:transparent;border:1px solid #FFB4A8" href="dao-tao.html">${TX.back}</a></div></div></div></section>`;
+const panel=document.getElementById('panel');
+function pick(m){document.querySelectorAll('.node,.ln').forEach(e=>e.classList.toggle('on',e.dataset.m===m));
+ panel.innerHTML=`<h4>${MAJ[m][0]}</h4><p>${d.rel[m]||''}</p><a href="${MAJ[m][1]}&lang=${LANG}">${TX.open}</a>`}
+document.querySelectorAll('.node').forEach(n=>{n.onclick=()=>pick(n.dataset.m);n.onmouseenter=()=>pick(n.dataset.m)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+</script>
+<script>
+(function(){const E=(localStorage.getItem('ctas-lang')||'vi')==='en';document.querySelectorAll('#langBtn span').forEach(s=>s.classList.toggle('on',s.dataset.l===(E?'en':'vi')));
+const tb=document.getElementById('themeBtn');const st=()=>tb.textContent=document.documentElement.dataset.theme==='dark'?'☀':'☾';st();new MutationObserver(st).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+if(!E)return;const T={"Giới thiệu ▾":"About ▾","Lịch sử":"History","Gần 40 năm phát triển":"Nearly 40 years of growth","Tin tức":"News","Hoạt động mới nhất":"Latest activities","Đào tạo & Khoa ▾":"Education & Faculties ▾","Đào tạo":"Programs","Khoa":"Faculties","Khoa học máy tính":"Computer Science","Khoa học dữ liệu":"Data Science","Trí tuệ nhân tạo":"Artificial Intelligence","Khoa Khoa học máy tính":"Faculty of Computer Science","Khoa Khoa học dữ liệu và Trí tuệ nhân tạo":"Faculty of Data Science and AI","Khoa Khoa học tính toán và định lượng":"Faculty of Computational & Quantitative Science","Khoa Liên ngành":"Interdisciplinary Department","Quản lý ngành Khoa học máy tính":"Manages Computer Science","Quản lý ngành Khoa học dữ liệu, Trí tuệ nhân tạo":"Manages Data Science, AI","Nền tảng toán, thống kê, định lượng":"Math, statistics & quantitative foundations","Nghiên cứu ▾":"Research ▾","Sản phẩm công nghệ":"Technical products","Nghiên cứu":"Research","Không gian học tập & nghiên cứu":"Learning & research spaces","Hội thảo khoa học 2026":"Scientific Conference 2026","Đăng nhập":"Log in","Đăng ký ngay":"Apply now","Đại học Ngoại thương":"Foreign Trade University","← Về trang chủ":"← Back to home"};
+const w=document.createTreeWalker(document.querySelector('nav.gh'),NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const k=n.nodeValue.trim();if(T[k])n.nodeValue=n.nodeValue.replace(k,T[k])}})();
+</script>
+<script src="assets/news/data.js"></script>
+<script src="assets/extra.js"></script>
+</body>
+</html>

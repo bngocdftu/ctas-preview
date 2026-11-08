@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ngành đào tạo - CTAS</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#B3151B;--bg:#F3F3EC;--slide:#FFFEF4;--fg:#1F0607;--mut:#5a5f7a;--line:rgba(31,6,7,.1);--soft:rgba(179,21,27,.07)}
+[data-theme=dark]{--bg:#00001c;--slide:#000039;--fg:#FFFEF4;--mut:#d6b1ae;--line:rgba(255,180,168,.16);--soft:rgba(255,180,168,.08)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}html,body{overflow-x:clip}
+body{font-family:Montserrat,sans-serif;background:var(--bg);color:var(--fg)}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nv{width:min(1280px,calc(100% - 40px));margin:auto;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}.brand span{width:32px;height:32px;border-radius:0;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:15px}.brand small{display:block;font-size:11px;font-weight:500;color:var(--mut)}
+.tabs{display:flex;gap:6px}.tabs a{padding:8px 16px;border-radius:0;font-size:13px;font-weight:700;border:1px solid var(--line)}.tabs a.on{background:var(--fg);color:var(--bg)}
+.nr{display:flex;gap:8px}.pill{border:1px solid var(--line);border-radius:0;padding:8px 14px;background:none;color:inherit;font:600 13px Montserrat;cursor:pointer}
+.deck{width:min(1280px,calc(100% - 40px));margin:30px auto 60px;display:grid;gap:28px}
+.sl{position:relative;background:var(--slide);border-radius:0;border:1px solid var(--line);aspect-ratio:16/9;overflow:hidden;display:grid;scroll-margin-top:90px}
+.sl .no{position:absolute;right:28px;bottom:22px;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--mut);z-index:2}
+.sl .tg{position:absolute;left:44px;top:34px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);z-index:2}
+[data-theme=dark] .sl .tg{color:#FFB4A8}
+.sl h1{font-size:clamp(34px,5vw,76px);line-height:1.02;letter-spacing:-.03em;text-wrap:balance}
+.sl h2{font-size:clamp(26px,3.4vw,50px);line-height:1.08;letter-spacing:-.02em;text-wrap:balance}
+.sl h1 em,.sl h2 em{font-style:normal;color:var(--blue)}[data-theme=dark] .sl h1 em,[data-theme=dark] .sl h2 em{color:#FFB4A8}
+.sl p{font-size:clamp(14px,1.25vw,18px);line-height:1.6;color:var(--mut);text-wrap:pretty}
+.img{position:relative;overflow:hidden}.img img{width:100%;height:100%;object-fit:cover;display:block}
+/* cover */
+.cover{grid-template-columns:1.05fr 1fr}
+.cover .tx{padding:90px 44px 50px;display:flex;flex-direction:column;justify-content:flex-end;gap:20px}
+.cover .img{margin:14px;border-radius:0}
+.cover .img::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(179,21,27,.15),rgba(31,6,7,.55))}
+.cover .meta{display:flex;gap:30px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--line)}.cover .meta small{display:block;font-size:11px;color:var(--mut);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}.cover .meta b{font-size:14px;max-width:300px;display:block}
+/* agenda */
+.agenda{grid-template-columns:1fr 1.3fr;padding:90px 44px 50px;gap:50px;align-items:center}
+.ag-list{display:grid;gap:0;border-top:1px solid var(--line)}.ag-list a{display:grid;grid-template-columns:60px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);font-weight:600;font-size:clamp(15px,1.4vw,20px)}
+.ag-list i{font-style:normal;font-size:13px;color:var(--blue);font-weight:700}.ag-list span{font-size:13px;color:var(--mut);font-weight:500}
+.ag-list a:hover{color:var(--blue)}
+/* content slides */
+.ct{grid-template-columns:1fr 1fr}.ct.rev .img{order:-1}
+.ct .tx{padding:90px 44px 50px;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.ct .img{margin:14px;border-radius:0}
+.ct .big{position:absolute;font-size:clamp(90px,14vw,200px);font-weight:800;line-height:.8;color:var(--soft);right:30px;top:20px;pointer-events:none}
+.ct.rev .big{right:auto;left:52%}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{padding:9px 14px;border-radius:0;background:var(--soft);border:1px solid var(--line);font-size:13px;font-weight:600}
+.img .cap{position:absolute;left:18px;bottom:18px;padding:8px 14px;border-radius:0;background:rgba(255,254,244,.9);color:#1F0607;font-size:12px;font-weight:700}
+/* loop */
+.loop{grid-template-columns:1fr 1fr;padding:90px 44px 50px;gap:40px;align-items:center;background:#3A0B0D;color:#FFFEF4;border-color:#3A0B0D}
+.loop p{color:#FFD9D3}.loop .tg{color:#FFB4A8!important}.loop .no{color:#FFB4A8}.loop h2 em{color:#FFB4A8!important}
+.cyc{position:relative;aspect-ratio:1;max-height:100%;margin:auto;width:min(100%,440px)}
+.cyc svg{position:absolute;inset:0;width:100%;height:100%}
+.cyc a{position:absolute;transform:translate(-50%,-50%);padding:12px 18px;border-radius:0;background:rgba(255,254,244,.08);border:1px solid rgba(255,180,168,.4);font-weight:700;font-size:14px;white-space:nowrap}
+.cyc a.on{background:#FFB4A8;color:#1F0607;border-color:#FFB4A8}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.btn{display:inline-block;padding:13px 22px;border-radius:0;background:var(--blue);color:#fff;font-weight:600;font-size:14px}.btn.ghost{background:transparent;border:1px solid currentColor}
+.loop .btn{background:#FFFEF4;color:#1F0607}.loop .btn.ghost{background:transparent;color:#FFFEF4}
+.note{font-size:12px;color:var(--mut);text-align:center;margin-bottom:50px}
+@media(max-width:900px){.sl{aspect-ratio:auto}.cover,.agenda,.ct,.loop{grid-template-columns:1fr}.ct .img,.cover .img{aspect-ratio:16/10}.ct.rev .img{order:0}.tabs{display:none}.ct .tx,.cover .tx{padding:70px 24px 40px}.agenda,.loop{padding:70px 24px 40px}.sl .tg{left:24px}}
+</style>
+<style>
+.ftu-bar{background:#1F0607;color:#FFFEF4;font:500 12.5px Montserrat,sans-serif;position:relative;z-index:60}
+.fb-in{width:min(1280px,calc(100% - 40px));margin:auto;height:40px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.fb-ftu{display:flex;align-items:center;gap:10px;color:#FFFEF4;text-decoration:none}.fb-ftu i{font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;padding:3px 7px;border-radius:0;background:#FFB4A8;color:#1F0607}
+.fb-ftu span{font-weight:700;letter-spacing:.06em;text-transform:uppercase}.fb-ftu em{font-style:normal;color:#FFB4A8}
+.fb-r{display:flex;gap:22px}.fb-r a{color:#FFD9D3;text-decoration:none}.fb-r a:hover,.fb-ftu:hover em{color:#fff}
+.lk{display:flex;flex-direction:column;line-height:1.05}.lk small{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-bottom:3px}
+.ftu-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:30px;padding:18px 22px;border-radius:0;border:1px solid rgba(255,254,244,.15);font-size:14px}
+.ftu-foot b{padding:4px 9px;border-radius:0;background:#FFB4A8;color:#1F0607;font-size:12px}.ftu-foot a{margin-left:auto;font-weight:600;color:#FFB4A8}
+@media(max-width:700px){.fb-r,.fb-ftu em{display:none}}
+</style>
+<style>.seal{border-radius:50%;display:block;flex:none}
+.fb-ftu .seal{width:26px;height:26px}.ftu-foot .seal{width:46px;height:46px}
+.logo .seal,.brand .seal{width:38px;height:38px;margin-right:2px}
+.logo .sep,.brand .sep{width:1px;height:30px;background:currentColor;opacity:.25;margin:0 4px}
+</style>
+<style>
+nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(31,6,7,.08);font-family:Montserrat,sans-serif;color:#3A0B0D;height:auto}
+[data-theme=dark] nav.gh{background:rgba(31,6,7,.85);border-color:rgba(255,180,168,.16);color:#FFFEF4}
+.gh .container{width:min(1280px,calc(100% - 40px));margin:auto}
+.gh .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px}
+.gh .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:inherit}
+.gh .logo span{width:34px;height:34px;border-radius:0;background:#B3151B;display:grid;place-items:center;color:#FFFEF4;font-size:16px}
+.gh .logo .seal{width:38px;height:38px;border-radius:50%}.gh .sep{width:1px;height:30px;background:currentColor;opacity:.25;margin:0 4px}
+.gh .lk{display:flex;flex-direction:column;line-height:1.05}.gh .lk small{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-bottom:3px}
+.gh .menu{display:flex;gap:24px;white-space:nowrap;font-size:14px;font-weight:500}.gh .menu a:hover{color:#B3151B}
+.gh .nav-r{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:600}
+.gh .btn{display:inline-flex;align-items:center;background:#3A0B0D;color:#FFFEF4;padding:12px 26px;border-radius:0;font-weight:600;font-size:14px}.gh .btn:hover{background:#B3151B}
+[data-theme=dark] .gh .btn{background:transparent;border:1.5px solid #B3151B;box-shadow:0 0 18px rgba(200,32,42,.35)}
+.gh .theme-btn{width:40px;height:40px;border-radius:50%;border:1px solid #BABABA;background:none;cursor:pointer;font-size:16px;color:inherit;display:grid;place-items:center}
+.gh .lang-btn{height:40px;padding:0 4px;border-radius:0;border:1px solid #BABABA;background:none;display:flex;align-items:center;gap:2px;cursor:pointer;font:600 12px Montserrat;color:inherit}
+.gh .lang-btn span{padding:6px 10px;border-radius:0}.gh .lang-btn span.on{background:#B3151B;color:#fff}
+[data-theme=dark] .gh .lang-btn,[data-theme=dark] .gh .theme-btn{border-color:rgba(255,180,168,.25)}
+.gh .dd{position:relative}.gh .dd>a{padding:10px 0;display:inline-block}
+.gh .dd-pan{position:absolute;top:100%;left:-18px;min-width:220px;padding:14px;border-radius:0;background:#FFFEF4;color:#1F0607;box-shadow:0 20px 50px rgba(31,6,7,.18);border:1px solid rgba(186,186,186,.4);opacity:0;visibility:hidden;transform:translateY(8px);transition:.25s;white-space:normal}
+.gh .dd:hover .dd-pan,.gh .dd:focus-within .dd-pan{opacity:1;visibility:visible;transform:none}
+.gh .dd-pan.wide{display:grid;grid-template-columns:1fr 1.3fr;gap:18px;min-width:520px}
+.gh .dd-pan h6{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#B3151B;margin:4px 10px 6px}
+.gh .dd-pan a{display:block;padding:9px 10px;border-radius:0;font-size:14px}.gh .dd-pan a:hover{background:rgba(179,21,27,.08);color:#B3151B}
+.gh .dd-pan b{font-weight:600}.gh .dd-pan small{display:block;font-size:12px;color:#777;margin-top:2px}
+[data-theme=dark] .gh .dd-pan{background:#3A0B0D;color:#FFFEF4;border-color:rgba(255,180,168,.25)}[data-theme=dark] .gh .dd-pan h6{color:#FFB4A8}
+.subbar{border-bottom:1px solid rgba(128,128,160,.18);font-family:Montserrat,sans-serif}
+.sb-in{width:min(1280px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:54px}
+.sb-in #back{font-size:13px;font-weight:600;opacity:.7}.sb-in #back:hover{opacity:1}
+.sb-in .tabs{display:flex;gap:6px;flex-wrap:wrap}.sb-in .tabs a{padding:7px 14px;border-radius:0;font-size:13px;font-weight:700;border:1px solid rgba(128,128,160,.3)}.sb-in .tabs a.on{background:#B3151B;color:#fff;border-color:#B3151B}
+@media(max-width:1000px){.gh .menu{display:none}}@media(max-width:640px){.gh .nav-r>a{display:none}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/extra.css">
+</head>
+<body>
+<div class="ftu-bar"><div class="fb-in"><a href="https://ftu.edu.vn" target="_blank" class="fb-ftu"><img src="assets/ftu-logo.png" alt="FTU" class="seal"><span>Trường Đại học Ngoại thương</span><em>ftu.edu.vn ↗</em></a><div class="fb-r"><a href="mailto:cnkhdl@ftu.edu.vn">Hợp tác</a><a href="mailto:cnkhdl@ftu.edu.vn">Tài trợ</a><a href="tel:0947396248">Liên hệ</a></div></div></div>
+<nav class="gh">
+  <div class="container nav">
+    <a href="index.html" class="logo"><img src="assets/ftu-logo.png" alt="FTU" class="seal"><i class="sep"></i><span>C</span><div class="lk"><small>Đại học Ngoại thương</small>CTAS</div></a>
+    <div class="menu">
+      <div class="dd"><a href="gioi-thieu.html">Giới thiệu ▾</a><div class="dd-pan">
+        <a href="gioi-thieu.html#about"><b>Lịch sử</b><small>Gần 40 năm phát triển</small></a>
+        <a href="tin-tuc.html"><b>Tin tức</b><small>Hoạt động mới nhất</small></a>
+      </div></div>
+      <div class="dd"><a href="dao-tao.html">Đào tạo &amp; Khoa ▾</a><div class="dd-pan wide">
+        <div><h6>Đào tạo</h6>
+          <a href="nganh.html?m=cs"><b>Khoa học máy tính</b></a>
+          <a href="nganh.html?m=ds"><b>Khoa học dữ liệu</b></a>
+          <a href="nganh.html?m=ai"><b>Trí tuệ nhân tạo</b></a></div>
+        <div><h6>Khoa</h6>
+          <a href="khoa.html?k=cs"><b>Khoa Khoa học máy tính</b><small>Quản lý ngành Khoa học máy tính</small></a>
+          <a href="khoa.html?k=dsai"><b>Khoa Khoa học dữ liệu và Trí tuệ nhân tạo</b><small>Quản lý ngành Khoa học dữ liệu, Trí tuệ nhân tạo</small></a>
+          <a href="khoa.html?k=qt"><b>Khoa Khoa học tính toán và định lượng</b><small>Nền tảng toán, thống kê, định lượng</small></a>
+          <a href="khoa.html?k=ln"><b>Khoa Liên ngành</b></a></div>
+      </div></div>
+      <div class="dd"><a href="nghien-cuu.html">Nghiên cứu ▾</a><div class="dd-pan wide">
+        <div><h6>Sản phẩm công nghệ</h6>
+          <a href="nghien-cuu.html#lms"><b>LMS</b></a>
+          <a href="nghien-cuu.html#ftullm"><b>FTULLM</b></a>
+          <a href="nghien-cuu.html#cloud"><b>Cloud</b></a></div>
+        <div><h6>Nghiên cứu</h6>
+          <a href="khong-gian.html"><b>Không gian học tập &amp; nghiên cứu</b></a>
+          <a href="nghien-cuu.html#conf"><b>Hội thảo khoa học 2026</b></a>
+          <a href="nghien-cuu.html#student"><b>Dự án sinh viên</b></a></div>
+      </div></div>
+    </div>
+    <div class="nav-r"><button class="lang-btn" id="langBtn" aria-label="Ngôn ngữ"><span data-l="vi">VI</span><span data-l="en">EN</span></button><button class="theme-btn" id="themeBtn" aria-label="Đổi giao diện">☾</button><a href="index.html">Đăng nhập</a><a href="gioi-thieu.html#apply" class="btn">Đăng ký ngay</a></div>
+  </div>
+</nav>
+<div class="subbar"><div class="sb-in"><a id="back" href="index.html">← Về trang chủ</a><div class="tabs" id="tabs"></div></div></div>
+<main class="deck" id="deck"></main>
+<p class="note" id="note"></p>
+<script>
+const root=document.documentElement;root.dataset.theme=localStorage.getItem('ctas-theme')||'light';
+const M={
+ cs:{name:'Khoa học máy tính',short:'KHMT',khoa:'Khoa Khoa học máy tính',prog:'Chương trình tích hợp Khoa học máy tính và Dữ liệu trong Kinh tế và Kinh doanh',
+  role:'Xây dựng <em>hạ tầng số</em> vững chắc',
+  intro:'Khoa học máy tính là điểm khởi đầu của vòng lặp đổi mới: tạo ra nền tảng phần mềm, hệ thống và dữ liệu để các ngành khác vận hành trên đó.',
+  st:[
+   {k:'code',t:'Nền tảng',h:'Toán học & lập trình',p:'Tư duy thuật toán, cấu trúc dữ liệu và lập trình - viên gạch đầu tiên của mọi hệ thống số.',l:['Tư duy thuật toán','Lập trình','Toán rời rạc']},
+   {k:'network',t:'Hạ tầng',h:'Hệ thống & mạng',p:'Hiểu cách máy tính, hệ điều hành, mạng và điện toán đám mây vận hành để xây hạ tầng ổn định.',l:['Hệ điều hành','Mạng máy tính','Cloud']},
+   {k:'dbapp',t:'Dữ liệu',h:'Phần mềm & cơ sở dữ liệu',p:'Thiết kế phần mềm và cơ sở dữ liệu phục vụ hoạt động thực tế của doanh nghiệp.',l:['Công nghệ phần mềm','Cơ sở dữ liệu']},
+   {k:'city',t:'Ứng dụng',h:'Công nghệ trong kinh tế & kinh doanh',p:'Kết hợp thế mạnh kinh tế – kinh doanh của Trường Đại học Ngoại thương để đưa công nghệ vào bài toán thực tế.',l:['Hệ thống thông tin doanh nghiệp','Chuyển đổi số']},
+   {k:'globe',t:'Vòng lặp',h:'Nền móng cho Dữ liệu & AI',p:'Hạ tầng số do Khoa học máy tính xây dựng là nơi Khoa học dữ liệu khai thác và Trí tuệ nhân tạo tạo ra giá trị - và dữ liệu mới lại đòi hỏi hạ tầng được nâng cấp.',l:[],next:'ds'}]},
+ ds:{name:'Khoa học dữ liệu',short:'KHDL',khoa:'Khoa Khoa học dữ liệu và Trí tuệ nhân tạo',prog:'Chương trình tích hợp Khoa học dữ liệu cho đổi mới sáng tạo trong kinh tế và kinh doanh',
+  role:'Tìm ra <em>vấn đề kinh doanh</em> cốt lõi',
+  intro:'Khoa học dữ liệu chạy trên nền tảng hạ tầng số để biến dữ liệu thô thành hiểu biết, chỉ ra vấn đề cốt lõi cần giải quyết.',
+  st:[
+   {k:'scatter',t:'Thu thập',h:'Thu thập dữ liệu',p:'Dữ liệu từ giao dịch, thị trường, mạng xã hội và hệ thống doanh nghiệp được thu thập liên tục.',l:['Nguồn dữ liệu','Pipeline']},
+   {k:'warehouse',t:'Xử lý',h:'Lưu trữ & làm sạch',p:'Tổ chức, làm sạch và chuẩn hoá dữ liệu để sẵn sàng cho phân tích.',l:['Kho dữ liệu','Tiền xử lý']},
+   {k:'bars3d',t:'Phân tích',h:'Phân tích & trực quan hoá',p:'Thống kê, khai phá và trực quan hoá dữ liệu để thấy được xu hướng và bất thường.',l:['Thống kê','Trực quan hoá','Khai phá dữ liệu']},
+   {k:'dashboard',t:'Quyết định',h:'Insight cho kinh doanh',p:'Từ dữ liệu đến quyết định: xác định vấn đề kinh doanh cốt lõi cho đổi mới sáng tạo.',l:['Phân tích kinh doanh','Ra quyết định']},
+   {k:'neural',t:'Vòng lặp',h:'Chuyển giao cho Trí tuệ nhân tạo',p:'Vấn đề đã được xác định là đầu vào để Trí tuệ nhân tạo xây dựng mô hình giải quyết.',l:[],next:'ai'}]},
+ ai:{name:'Trí tuệ nhân tạo',short:'AI',khoa:'Khoa Khoa học dữ liệu và Trí tuệ nhân tạo',prog:'Chương trình tích hợp Trí tuệ nhân tạo cho đổi mới sáng tạo trong kinh tế và kinh doanh',
+  role:'Tạo ra <em>giá trị kinh tế</em> mới',
+  intro:'Trí tuệ nhân tạo giải quyết vấn đề bằng các mô hình thông minh, tạo ra giá trị kinh tế mới - và khởi động vòng lặp tiếp theo.',
+  st:[
+   {k:'dataset',t:'Dữ liệu',h:'Dữ liệu huấn luyện',p:'Mô hình bắt đầu từ dữ liệu chất lượng được chuẩn bị bởi Khoa học dữ liệu.',l:['Tập dữ liệu','Gán nhãn']},
+   {k:'neural',t:'Mô hình',h:'Học máy & học sâu',p:'Xây dựng và huấn luyện các mô hình học máy, học sâu cho bài toán cụ thể.',l:['Học máy','Học sâu','Mô hình ngôn ngữ']},
+   {k:'deploy',t:'Triển khai',h:'Đưa mô hình vào vận hành',p:'Triển khai mô hình thành sản phẩm, dịch vụ chạy trong hệ thống thực.',l:['Triển khai','Giám sát mô hình']},
+   {k:'city',t:'Giá trị',h:'Đổi mới trong kinh tế & kinh doanh',p:'Ứng dụng AI cho kinh tế, kinh doanh và đời sống - như các ý tưởng tại AI Challenge 2026 và hội thảo AI4Econ&Biz 2026.',l:['AI cho kinh doanh','Đổi mới sáng tạo']},
+   {k:'globe',t:'Vòng lặp',h:'Dữ liệu mới, vòng lặp mới',p:'Giá trị kinh tế mới tạo ra lượng dữ liệu mới, yêu cầu Khoa học máy tính nâng cấp hạ tầng - vòng lặp phát triển tiếp tục.',l:[],next:'cs'}]},
+ qt:{dept:1,name:'Khoa Khoa học tính toán và định lượng',short:'Khoa KHTT&ĐL',khoa:'Khoa Khoa học tính toán và định lượng',prog:'Đơn vị nền tảng của Trường Công nghệ và Khoa học ứng dụng',
+  role:'Nền tảng <em>định lượng</em> cho cả hệ sinh thái',
+  intro:'Khoa Khoa học tính toán và định lượng cung cấp nền tảng toán học, thống kê và mô hình hoá cho các ngành công nghệ và kinh tế.',
+  st:[
+   {k:'surface',t:'Toán học',h:'Toán cho khoa học & kinh tế',p:'Giải tích, đại số, xác suất - ngôn ngữ chung của công nghệ và kinh tế.',l:['Giải tích','Đại số tuyến tính','Xác suất']},
+   {k:'bell',t:'Thống kê',h:'Thống kê & kinh tế lượng',p:'Phương pháp định lượng để đo lường, kiểm định và dự báo.',l:['Thống kê','Kinh tế lượng']},
+   {k:'optim',t:'Mô hình',h:'Mô hình hoá & tối ưu',p:'Biến bài toán thực tế thành mô hình toán học và tìm lời giải tối ưu.',l:['Tối ưu hoá','Mô hình hoá']},
+   {k:'matrix',t:'Tính toán',h:'Tính toán khoa học',p:'Dùng máy tính để giải các mô hình định lượng lớn và phức tạp.',l:['Phương pháp số','Mô phỏng']},
+   {k:'globe',t:'Kết nối',h:'Nâng đỡ cả vòng lặp',p:'Nền tảng định lượng hỗ trợ Khoa học máy tính, Khoa học dữ liệu và Trí tuệ nhân tạo trong vòng lặp đổi mới.',l:[],next:'cs'}]}};
+
+history.scrollRestoration='manual';scrollTo(0,0);
+const EN={"cs": {"name": "Computer Science", "short": "CS", "khoa": "Faculty of Computer Science", "prog": "Integrated program in Computer Science and Data for Economics and Business", "role": "Building a solid <em>digital infrastructure</em>", "intro": "Computer Science starts the innovation loop: it creates the software, systems and data foundations that the other majors run on.", "st": [["Foundations", "Mathematics & programming", "Algorithmic thinking, data structures and programming - the first bricks of every digital system.", ["Algorithmic thinking", "Programming", "Discrete math"]], ["Infrastructure", "Systems & networks", "How computers, operating systems, networks and the cloud work, to build reliable infrastructure.", ["Operating systems", "Computer networks", "Cloud"]], ["Data", "Software & databases", "Designing software and databases for real business operations.", ["Software engineering", "Databases"]], ["Application", "Technology for economics & business", "Combining FTU’s strength in economics and business to bring technology to real problems.", ["Enterprise information systems", "Digital transformation"]], ["Loop", "The foundation for Data & AI", "The infrastructure built by Computer Science is where Data Science extracts insight and AI creates value - and new data calls for upgraded infrastructure.", []]]}, "ds": {"name": "Data Science", "short": "DS", "khoa": "Faculty of Data Science and Artificial Intelligence", "prog": "Integrated program in Data Science for innovation in economics and business", "role": "Finding the core <em>business problems</em>", "intro": "Data Science runs on the digital infrastructure to turn raw data into insight and pinpoint the core problems to solve.", "st": [["Collect", "Data collection", "Data from transactions, markets, social media and enterprise systems is collected continuously.", ["Data sources", "Pipelines"]], ["Process", "Storage & cleaning", "Organising, cleaning and normalising data so it is ready for analysis.", ["Data warehouse", "Pre-processing"]], ["Analyse", "Analysis & visualisation", "Statistics, data mining and visualisation reveal trends and anomalies.", ["Statistics", "Visualisation", "Data mining"]], ["Decide", "Insight for business", "From data to decisions: identifying the core business problem for innovation.", ["Business analytics", "Decision making"]], ["Loop", "Handing over to AI", "The identified problem becomes the input for Artificial Intelligence to build models that solve it.", []]]}, "ai": {"name": "Artificial Intelligence", "short": "AI", "khoa": "Faculty of Data Science and Artificial Intelligence", "prog": "Integrated program in Artificial Intelligence for innovation in economics and business", "role": "Creating new <em>economic value</em>", "intro": "Artificial Intelligence solves problems with intelligent models, creating new economic value - and starting the next loop.", "st": [["Data", "Training data", "Models start from quality data prepared by Data Science.", ["Datasets", "Labelling"]], ["Model", "Machine & deep learning", "Building and training machine-learning and deep-learning models for specific problems.", ["Machine learning", "Deep learning", "Language models"]], ["Deploy", "Putting models into production", "Deploying models as products and services running in real systems.", ["Deployment", "Model monitoring"]], ["Value", "Innovation in economics & business", "Applying AI to the economy, business and daily life - like the ideas at AI Challenge 2026 and the AI4Econ&Biz 2026 workshop.", ["AI for business", "Innovation"]], ["Loop", "New data, new loop", "New economic value generates new data, requiring Computer Science to upgrade infrastructure - the growth loop continues.", []]]}, "qt": {"name": "Faculty of Computational & Quantitative Science", "short": "CQS Faculty", "khoa": "Faculty of Computational and Quantitative Science", "prog": "A foundational unit of the College of Technology and Applied Science", "role": "The <em>quantitative</em> foundation of the ecosystem", "intro": "The Faculty of Computational and Quantitative Science provides the mathematics, statistics and modelling foundation for technology and economics.", "st": [["Mathematics", "Math for science & economics", "Calculus, algebra and probability - the shared language of technology and economics.", ["Calculus", "Linear algebra", "Probability"]], ["Statistics", "Statistics & econometrics", "Quantitative methods to measure, test and forecast.", ["Statistics", "Econometrics"]], ["Modelling", "Modelling & optimisation", "Turning real problems into mathematical models and finding optimal solutions.", ["Optimisation", "Modelling"]], ["Computing", "Scientific computing", "Using computers to solve large, complex quantitative models.", ["Numerical methods", "Simulation"]], ["Connect", "Supporting the whole loop", "The quantitative foundation supports Computer Science, Data Science and AI throughout the innovation loop.", []]]}};
+const LANG=(new URLSearchParams(location.search).get('lang')||localStorage.getItem('ctas-lang')||'vi')==='en'?'en':'vi';localStorage.setItem('ctas-lang',LANG);root.lang=LANG;
+if(LANG==='en')for(const k in EN){const e=EN[k],t=M[k];Object.assign(t,{name:e.name,short:e.short,khoa:e.khoa,prog:e.prog,role:e.role,intro:e.intro});e.st.forEach((x,i)=>Object.assign(t.st[i],{t:x[0],h:x[1],p:x[2],l:x[3]}))}
+const E=LANG==='en';
+const U=id=>`https://images.unsplash.com/photo-${id}?w=1400&q=80`;
+const IMG={code:'1515879218367-8466d910aaa4',network:'1558494949-ef010cbdcc31',dbapp:'1544383835-bda2bc66a55d',city:'1486406146926-c627a92ad1ab',globe:'1451187580459-43490279c0fa',scatter:'1460925895917-afdab827c52f',warehouse:'1597852074816-d933c7d2b988',bars3d:'1543286386-713bdd548da4',dashboard:'1551288049-bebda4e38f71',neural:'1620712943543-bcc4688e7485',dataset:'1504868584819-f8e8b4b6d7e3',deploy:'1531297484001-80022131f5a1',surface:'1635070041078-e363dbe005cb',bell:'1509228468518-180dd4864904',optim:'1453733190371-0a9bedd82893',matrix:'1635070041078-e363dbe005cb'};
+const COVER={cs:'1518770660439-4636190af475',ds:'1551288049-bebda4e38f71',ai:'1677442136019-21780ecad995'};
+const T=E?{back:'← Back to home',khoa:'Managing faculty',prog:'Program',unit:'Unit',unitv:'College of Technology and Applied Science - FTU',agenda:'Contents',agh:'What you will <em>learn</em>',agp:'Five stages that take you from foundations to real economic value.',stage:'Stage',loopT:'The innovation loop',loopP:'Computer Science, Data Science and AI form one loop - each major hands value to the next.',next:'Next major: ',home:'Programs overview',note:'Stage content is an introductory overview; see the official curriculum for course details.'}
+:{back:'← Về trang chủ',khoa:'Khoa quản lý',prog:'Chương trình',unit:'Đơn vị',unitv:'Trường Công nghệ và Khoa học ứng dụng - ĐH Ngoại thương',agenda:'Nội dung',agh:'Bạn sẽ <em>học</em> gì',agp:'Năm chặng đưa bạn từ nền tảng đến giá trị kinh tế thực tế.',stage:'Chặng',loopT:'Vòng lặp đổi mới',loopP:'Khoa học máy tính, Khoa học dữ liệu và Trí tuệ nhân tạo tạo thành một vòng lặp - mỗi ngành trao giá trị cho ngành tiếp theo.',next:'Ngành tiếp theo: ',home:'Tổng quan các ngành',note:'Nội dung các chặng mang tính giới thiệu định hướng; chi tiết học phần theo chương trình đào tạo chính thức của Nhà trường.'};
+let key=new URLSearchParams(location.search).get('m');if(key==='qt'){location.replace('khoa.html?k=qt&lang='+LANG)}
+if(!['cs','ds','ai'].includes(key))key='cs';const m=M[key];
+document.title=m.name+' - CTAS';document.getElementById('back').textContent=T.back;document.getElementById('note').textContent=T.note;
+document.getElementById('tabs').innerHTML=['cs','ds','ai'].map(k=>`<a href="?m=${k}&lang=${LANG}" class="${k===key?'on':''}">${M[k].short}</a>`).join('');
+const lb=document.getElementById('langBtn');lb.onclick=()=>{const q=new URLSearchParams(location.search);q.set('lang',E?'vi':'en');localStorage.setItem('ctas-lang',q.get('lang'));location.search=q};
+const th=document.getElementById('themeBtn');const st=()=>th.textContent=root.dataset.theme==='dark'?'☀':'☾';st();th.onclick=()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('ctas-theme',root.dataset.theme);st()};
+const N=m.st.length+3,pad=i=>String(i).padStart(2,'0'),no=i=>`<span class="no">${pad(i)} / ${pad(N)}</span>`;
+const body=m.st.slice(0,-1),last=m.st[m.st.length-1];
+let h=`<section class="sl cover" id="s1"><span class="tg">${m.khoa}</span><div class="tx"><h1>${m.name}</h1><h2 style="font-size:clamp(20px,2.2vw,32px);font-weight:600">${m.role}</h2><p>${m.intro}</p>
+<div class="meta"><div><small>${T.prog}</small><b>${m.prog}</b></div><div><small>${T.unit}</small><b>${T.unitv}</b></div></div></div><div class="img"><img src="${U(COVER[key])}" alt=""></div>${no(1)}</section>`;
+h+=`<section class="sl agenda" id="s2"><span class="tg">${T.agenda}</span><div><h2>${T.agh}</h2><p style="margin-top:18px">${T.agp}</p></div><div class="ag-list">${m.st.map((s,i)=>`<a href="#s${i+3}"><i>${pad(i+1)}</i>${s.h}<span>${s.t}</span></a>`).join('')}</div>${no(2)}</section>`;
+body.forEach((s,i)=>{h+=`<section class="sl ct ${i%2?'rev':''}" id="s${i+3}"><span class="tg">${T.stage} ${pad(i+1)} · ${s.t}</span><span class="big">${pad(i+1)}</span><div class="tx"><h2>${s.h}</h2><p>${s.p}</p>${s.l.length?`<div class="chips">${s.l.map(x=>`<span>${x}</span>`).join('')}</div>`:''}</div><div class="img"><img src="${U(IMG[s.k]||COVER[key])}" alt="" loading="lazy"><span class="cap">${s.t}</span></div>${no(i+3)}</section>`});
+const order=['cs','ds','ai'],P=[[50,8],[90,75],[10,75]];
+h+=`<section class="sl loop" id="s${body.length+3}"><span class="tg">${T.stage} ${pad(m.st.length)} · ${last.t}</span><div><h2>${last.h}</h2><p style="margin:18px 0 26px">${last.p}</p><div class="cta">${last.next&&last.next!=='qt'?`<a class="btn" href="?m=${last.next}&lang=${LANG}">${T.next}${M[last.next].name} →</a>`:''}<a class="btn ghost" href="dao-tao.html">${T.home}</a></div></div>
+<div class="cyc"><svg viewBox="0 0 100 100"><defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#FFB4A8"/></marker></defs><circle cx="50" cy="52" r="34" fill="none" stroke="rgba(255,180,168,.35)" stroke-width=".6" stroke-dasharray="2 2"/><path d="M62 18 A34 34 0 0 1 82 66" fill="none" stroke="#FFB4A8" stroke-width=".8" marker-end="url(#ar)"/><path d="M72 84 A34 34 0 0 1 28 84" fill="none" stroke="#FFB4A8" stroke-width=".8" marker-end="url(#ar)"/><path d="M18 66 A34 34 0 0 1 38 18" fill="none" stroke="#FFB4A8" stroke-width=".8" marker-end="url(#ar)"/><text x="50" y="55" text-anchor="middle" fill="#FFFEF4" font-size="7" font-weight="700" font-family="Montserrat">∞</text></svg>
+${order.map((k,i)=>`<a href="?m=${k}&lang=${LANG}" class="${k===key?'on':''}" style="left:${P[i][0]}%;top:${P[i][1]}%">${M[k].name}</a>`).join('')}</div>${no(body.length+3)}</section>`;
+h+=`<section class="sl cover" id="s${N}" style="aspect-ratio:auto"><span class="tg">${T.khoa}</span><div class="tx" style="padding-top:80px"><h2>${m.khoa}</h2><p>${E?'Learn more about the faculty, its lecturers and academic activities.':'Tìm hiểu đội ngũ giảng viên, bộ môn và hoạt động học thuật của khoa.'}</p><div class="cta"><a class="btn" href="khoa.html?k=${key==='cs'?'cs':'dsai'}&lang=${LANG}">${E?'Faculty profile →':'Giới thiệu khoa →'}</a><a class="btn ghost" href="mailto:cnkhdl@ftu.edu.vn">cnkhdl@ftu.edu.vn</a></div></div><div class="img"><img src="${U('1523240795612-9a054b0db644')}" alt="" loading="lazy"></div>${no(N)}</section>`;
+document.getElementById('deck').innerHTML=h;
+addEventListener('keydown',e=>{if(!['ArrowDown','ArrowUp','PageDown','PageUp'].includes(e.key))return;const S=[...document.querySelectorAll('.sl')];const y=scrollY+100;let i=S.findIndex(s=>s.offsetTop+s.offsetHeight/2>y);if(i<0)i=S.length-1;const d=e.key==='ArrowDown'||e.key==='PageDown'?1:-1;const t=S[Math.max(0,Math.min(S.length-1,i+d))];if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}});
+</script>
+<script>
+(function(){const E=(localStorage.getItem('ctas-lang')||'vi')==='en';document.querySelectorAll('#langBtn span').forEach(s=>s.classList.toggle('on',s.dataset.l===(E?'en':'vi')));
+const tb=document.getElementById('themeBtn');const st=()=>tb.textContent=document.documentElement.dataset.theme==='dark'?'☀':'☾';st();new MutationObserver(st).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+if(!E)return;const T={"Giới thiệu ▾":"About ▾","Lịch sử":"History","Gần 40 năm phát triển":"Nearly 40 years of growth","Tin tức":"News","Hoạt động mới nhất":"Latest activities","Đào tạo & Khoa ▾":"Education & Faculties ▾","Đào tạo":"Programs","Khoa":"Faculties","Khoa học máy tính":"Computer Science","Khoa học dữ liệu":"Data Science","Trí tuệ nhân tạo":"Artificial Intelligence","Khoa Khoa học máy tính":"Faculty of Computer Science","Khoa Khoa học dữ liệu và Trí tuệ nhân tạo":"Faculty of Data Science and AI","Khoa Khoa học tính toán và định lượng":"Faculty of Computational & Quantitative Science","Khoa Liên ngành":"Interdisciplinary Department","Quản lý ngành Khoa học máy tính":"Manages Computer Science","Quản lý ngành Khoa học dữ liệu, Trí tuệ nhân tạo":"Manages Data Science, AI","Nền tảng toán, thống kê, định lượng":"Math, statistics & quantitative foundations","Nghiên cứu ▾":"Research ▾","Sản phẩm công nghệ":"Technical products","Nghiên cứu":"Research","Không gian học tập & nghiên cứu":"Learning & research spaces","Hội thảo khoa học 2026":"Scientific Conference 2026","Đăng nhập":"Log in","Đăng ký ngay":"Apply now","Đại học Ngoại thương":"Foreign Trade University","← Về trang chủ":"← Back to home"};
+const w=document.createTreeWalker(document.querySelector('nav.gh'),NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const k=n.nodeValue.trim();if(T[k])n.nodeValue=n.nodeValue.replace(k,T[k])}})();
+</script>
+<script src="assets/news/data.js"></script>
+<script src="assets/extra.js"></script>
+</body>
+</html>
