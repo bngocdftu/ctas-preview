@@ -17,6 +17,20 @@ L.sort(function(a,b){var i=ord.indexOf(a.id),j=ord.indexOf(b.id);return (i<0?99:
 var card=function(p){var nm=p.t.replace(/^Th\.S/,'ThS').replace(/\s+/g,' ').trim();var ini=nm.split(' ').slice(-1)[0][0];
 return '<a class="lc" href="bai-viet.html?id='+p.id+'"><div class="ph">'+(p.cover?'<img src="'+p.cover+'" alt="'+nm+'" loading="lazy">':ini)+'</div><div class="nm"><h4>'+nm+'</h4><small>'+(R[p.id]||(E?'Lecturer':'Giảng viên'))+'</small></div></a>'};
 var A=L.map(card).join('');box.innerHTML='<div class="lec-tr">'+A+A+'</div>'}
-function go(){lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
+
+/* 3. Menu điện thoại */
+function mnav(){var nav=document.querySelector('nav.gh .nav, nav .nav, .nv');if(!nav||document.querySelector('.mnav'))return;
+var menu=document.querySelector('nav .menu');var nr=document.querySelector('.nav-r, .nr');if(!nr)return;
+var b=document.createElement('button');b.className='mnav-btn';b.setAttribute('aria-label','Menu');b.textContent='☰';nr.appendChild(b);
+var d=document.createElement('div');d.className='mnav';var h='<div class="mnav-top"><b>CTAS</b><button class="mnav-x" aria-label="Đóng">✕</button></div>';
+if(menu){menu.querySelectorAll(':scope > .dd, :scope > a').forEach(function(dd){var top=dd.matches('a')?dd:dd.querySelector(':scope > a');
+ h+='<h6>'+top.textContent.replace('▾','').trim()+'</h6>';if(dd.matches('a')){h+='<a href="'+top.getAttribute('href')+'">'+top.textContent+'</a>';return}
+ h+='<a href="'+top.getAttribute('href')+'">'+top.textContent.replace('▾','').trim()+' - '+((localStorage.getItem('ctas-lang')||'vi')==='en'?'overview':'tổng quan')+'</a>';
+ dd.querySelectorAll('.dd-pan a').forEach(function(a){h+='<a href="'+a.getAttribute('href')+'">'+a.innerHTML+'</a>'})})}
+var cta=[].slice.call(nr.querySelectorAll(':scope > a'));if(cta.length)h+='<div class="mnav-cta">'+cta.map(function(a){return '<a class="'+(a.classList.contains('btn')?'pri':'')+'" href="'+a.getAttribute('href')+'">'+a.textContent+'</a>'}).join('')+'</div>';
+d.innerHTML=h;document.body.appendChild(d);
+var tog=function(on){d.classList.toggle('on',on);document.body.classList.toggle('mnav-open',on)};
+b.onclick=function(){tog(true)};d.querySelector('.mnav-x').onclick=function(){tog(false)};d.addEventListener('click',function(e){if(e.target.closest('a'))tog(false)})}
+function go(){try{mnav()}catch(e){}lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 })();

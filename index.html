@@ -715,7 +715,7 @@ html:not([data-theme=dark]) .hw-school strong{color:#1F0607}html:not([data-theme
     <div class="head-row"><div><div class="eyebrow">Tin tức &amp; sự kiện</div><h2>Hoạt động mới nhất</h2></div><a href="tin-tuc.html" class="btn">Xem tất cả →</a></div>
     <div class="news-wrap">
       <a class="news-feat" href="bai-viet.html?id=fb1">
-        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80" alt="">
+        <img src="assets/news/fb1/01.jpg" alt="">
         <div class="nf-in"><span class="badge">Mới nhất · 02.11.2026</span><h3>Giải Nhì &amp; Giải Ba Olympic Trí tuệ nhân tạo OlpAI’26</h3><p>Hai đội tuyển FTU. Những chàng trai nhạy cảm và FTU.Veracity ghi dấu ấn tại khu vực miền Bắc - bứt phá từ Rank 38 lên Top 12.</p><span class="more">Đọc bài viết ↗</span></div>
       </a>
       <div class="news-tl">
@@ -758,7 +758,7 @@ html:not([data-theme=dark]) .hw-school strong{color:#1F0607}html:not([data-theme
 <script>
 const root=document.documentElement,tb=document.getElementById('themeBtn');
 const setTheme=t=>{root.dataset.theme=t;tb.textContent=t==='dark'?'☀':'☾';localStorage.setItem('ctas-theme',t)};
-setTheme(localStorage.getItem('ctas-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+setTheme(localStorage.getItem('ctas-theme')||'light');
 tb.onclick=()=>setTheme(root.dataset.theme==='dark'?'light':'dark');
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active')});
 

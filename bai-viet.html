@@ -163,7 +163,7 @@ const root=document.documentElement;root.dataset.theme=localStorage.getItem('cta
 const LANG=new URLSearchParams(location.search).get('lang')||localStorage.getItem('ctas-lang')||'vi';localStorage.setItem('ctas-lang',LANG);root.lang=LANG;const E=LANG==='en';
 const lb=document.getElementById('langBtn');lb.onclick=()=>{const q=new URLSearchParams(location.search);q.set('lang',E?'vi':'en');localStorage.setItem('ctas-lang',q.get('lang'));location.search=q};
 const th=document.getElementById('themeBtn');const st=()=>th.textContent=root.dataset.theme==='dark'?'☀':'☾';st();th.onclick=()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('ctas-theme',root.dataset.theme);st()};
-const IM=n=>n.cover||`https://images.unsplash.com/photo-${n.unsplash||'1523580494863-6f3031224c94'}?w=1400&q=80`;
+const PIC=n=>n.cover?`<img src="${n.cover}" alt="" loading="lazy">`:`<div class="noimg"><b>CTAS</b><span>${cc(n)}</span></div>`;
 const id=new URLSearchParams(location.search).get('id');const P=POSTS.find(p=>p.id===id)||POSTS.find(p=>p.news);
 const T=E?{news:'News',home:'Home',src:'Original source',pub:'Published',cat:'Category',photos:'Photos',rel:'Related news',back:'← All news',share:'Copy link',copied:'Copied ✓',ft:'Content compiled from cnkhdl.ftu.edu.vn and the KHOACNKHDL fanpage',vi:'This article is available in Vietnamese only.'}
 :{news:'Tin tức',home:'Trang chủ',src:'Nguồn gốc bài viết',pub:'Ngày đăng',cat:'Chuyên mục',photos:'Hình ảnh',rel:'Tin liên quan',back:'← Tất cả tin tức',share:'Sao chép liên kết',copied:'Đã sao chép ✓',ft:'Nội dung tổng hợp từ cnkhdl.ftu.edu.vn và fanpage KHOACNKHDL'};
@@ -173,7 +173,7 @@ document.querySelector('.crumb').innerHTML=`<a href="index.html">${T.home}</a> /
 document.getElementById('eb').textContent=cc(P);document.getElementById('h1').textContent=tt(P);
 const words=P.html.replace(/<[^>]+>/g,' ').split(/\s+/).filter(Boolean).length;
 document.getElementById('am').innerHTML=`<span>${P.d}</span><span>${Math.max(1,Math.round(words/220))} ${E?'min read':'phút đọc'}</span><span>${P.imgs.length} ${E?'photos':'ảnh'}</span>`;
-document.getElementById('cv').innerHTML=`<img src="${IM(P)}" alt="">`;
+if(P.cover)document.getElementById('cv').innerHTML=`<img src="${P.cover}" alt="">`;else document.getElementById('cv').remove();
 const body=document.getElementById('body');body.innerHTML=(E&&!P.te?`<p class="note">${T.vi}</p>`:'')+(E&&P.pe?`<p>${P.pe}</p>`:P.html);
 const inBody=new Set([...body.querySelectorAll('img')].map(i=>i.getAttribute('src')));
 const rest=P.imgs.filter(u=>u!==P.cover&&!inBody.has(u));
@@ -183,7 +183,7 @@ document.getElementById('side').innerHTML=`<div class="box"><dl><dt>${T.pub}</dt
 document.getElementById('cp').onclick=e=>{navigator.clipboard?.writeText(location.href);e.target.textContent=T.copied};
 const L=POSTS.filter(p=>p.news&&p.id!==P.id);const R=[...L.filter(p=>p.c===P.c),...L.filter(p=>p.c!==P.c)].slice(0,3);
 document.getElementById('rh').textContent=T.rel;
-document.getElementById('rel').innerHTML=R.map(n=>`<a class="card" href="bai-viet.html?id=${n.id}"><div class="im"><img src="${IM(n)}" alt="" loading="lazy"></div><div class="tx"><div class="meta"><b>${cc(n)}</b>${n.d}</div><h3>${tt(n)}</h3><p>${E&&n.pe?n.pe:n.ex}</p></div></a>`).join('');
+document.getElementById('rel').innerHTML=R.map(n=>`<a class="card" href="bai-viet.html?id=${n.id}"><div class="im">${PIC(n)}</div><div class="tx"><div class="meta"><b>${cc(n)}</b>${n.d}</div><h3>${tt(n)}</h3><p>${E&&n.pe?n.pe:n.ex}</p></div></a>`).join('');
 document.getElementById('ft').textContent=T.ft;
 const lbx=document.getElementById('lb');document.addEventListener('click',e=>{const i=e.target.closest('.body img,.gal img');if(i){lbx.querySelector('img').src=i.src;lbx.classList.add('on')}else if(e.target.closest('#lb'))lbx.classList.remove('on')});
 </script>
