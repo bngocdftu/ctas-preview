@@ -52,7 +52,7 @@ f.className+=' sf';f.innerHTML='<div class="sf-in"><div class="foot-grid">'
 +'<div><h5>Người học tương lai</h5><a href="index.html#study">Đào tạo</a><a href="gioi-thieu.html#apply">Tuyển sinh</a><a href="#">Học phí</a><a href="#">Học bổng</a><a href="#">Hỏi đáp</a></div>'
 +'<div><h5>Sinh viên</h5><a href="#">Thời khoá biểu</a><a href="#">Chương trình học</a><a href="#">Công tác sinh viên</a><a href="gioi-thieu.html#apply">CLB CTE</a></div>'
 +'<div><h5>Liên hệ</h5><a href="https://maps.google.com/?q=91+Chùa+Láng,+Đống+Đa,+Hà+Nội" target="_blank">91 Chùa Láng, Đống Đa, Hà Nội</a><a href="tel:0947396248">094 739 62 48</a><a href="mailto:cnkhdl@ftu.edu.vn">cnkhdl@ftu.edu.vn</a><a href="https://ftu.edu.vn" target="_blank">ftu.edu.vn</a><a href="https://www.facebook.com/KHOACNKHDL" target="_blank">Facebook</a></div>'
-+'</div><div class="ftu-foot"><img src="assets/ftu-logo.png" alt="FTU" class="seal"><span>Trường Công nghệ và Khoa học ứng dụng là đơn vị thành viên của <strong>Trường Đại học Ngoại thương</strong></span><a href="https://ftu.edu.vn" target="_blank">ftu.edu.vn ↗</a></div>'
++'</div>'
 +'<div class="copy"><span>© 2026 Trường Công nghệ và Khoa học ứng dụng - Trường Đại học Ngoại thương</span><span>Chính sách bảo mật, Điều khoản</span></div></div>'}
 function go(){try{sfoot()}catch(e){}try{mnav()}catch(e){}lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
