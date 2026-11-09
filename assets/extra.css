@@ -191,3 +191,21 @@ a.org-node:hover{border-color:#B3151B;background:#FFF6F4}
 [data-theme=dark] .org-stats,[data-theme=dark] .org-stats div{border-color:rgba(255,180,168,.3)}
 @media(max-width:1000px){.org-mid{grid-template-columns:repeat(2,minmax(0,1fr))}.org-mid .org-node{border-left:1px solid rgba(31,6,7,.15);margin:-1px 0 0 -1px}}
 @media(max-width:700px){.org{padding:56px 0}.org-top,.org-mid,.org-bot{grid-template-columns:1fr}.org-mid::before,.org-bot::before{display:none}.org-stats{flex-wrap:wrap}.org-stats div{flex:1 1 50%;border-bottom:1px solid rgba(128,128,128,.3)}}
+/* ===== Sứ mạng / định hướng ===== */
+.mvv{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(128,128,128,.3)}
+.mvv-a{padding:30px;border-top:4px solid #B3151B}.mvv-a+.mvv-a{border-left:1px solid rgba(128,128,128,.3)}
+.mvv-a p{margin-top:10px;font:400 17px/1.7 'Open Sans',Arial,sans-serif}
+.pj div.pc .tg{margin-top:auto}
+.dt-h{font:700 24px/1.2 'Source Serif 4',Georgia,serif;margin:44px 0 16px}
+.dt-codes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(128,128,128,.3);border-left:1px solid rgba(128,128,128,.3)}
+.dt-codes>*{display:flex;flex-direction:column;gap:4px;padding:20px;border-right:1px solid rgba(128,128,128,.3);border-bottom:1px solid rgba(128,128,128,.3);color:inherit;text-decoration:none}
+.dt-codes a:hover{background:rgba(179,21,27,.06)}
+.dt-codes b{font:700 30px/1 'Source Serif 4',Georgia,serif;color:#B3151B}.dt-codes span{font-weight:700}
+.dt-codes em{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.dt-tbl{overflow-x:auto}.dt-tbl table{width:100%;border-collapse:collapse;font-size:15px}
+.dt-tbl th,.dt-tbl td{border:1px solid rgba(128,128,128,.3);padding:12px 14px;text-align:left}
+.dt-tbl thead th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:rgba(179,21,27,.06)}
+.dt-tbl td{font:700 20px/1 'Source Serif 4',Georgia,serif;font-variant-numeric:tabular-nums}
+[data-theme=dark] .dt-codes b{color:#FFB4A8}[data-theme=dark] .mvv-a{border-top-color:#C8202A}
+@media(max-width:900px){.mvv{grid-template-columns:1fr}.mvv-a+.mvv-a{border-left:0;border-top:4px solid #B3151B}.dt-codes{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.xsec .pj{grid-template-columns:1fr!important}}
