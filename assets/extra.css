@@ -142,3 +142,13 @@ code,pre,kbd,samp,input,select,textarea,button{font-family:'Open Sans',Arial,san
 /* Nút: hiệu ứng nhẹ, mượt */
 .btn,.round,.theme-btn,.lang-btn,.arrows button,.plus{transition:transform .35s cubic-bezier(.2,.7,.2,1),background .25s,color .25s,border-color .25s!important}
 @media(hover:none){.btn,.round{transform:none!important}}
+/* Thẻ giảng viên: màu rõ ràng cho cả 2 chế độ */
+.lc{background:#ffffff;color:#1F0607;border-color:rgba(31,6,7,.15)}
+.lc small{color:#5a5f7a;opacity:1}
+[data-theme=dark] .lc{background:#3A0B0D;color:#FFFEF4;border-color:rgba(255,180,168,.25)}
+[data-theme=dark] .lc small{color:#d6b1ae}
+[data-theme=dark] .lc:hover{border-color:#FFB4A8}
+/* Các thẻ khác dùng --card nhưng trang không định nghĩa biến */
+[data-theme=dark] .pj a,[data-theme=dark] .pj div.pc{color:#FFFEF4}
+[data-theme=dark] .pj p{color:#d6b1ae;opacity:1}
+[data-theme=dark] .fa p,[data-theme=dark] .labs-nums span{color:#d6b1ae;opacity:1}
