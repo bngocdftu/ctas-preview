@@ -117,16 +117,17 @@ nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdro
         <a href="gioi-thieu.html#about"><b>Lịch sử</b><small>Gần 40 năm phát triển</small></a>
         <a href="tin-tuc.html"><b>Tin tức</b><small>Hoạt động mới nhất</small></a>
       </div></div>
-      <div class="dd"><a href="dao-tao.html">Đào tạo &amp; Khoa ▾</a><div class="dd-pan wide">
-        <div><h6>Đào tạo</h6>
+      <div class="dd"><a href="dao-tao.html">Đào tạo ▾</a><div class="dd-pan">
+          <a href="dao-tao.html"><b>Tổng quan đào tạo</b><small>Chương trình, lộ trình học</small></a>
           <a href="nganh.html?m=cs"><b>Khoa học máy tính</b></a>
           <a href="nganh.html?m=ds"><b>Khoa học dữ liệu</b></a>
-          <a href="nganh.html?m=ai"><b>Trí tuệ nhân tạo</b></a></div>
-        <div><h6>Khoa</h6>
+          <a href="nganh.html?m=ai"><b>Trí tuệ nhân tạo</b></a>
+      </div></div>
+      <div class="dd"><a href="khoa.html?k=cs">Khoa ▾</a><div class="dd-pan">
           <a href="khoa.html?k=cs"><b>Khoa Khoa học máy tính</b><small>Quản lý ngành Khoa học máy tính</small></a>
           <a href="khoa.html?k=dsai"><b>Khoa Khoa học dữ liệu và Trí tuệ nhân tạo</b><small>Quản lý ngành Khoa học dữ liệu, Trí tuệ nhân tạo</small></a>
           <a href="khoa.html?k=qt"><b>Khoa Khoa học tính toán và định lượng</b><small>Nền tảng toán, thống kê, định lượng</small></a>
-          <a href="khoa.html?k=ln"><b>Khoa Liên ngành</b></a></div>
+          <a href="khoa.html?k=ln"><b>Khoa Liên ngành</b></a>
       </div></div>
       <div class="dd"><a href="nghien-cuu.html">Nghiên cứu ▾</a><div class="dd-pan wide">
         <div><h6>Sản phẩm công nghệ</h6>
@@ -218,7 +219,7 @@ addEventListener('keydown',e=>{if(!['ArrowDown','ArrowUp','PageDown','PageUp'].i
 <script>
 (function(){const E=(localStorage.getItem('ctas-lang')||'vi')==='en';document.querySelectorAll('#langBtn span').forEach(s=>s.classList.toggle('on',s.dataset.l===(E?'en':'vi')));
 const tb=document.getElementById('themeBtn');const st=()=>tb.textContent=document.documentElement.dataset.theme==='dark'?'☀':'☾';st();new MutationObserver(st).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
-if(!E)return;const T={"Giới thiệu ▾":"About ▾","Lịch sử":"History","Gần 40 năm phát triển":"Nearly 40 years of growth","Tin tức":"News","Hoạt động mới nhất":"Latest activities","Đào tạo & Khoa ▾":"Education & Faculties ▾","Đào tạo":"Programs","Khoa":"Faculties","Khoa học máy tính":"Computer Science","Khoa học dữ liệu":"Data Science","Trí tuệ nhân tạo":"Artificial Intelligence","Khoa Khoa học máy tính":"Faculty of Computer Science","Khoa Khoa học dữ liệu và Trí tuệ nhân tạo":"Faculty of Data Science and AI","Khoa Khoa học tính toán và định lượng":"Faculty of Computational & Quantitative Science","Khoa Liên ngành":"Interdisciplinary Department","Quản lý ngành Khoa học máy tính":"Manages Computer Science","Quản lý ngành Khoa học dữ liệu, Trí tuệ nhân tạo":"Manages Data Science, AI","Nền tảng toán, thống kê, định lượng":"Math, statistics & quantitative foundations","Nghiên cứu ▾":"Research ▾","Sản phẩm công nghệ":"Technical products","Nghiên cứu":"Research","Không gian học tập & nghiên cứu":"Learning & research spaces","Hội thảo khoa học 2026":"Scientific Conference 2026","Đăng nhập":"Log in","Đăng ký ngay":"Apply now","Đại học Ngoại thương":"Foreign Trade University","← Về trang chủ":"← Back to home"};
+if(!E)return;const T={"Giới thiệu ▾":"About ▾","Lịch sử":"History","Gần 40 năm phát triển":"Nearly 40 years of growth","Tin tức":"News","Hoạt động mới nhất":"Latest activities","Đào tạo ▾":"Education ▾","Khoa ▾":"Departments ▾","Tổng quan đào tạo":"Programs overview","Chương trình, lộ trình học":"Programs and study paths","Đào tạo":"Programs","Khoa":"Faculties","Khoa học máy tính":"Computer Science","Khoa học dữ liệu":"Data Science","Trí tuệ nhân tạo":"Artificial Intelligence","Khoa Khoa học máy tính":"Faculty of Computer Science","Khoa Khoa học dữ liệu và Trí tuệ nhân tạo":"Faculty of Data Science and AI","Khoa Khoa học tính toán và định lượng":"Faculty of Computational & Quantitative Science","Khoa Liên ngành":"Interdisciplinary Department","Quản lý ngành Khoa học máy tính":"Manages Computer Science","Quản lý ngành Khoa học dữ liệu, Trí tuệ nhân tạo":"Manages Data Science, AI","Nền tảng toán, thống kê, định lượng":"Math, statistics & quantitative foundations","Nghiên cứu ▾":"Research ▾","Sản phẩm công nghệ":"Technical products","Nghiên cứu":"Research","Không gian học tập & nghiên cứu":"Learning & research spaces","Hội thảo khoa học 2026":"Scientific Conference 2026","Đăng nhập":"Log in","Đăng ký ngay":"Apply now","Đại học Ngoại thương":"Foreign Trade University","← Về trang chủ":"← Back to home"};
 const w=document.createTreeWalker(document.querySelector('nav.gh'),NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const k=n.nodeValue.trim();if(T[k])n.nodeValue=n.nodeValue.replace(k,T[k])}})();
 </script>
 <script src="assets/news/data.js"></script>

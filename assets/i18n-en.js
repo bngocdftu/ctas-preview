@@ -7,7 +7,7 @@ window.CTAS_EN = {
 "Chính sách bảo mật, Điều khoản":"Privacy policy, Terms",
 "91 Chùa Láng, Đống Đa, Hà Nội":"91 Chua Lang, Dong Da, Hanoi",
 "Hợp tác":"Partnerships","Tài trợ":"Sponsorship","Liên hệ":"Contact",
-"Kết nối":"Connect","Hợp tác doanh nghiệp":"Industry partnerships","Cựu sinh viên":"Alumni","Báo chí":"Press",
+"Kết nối":"Connect","Đào tạo ▾":"Education ▾","Khoa ▾":"Departments ▾","Tổng quan đào tạo":"Programs overview","Chương trình, lộ trình học":"Programs and study paths","Hợp tác doanh nghiệp":"Industry partnerships","Cựu sinh viên":"Alumni","Báo chí":"Press",
 "Người học tương lai":"Prospective students","Đào tạo":"Programs","Tuyển sinh":"Admissions","Học phí":"Tuition","Học bổng":"Scholarships","Hỏi đáp":"FAQ",
 "Sinh viên":"Students","Thời khoá biểu":"Timetable","Chương trình học":"Curriculum","Công tác sinh viên":"Student affairs",
 "← Về trang chủ":"← Back to home",

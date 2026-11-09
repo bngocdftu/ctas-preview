@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CTAS Design System</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components/bundle.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface);color:var(--ink);font:400 15px/1.65 var(--font-sans)}
+a{color:inherit}
+code{font-family:var(--font-sans);font-size:.86em;font-weight:700;background:var(--tint);color:var(--brand-ink);padding:1px 5px}
+.top{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.top .in{max-width:1200px;margin:auto;padding:12px max(16px,env(safe-area-inset-left));display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.top nav{display:flex;gap:16px;flex-wrap:wrap;font-weight:600;font-size:14px}.top nav a{text-decoration:none}.top nav a:hover{color:var(--brand-ink)}
+.th{margin-left:auto;border:1px solid var(--ink);background:none;color:inherit;padding:6px 12px;font:600 13px var(--font-sans);cursor:pointer}
+main{max-width:1200px;margin:auto;padding:0 max(16px,env(safe-area-inset-left))}
+.hero{display:grid;grid-template-columns:1fr 1fr;border-bottom:4px solid var(--brand);margin:28px 0 0}
+.hero h1{font:700 clamp(56px,9vw,120px)/.92 var(--font-display);margin:0}.hero p{color:var(--ink-muted);max-width:440px}
+.hero .tx{padding:40px 0}.hero .bl{display:grid;grid-template-columns:2fr 3fr;grid-template-rows:1fr 1fr;min-height:260px}
+.hero .bl i{display:block}
+section.s{padding:64px 0;border-bottom:1px solid var(--line)}
+section.s>h2{font:700 40px/1.1 var(--font-display);margin:10px 0 28px}
+.guide{max-width:820px}.guide h3{font:700 26px/1.2 var(--font-display);margin:34px 0 10px}.guide h4{font:700 18px/1.3 var(--font-display);margin:22px 0 6px}.guide li{margin:4px 0}
+.sws{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));border-top:1px solid var(--line-strong);border-left:1px solid var(--line-strong)}
+.sw{border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);min-width:0}
+.chip{display:grid;grid-template-columns:1fr 1fr;height:72px}.chip span{display:block}
+.swt{padding:12px 14px}.swt b{display:block}.swt code{margin-right:6px}.swt p{margin:6px 0 0;font-size:13px;color:var(--ink-muted)}
+.ty{display:grid;grid-template-columns:200px minmax(0,1fr);gap:6px 28px;padding:18px 0;border-bottom:1px solid var(--line)}
+.tym{display:flex;flex-direction:column;font-size:12px;color:var(--ink-muted)}.tym b{color:var(--ink);font-size:14px}
+.ty p{grid-column:2;margin:0;font-size:13px;color:var(--ink-muted)}
+.sp{display:grid;grid-template-columns:140px 70px minmax(0,1fr);gap:4px 16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.sp i{display:block;height:14px;background:var(--brand)}.sp p{grid-column:1/-1;margin:0;font-size:13px;color:var(--ink-muted)}
+.lgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0;border-top:1px solid var(--line-strong);border-left:1px solid var(--line-strong)}
+.lg{margin:0;padding:28px;border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);background:var(--surface-raised)}
+.lg.dark{background:#3a0b0d;color:#fffef4}.lg img{height:80px;max-width:100%;object-fit:contain;display:block;margin-bottom:16px}
+.lg figcaption{font-size:13px}
+.comp{padding:34px 0;border-bottom:1px solid var(--line)}.comp h3{font:700 26px/1.2 var(--font-display);margin:0 0 16px}
+.demo{border:1px solid var(--line);padding:20px;margin-bottom:16px;overflow-x:auto}.demo.band{background:var(--maroon)}
+.cdoc{max-width:820px;font-size:14px}
+.files li{margin:4px 0}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.ty{grid-template-columns:1fr}.ty p{grid-column:1}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in"><b style="font:800 18px var(--font-sans)">CTAS Design System</b><nav><a href="#guide">Guidelines</a><a href="#color">Color</a><a href="#type">Type</a><a href="#space">Spacing & shape</a><a href="#logo">Logos</a><a href="#components">Components</a><a href="#files">Files</a></nav><button class="th" id="th" type="button">Dark</button></div></header>
+<main>
+<div class="hero"><div class="tx"><h1>CTAS</h1><p>Trường Công nghệ và Khoa học ứng dụng, Trường Đại học Ngoại thương. Hệ thống thiết kế cho website: màu, chữ, khoảng cách, logo và thành phần giao diện.</p><p style="font-size:13px">College of Technology and Applied Science, Foreign Trade University. Version 1, 09.11.2026.</p></div>
+<div class="bl"><i style="background:var(--brand);grid-row:1/3"></i><i style="background:var(--maroon)"></i><i style="background:var(--blush)"></i></div></div>
+<section class="s" id="guide"><div class="ct-eyebrow">Brand book</div><h2>Guidelines</h2><div class="guide"><p>CTAS is the website of the Trường Công nghệ và Khoa học ứng dụng (College of Technology and Applied Science), a member school of Foreign Trade University (FTU), Hanoi. The system takes FTU&#x27;s red and pairs it with a square, editorial layout in the manner of a research university site: serif headlines, sans body, hairline borders, no rounded corners.</p>
+<h3 id="g-content-fundamentals">Content fundamentals</h3>
+<ul>
+<li>Write in Vietnamese first, with full diacritics. English is a second language toggle, never mixed into a Vietnamese sentence except for proper technical names (Docker Swarm, LoRA, RAG, Moodle).</li>
+<li>Voice: an institution speaking plainly about real work. State what happened, who did it, and the numbers. &quot;Sinh viên K63 ngành Khoa học máy tính giành Giải Nhất toàn quốc&quot;, not &quot;Hành trình đầy cảm hứng…&quot;.</li>
+<li>Name people with their academic title as written by the faculty: <code>TS</code>, <code>ThS</code>, <code>ThS NCS</code>, <code>PGS.TS</code>, <code>CN</code>. Cohorts as <code>K63</code>, <code>K64</code>, <code>K65</code>.</li>
+<li>Dates in news meta are <code>dd.mm.yyyy</code> (<code>16.06.2026</code>); a range is <code>18-22.09.2026</code>. Month headers in timelines read <code>THÁNG 10, 2026</code>.</li>
+<li>Do not use the em dash, the en dash, the middle dot or the right arrow. Use a hyphen, a comma, a colon, or a new sentence.</li>
+<li>No emoji in UI chrome. Emoji that appear inside quoted fanpage posts stay as published.</li>
+<li>Section kickers (eyebrows) are short noun phrases: <code>TIN TỨC &amp; SỰ KIỆN</code>, <code>ĐỘI NGŨ</code>, <code>STUDENT-LED PROJECTS</code>.</li>
+<li>Buttons say what happens: <code>Đọc bài</code> opens an article on this site; <code>Tìm hiểu thêm ↗</code> opens an external product (ftds.online). The ↗ arrow means &quot;leaves the site&quot;; internal links carry no arrow.</li>
+<li>Every compound word is one unit: never break a line between the syllables of <code>máy tính</code>, <code>khoa học</code>, <code>dữ liệu</code>, <code>trí tuệ</code>, <code>nhân tạo</code>, <code>sinh viên</code>. Join them with a no-break space (the site&#x27;s <code>extra.js</code> does this automatically).</li>
+</ul>
+<h3 id="g-visual-foundations">Visual foundations</h3>
+<h4 id="g-color">Color</h4>
+<ul>
+<li>Pages sit on <code>surface</code> (cream paper). Cards and boxes are <code>surface-raised</code>. Group quiet content on <code>surface-soft</code>.</li>
+<li>Copy is <code>ink</code>; secondary copy (dates, excerpts, captions) is <code>ink-muted</code>. Never set body copy in <code>brand-ink</code>.</li>
+<li><code>brand</code> is FTU red. Spend it on: primary buttons, the CTAS mark square, the 4px top rule (<code>rule-top</code>) on article covers and the article aside, the label bar of the news ticker. One brand-filled button per view.</li>
+<li><code>brand-ink</code> is the red for text: eyebrows, dates in meta rows, project status labels, tag text, link hover.</li>
+<li>Dark bands use <code>maroon</code> with <code>cream</code> text and <code>blush-soft</code> secondary text; on a band, the highlighted card is filled <code>blush</code> with <code>maroon-deep</code> text.</li>
+<li>Chips and tags: <code>tint</code> fill with <code>brand-ink</code> text.</li>
+<li>The default theme is light. Dark is offered through the moon toggle and swaps surfaces to maroon-black; the red accents lift to <code>blush</code> for text.</li>
+</ul>
+<h4 id="g-type">Type</h4>
+<ul>
+<li>Exactly two families on any page, never a third. <code>display</code> (Source Serif 4) for H1-H3, stat numbers and the big pull quote. <code>sans</code> (Open Sans) for everything else. Both load from Google Fonts.</li>
+<li>H1 <code>display-xl</code>, section H2 <code>display-lg</code>, article title <code>display-md</code>, card titles <code>title</code>.</li>
+<li>Body copy <code>body</code>, justified on both sides. Intro paragraphs <code>lead</code>, justified. Narrow cards (<code>body-sm</code>) are left-aligned so justification does not open wide gaps.</li>
+<li>Kickers use <code>eyebrow</code> (uppercase, 0.12em tracking) preceded by the two-dot mark: a blush dot and a brand dot, 10px each, overlapping 4px.</li>
+<li>Status and field labels use <code>label</code> (uppercase, 0.14em).</li>
+<li>On phones H1 clamps to 30-40px; never let a heading overflow its column.</li>
+</ul>
+<h4 id="g-spacing-and-layout">Spacing and layout</h4>
+<ul>
+<li>Content width 1240px max. Side gutter <code>space-4</code> (16px) on phones, <code>space-5</code> and up on desktop.</li>
+<li>Sections are <code>space-9</code> apart on desktop and <code>space-8</code> on phones.</li>
+<li>Card padding <code>space-5</code>; grid-cell padding <code>space-6</code>.</li>
+<li>Grids are ruled, not floating: adjacent cells share a <code>hairline</code> border in <code>line-strong</code> instead of gaps and shadows (project grid, focus-area grid, stat strip).</li>
+<li>Two-column article layout: body column plus a 300px aside, <code>space-8</code> apart; stacks below 900px.</li>
+</ul>
+<h4 id="g-shape-borders-elevation">Shape, borders, elevation</h4>
+<ul>
+<li>Square system. <code>radius-none</code> everywhere. <code>radius-round</code> only for the FTU seal and the round &quot;Liên hệ&quot; CTA in the footer band.</li>
+<li>Borders, not shadows. Cards take a <code>hairline</code> in <code>line</code>. The only shadow is <code>shadow-float</code> under the hero news ticker.</li>
+<li>A 4px brand rule on top (<code>rule-top</code>) marks the primary object of a page: the article cover, the article aside, the lecturer name plate.</li>
+<li>Pull quotes carry a 6px brand rule on the left (<code>rule-side</code>).</li>
+</ul>
+<h4 id="g-imagery">Imagery</h4>
+<ul>
+<li>Use real photos from the faculty&#x27;s own posts (cnkhdl.ftu.edu.vn and the KHOACNKHDL fanpage). No stock photos of anonymous people.</li>
+<li>Images are shown in full color. No grayscale filters.</li>
+<li>Where a post has no photo, show the media placeholder: a <code>brand</code> block with a faint 135° stripe, <code>CTAS</code> set in <code>display</code> and the category in <code>label</code>. Never substitute an unrelated stock image.</li>
+<li>Cover images are 16:10 in cards and up to 560px tall on article pages.</li>
+</ul>
+<h4 id="g-motion">Motion</h4>
+<ul>
+<li>Hover: cards change border to <code>brand</code> and lift by 5px; photos scale to 1.04. 0.3-0.35s ease.</li>
+<li>Tickers (news headlines, lecturer cards) scroll linearly and pause on hover. Respect <code>prefers-reduced-motion</code> by slowing them to near-static.</li>
+<li>The homepage intro is the one orchestrated moment. Nothing else animates on load beyond a short fade-up.</li>
+</ul>
+<h4 id="g-focus-and-states">Focus and states</h4>
+<ul>
+<li>Every interactive element shows a 2px solid <code>focus</code> ring with 2px offset.</li>
+<li>Primary button hover moves from <code>maroon-deep</code> to <code>brand</code>; brand buttons press to <code>brand-deep</code>.</li>
+<li>Active filter chips invert: <code>ink</code> fill with <code>surface</code> text.</li>
+</ul>
+<h3 id="g-iconography">Iconography</h3>
+<ul>
+<li>No icon library. The site uses a few typographic glyphs only: <code>↗</code> external link, <code>▾</code> dropdown, <code>☰</code> mobile menu, <code>✕</code> close, <code>☾</code>/<code>☀</code> theme toggle.</li>
+<li>Do not use `<code>, </code>,<code> or </code>-<code> anywhere. Separate items with a comma; write ranges with a hyphen (</code>18-22.09.2026`).</li>
+<li>List bullets are 6px squares in <code>blush</code> (on maroon) or <code>brand</code> (on blush).</li>
+</ul>
+<h3 id="g-logos-and-marks">Logos and marks</h3>
+<ul>
+<li>The FTU seal (<code>assets/Logos/ftu-seal.png</code>) appears in the top FTU bar, the nav and the footer strip, always round (<code>radius-round</code>), at 26-64px. It is FTU&#x27;s mark: do not recolor, crop or redraw it.</li>
+<li>The CTAS mark is typographic: a <code>brand</code> square with a white <code>C</code>, followed by <code>CTAS</code> in bold <code>sans</code>. Build it with the <code>BrandMark</code> component; there is no image file for it.</li>
+<li>On phones the nav shows only the CTAS mark; the seal and the &quot;Đại học Ngoại thương&quot; line are hidden to save width.</li>
+</ul>
+<h3 id="g-components">Components</h3>
+<ul>
+<li><code>Button</code>: actions. Variants <code>primary</code> (maroon-deep), <code>brand</code> (red), <code>outline</code>, <code>light</code> (on maroon bands).</li>
+<li><code>Eyebrow</code>: section kicker with the two-dot mark.</li>
+<li><code>Tag</code>: tech tags and category chips.</li>
+<li><code>NewsCard</code>: news grid item with cover, category, date, title and excerpt.</li>
+<li><code>MediaPlaceholder</code>: stands in for a missing photo.</li>
+<li><code>ProductCard</code>: a product in the dark products band (LMS, FTULLM, Cloud) with bullets and two links.</li>
+<li><code>ProjectGrid</code>: ruled grid of student-led projects.</li>
+<li><code>LecturerCard</code>: portrait card for the lecturer ticker.</li>
+<li><code>NewsTicker</code>: the &quot;TIN MỚI&quot; headline strip.</li>
+<li><code>StatStrip</code>: ruled row of big numbers.</li>
+<li><code>BrandMark</code>: the CTAS typographic mark.</li>
+</ul></div></section>
+<section class="s" id="color"><div class="ct-eyebrow">Tokens</div><h2>Color</h2><p style="color:var(--ink-muted)">Each swatch shows the light value (left) and the dark value (right).</p><div class="sws"><div class="sw"><div class="chip"><span style="background:#fffef4"></span><span style="background:#1f0607"></span></div><div class="swt"><b>surface</b><code>#fffef4</code><code>#1f0607</code><p>Page background (the site&#x27;s cream paper; maroon-black at night).</p></div></div><div class="sw"><div class="chip"><span style="background:#ffffff"></span><span style="background:#3a0b0d"></span></div><div class="swt"><b>surface-raised</b><code>#ffffff</code><code>#3a0b0d</code><p>Cards, aside boxes, the news ticker and the article sidebar.</p></div></div><div class="sw"><div class="chip"><span style="background:#f4f3e6"></span><span style="background:#2a0a0b"></span></div><div class="swt"><b>surface-soft</b><code>#f4f3e6</code><code>#2a0a0b</code><p>Quiet fills behind grouped content: stat strips, form fields.</p></div></div><div class="sw"><div class="chip"><span style="background:#1f0607"></span><span style="background:#fffef4"></span></div><div class="swt"><b>ink</b><code>#1f0607</code><code>#fffef4</code><p>Headings and body copy on surface, surface-raised and surface-soft. 19:1 light, 19:1 dark.</p></div></div><div class="sw"><div class="chip"><span style="background:#5a5f7a"></span><span style="background:#d6b1ae"></span></div><div class="swt"><b>ink-muted</b><code>#5a5f7a</code><code>#d6b1ae</code><p>Secondary copy: dates, excerpts, captions on surface and surface-raised. 6.2:1 light, 8.7-9.9:1 dark.</p></div></div><div class="sw"><div class="chip"><span style="background:rgba(31,6,7,0.12)"></span><span style="background:rgba(255,180,168,0.16)"></span></div><div class="swt"><b>line</b><code>rgba(31,6,7,0.12)</code><code>rgba(255,180,168,0.16)</code><p>Hairline borders around cards, grid cells and dividers.</p></div></div><div class="sw"><div class="chip"><span style="background:rgba(128,128,128,0.3)"></span><span style="background:rgba(255,180,168,0.3)"></span></div><div class="swt"><b>line-strong</b><code>rgba(128,128,128,0.3)</code><code>rgba(255,180,168,0.3)</code><p>Ruled grids (project grid, focus-area grid, stat strip).</p></div></div><div class="sw"><div class="chip"><span style="background:#b3151b"></span><span style="background:#c8202a"></span></div><div class="swt"><b>brand</b><code>#b3151b</code><code>#c8202a</code><p>FTU red. Primary buttons, the CTAS mark square, the 4px top rule on cards and covers, label bars. on-brand white holds 6.9:1 light, 5.7:1 dark.</p></div></div><div class="sw"><div class="chip"><span style="background:#8e0f14"></span><span style="background:#8e0f14"></span></div><div class="swt"><b>brand-deep</b><code>#8e0f14</code><code>#8e0f14</code><p>Pressed state of brand fills.</p></div></div><div class="sw"><div class="chip"><span style="background:#b3151b"></span><span style="background:#ffb4a8"></span></div><div class="swt"><b>brand-ink</b><code>#b3151b</code><code>#ffb4a8</code><p>Red text: eyebrows, dates in meta rows, status labels, link hover. 6.8:1 on surface (light); blush 10-11:1 on maroon surfaces (dark).</p></div></div><div class="sw"><div class="chip"><span style="background:#ffffff"></span><span style="background:#ffffff"></span></div><div class="swt"><b>on-brand</b><code>#ffffff</code><code>#ffffff</code><p>Text and icons on brand fills.</p></div></div><div class="sw"><div class="chip"><span style="background:#3a0b0d"></span><span style="background:#3a0b0d"></span></div><div class="swt"><b>maroon</b><code>#3a0b0d</code><code>#3a0b0d</code><p>Dark bands: the products band, the ftu.edu.vn top bar, the footer, the &#x27;LET&#x27;S TALK&#x27; block. Text on it is cream.</p></div></div><div class="sw"><div class="chip"><span style="background:#1f0607"></span><span style="background:#1f0607"></span></div><div class="swt"><b>maroon-deep</b><code>#1f0607</code><code>#1f0607</code><p>Default (non-brand) button fill and the very top FTU bar.</p></div></div><div class="sw"><div class="chip"><span style="background:#fffef4"></span><span style="background:#fffef4"></span></div><div class="swt"><b>cream</b><code>#fffef4</code><code>#fffef4</code><p>Text on maroon and maroon-deep. 16.8:1 on maroon.</p></div></div><div class="sw"><div class="chip"><span style="background:#ffb4a8"></span><span style="background:#ffb4a8"></span></div><div class="swt"><b>blush</b><code>#ffb4a8</code><code>#ffb4a8</code><p>Highlight card fill in the products band (FTULLM), eyebrow dot, bullet squares on maroon. Text on it is maroon-deep (11.4:1).</p></div></div><div class="sw"><div class="chip"><span style="background:#ffd9d3"></span><span style="background:#ffd9d3"></span></div><div class="swt"><b>blush-soft</b><code>#ffd9d3</code><code>#ffd9d3</code><p>Secondary copy on maroon bands. 13:1 on maroon.</p></div></div><div class="sw"><div class="chip"><span style="background:rgba(179,21,27,0.07)"></span><span style="background:rgba(255,180,168,0.1)"></span></div><div class="swt"><b>tint</b><code>rgba(179,21,27,0.07)</code><code>rgba(255,180,168,0.1)</code><p>Tag and category chip background; hover wash on grid cells. Pair with brand-ink text.</p></div></div><div class="sw"><div class="chip"><span style="background:#b3151b"></span><span style="background:#ffb4a8"></span></div><div class="swt"><b>focus</b><code>#b3151b</code><code>#ffb4a8</code><p>2px solid focus ring, 2px offset, on every interactive element. 6.8:1 on surface (light), 11.4:1 (dark).</p></div></div></div></section>
+<section class="s" id="type"><div class="ct-eyebrow">Tokens</div><h2>Type</h2><p>Display: <code>Source Serif 4</code>. Text: <code>Open Sans</code>. Both from Google Fonts. No third family.</p><div class="ty"><div class="tym"><b>display-xl</b><span>64px / 1.05 / 700</span><span>Display</span></div><div class="display-xl">Công nghệ kiến tạo tương lai</div><p>Page H1 and the hero line. Clamp to 30-40px on phones.</p></div><div class="ty"><div class="tym"><b>display-lg</b><span>48px / 1.1 / 700</span><span>Display</span></div><div class="display-lg">Dự án do sinh viên dẫn dắt</div><p>Section headings (H2).</p></div><div class="ty"><div class="tym"><b>display-md</b><span>32px / 1.2 / 700</span><span>Display</span></div><div class="display-md">Hội thảo khoa học Khoa CN&amp;KHDL 2026</div><p>Article title on news detail pages, featured-news title.</p></div><div class="ty"><div class="tym"><b>title</b><span>21px / 1.25 / 700</span><span>Display</span></div><div class="title">Cụm GPU 4×V100 SXM2 với ngân sách đại học</div><p>Card and grid-cell titles (H3).</p></div><div class="ty"><div class="tym"><b>stat</b><span>34px / 1 / 700</span><span>Display</span></div><div class="stat">43</div><p>Numbers in stat strips, coloured brand-ink.</p></div><div class="ty"><div class="tym"><b>lead</b><span>17px / 1.7 / 400</span><span>Text</span></div><div class="lead">Sinh viên ngành Khoa học máy tính tự thiết kế, xây dựng và vận hành hạ tầng thật cho cả Trường.</div><p>Intro paragraph under a section heading; justified.</p></div><div class="ty"><div class="tym"><b>body</b><span>16px / 1.8 / 400</span><span>Text</span></div><div class="body">Sáng ngày 16/06/2026, Khoa Công nghệ và Khoa học Dữ liệu đã tổ chức thành công Hội thảo khoa học.</div><p>Article body; justified, never wider than the column.</p></div><div class="ty"><div class="tym"><b>body-sm</b><span>14px / 1.65 / 400</span><span>Text</span></div><div class="body-sm">Định tuyến ngữ nghĩa giữa các tầng CPU, Xavier và V100.</div><p>Card excerpts and descriptions; left-aligned inside narrow cards.</p></div><div class="ty"><div class="tym"><b>ui</b><span>14px / 1.4 / 600</span><span>Text</span></div><div class="ui">Tìm hiểu thêm ↗</div><p>Buttons, nav links, form controls.</p></div><div class="ty"><div class="tym"><b>eyebrow</b><span>13px / 1.3 / 600</span><span>Text</span></div><div class="eyebrow">TIN TỨC &amp; SỰ KIỆN</div><p>Uppercase kicker above a heading, in brand-ink, with the two-dot mark before it.</p></div><div class="ty"><div class="tym"><b>label</b><span>11px / 1.3 / 700</span><span>Text</span></div><div class="label">ĐANG VẬN HÀNH, 06.2026</div><p>Status lines on project cells, sidebar field labels, footer headings. Uppercase.</p></div><div class="ty"><div class="tym"><b>tag</b><span>11px / 1.2 / 700</span><span>Text</span></div><div class="tag">Docker Swarm</div><p>Tech tags and category chips on tint.</p></div><div class="ty"><div class="tym"><b>caption</b><span>12px / 1.5 / 600</span><span>Text</span></div><div class="caption">16.06.2026, 2 phút đọc, 13 ảnh</div><p>Meta rows under titles, in ink-muted.</p></div></section>
+<section class="s" id="space"><div class="ct-eyebrow">Tokens</div><h2>Spacing & shape</h2><div class="sp"><b>space-1</b><code>4px</code><i style="width:4px"></i><p>Tight gaps: tag rows, icon-to-text.</p></div><div class="sp"><b>space-2</b><code>8px</code><i style="width:8px"></i><p>Button groups, chip gaps, gallery gutters.</p></div><div class="sp"><b>space-3</b><code>12px</code><i style="width:12px"></i><p>Meta rows, eyebrow-to-dot gap.</p></div><div class="sp"><b>space-4</b><code>16px</code><i style="width:16px"></i><p>Phone side gutter; minimum page padding.</p></div><div class="sp"><b>space-5</b><code>22px</code><i style="width:22px"></i><p>Card inner padding (news cards, aside box).</p></div><div class="sp"><b>space-6</b><code>26px</code><i style="width:26px"></i><p>Grid-cell padding in the project grid and product cards.</p></div><div class="sp"><b>space-7</b><code>36px</code><i style="width:36px"></i><p>Section header to content.</p></div><div class="sp"><b>space-8</b><code>56px</code><i style="width:56px"></i><p>Column gap in two-column layouts; phone section padding.</p></div><div class="sp"><b>space-9</b><code>90px</code><i style="width:90px"></i><p>Desktop section padding (top and bottom).</p></div><h3 style="font:700 24px var(--font-display);margin:30px 0 8px">Radius, borders, shadow</h3><div class="sp"><b>radius-none</b><code>0</code><p>Everything rectangular: cards, buttons, inputs, chips, images. The CMU-style square system has no other radius for UI.</p></div><div class="sp"><b>radius-round</b><code>50%</code><p>Only circular marks: the FTU seal and the round &#x27;Liên hệ&#x27; CTA.</p></div><div class="sp"><b>rule-top</b><code>4px</code><p>Brand-coloured top rule on article covers, aside boxes and lecturer name plates.</p></div><div class="sp"><b>rule-side</b><code>6px</code><p>Brand-coloured left rule on pull quotes (FTU Labs motto).</p></div><div class="sp"><b>hairline</b><code>1px</code><p>All card and grid borders.</p></div><div class="sp"><b>shadow-float</b><code>0 24px 50px rgba(31,6,7,0.12)</code><p>Only the floating news ticker over the hero. Cards use borders, not shadows.</p></div></section>
+<section class="s" id="logo"><div class="ct-eyebrow">Assets</div><h2>Logos</h2><div class="lgs"><figure class="lg "><img src="assets/logo/ctas-logo.svg" alt="Logo đầy đủ / Full logo"><figcaption>Logo đầy đủ / Full logo<br><code>assets/logo/ctas-logo.svg</code></figcaption></figure><figure class="lg dark"><img src="assets/logo/ctas-logo-white.svg" alt="Logo trên nền tối / On dark"><figcaption>Logo trên nền tối / On dark<br><code>assets/logo/ctas-logo-white.svg</code></figcaption></figure><figure class="lg "><img src="assets/logo/ctas-wordmark.svg" alt="Chữ CTAS / Wordmark"><figcaption>Chữ CTAS / Wordmark<br><code>assets/logo/ctas-wordmark.svg</code></figcaption></figure><figure class="lg dark"><img src="assets/logo/ctas-wordmark-white.svg" alt="Chữ CTAS trắng / Wordmark white"><figcaption>Chữ CTAS trắng / Wordmark white<br><code>assets/logo/ctas-wordmark-white.svg</code></figcaption></figure><figure class="lg "><img src="assets/logo/ctas-mark.svg" alt="Biểu tượng / Mark"><figcaption>Biểu tượng / Mark<br><code>assets/logo/ctas-mark.svg</code></figcaption></figure><figure class="lg "><img src="assets/logo/ftu-seal.png" alt="Con dấu FTU / FTU seal (FTU's mark)"><figcaption>Con dấu FTU / FTU seal (FTU's mark)<br><code>assets/logo/ftu-seal.png</code></figcaption></figure></div></section>
+<section class="s" id="components"><div class="ct-eyebrow">React</div><h2>Components</h2><p>Live components from <code>components/bundle.js</code> (namespace <code>window.CTAS</code>, React 18). Props are listed in <code>components/index.d.ts</code>.</p><section class="comp" id="c-BrandMark"><h3>BrandMark</h3><div class="demo" id="demo-BrandMark"></div><div class="cdoc"><p>The CTAS typographic mark: a brand-red square with a white C, then the name in bold sans.</p>
+<ul>
+<li>Use it at the left of the nav bar and in compact headers. It links home (<code>href</code>, default <code>#</code>).</li>
+<li><code>parent</code> (default &quot;Đại học Ngoại thương&quot;) is the small uppercase line above the name; <code>showParent={false}</code> hides it, as the site does on phones.</li>
+<li><code>name</code> defaults to &quot;CTAS&quot;. Do not replace the square with an image or change its colour from <code>brand</code>.</li>
+<li>Next to it on desktop the site places the FTU seal (<code>assets/Logos/ftu-seal.png</code>) and a thin divider; that seal is FTU&#x27;s mark, not part of this component.</li>
+</ul></div></section><section class="comp" id="c-Button"><h3>Button</h3><div class="demo" id="demo-Button"></div><div class="cdoc"><p>Square action button in four variants; renders an <code>&lt;a&gt;</code> when given <code>href</code>, otherwise a <code>&lt;button&gt;</code>.</p>
+<ul>
+<li><code>variant</code>: <code>primary</code> (maroon-deep, the default; nav &quot;Đăng ký ngay&quot;, &quot;Xem tất cả&quot;), <code>brand</code> (FTU red; the one main call to action in a view), <code>outline</code> (secondary action beside a brand button), <code>light</code> (cream, only on maroon bands).</li>
+<li><code>children</code>: the label. End with for a link that stays on the site and ↗ for one that leaves it. External <code>href</code>s open in a new tab automatically.</li>
+<li><code>block</code> makes it full width (mobile menu, product card footers).</li>
+<li>Do: one <code>brand</code> button per view. Don&#x27;t: round the corners, add icons, or put two <code>brand</code> buttons side by side.</li>
+</ul></div></section><section class="comp" id="c-Eyebrow"><h3>Eyebrow</h3><div class="demo" id="demo-Eyebrow"></div><div class="cdoc"><p>Uppercase section kicker with the two-dot mark, placed directly above an H2.</p>
+<ul>
+<li><code>children</code>: a short noun phrase (2-4 words). It is uppercased by CSS; write it in sentence case.</li>
+<li><code>onDark</code> switches the text to <code>blush</code> for maroon bands.</li>
+<li>One eyebrow per heading. It labels the section; it never repeats the heading.</li>
+</ul></div></section><section class="comp" id="c-Tag"><h3>Tag</h3><div class="demo" id="demo-Tag"></div><div class="cdoc"><p>Small square label for technologies on project cells and for news categories.</p>
+<ul>
+<li><code>children</code>: one word or product name, as written by its maker (<code>llama.cpp</code>, <code>Docker Swarm</code>).</li>
+<li><code>active</code> inverts it to <code>ink</code> on <code>surface</code>; use it only for the selected filter chip on the news list.</li>
+<li>Up to three tags per card.</li>
+</ul></div></section><section class="comp" id="c-MediaPlaceholder"><h3>MediaPlaceholder</h3><div class="demo" id="demo-MediaPlaceholder"></div><div class="cdoc"><p>Stands in for a photo when the original post has none.</p>
+<ul>
+<li><code>category</code>: shown bottom-left in <code>label</code> style; pass the post&#x27;s category.</li>
+<li><code>label</code> defaults to &quot;CTAS&quot;.</li>
+<li>It fills its container and keeps a 16:10 ratio when the container has no height.</li>
+<li>Never use a stock photo in its place; this block is the honest &quot;no photo&quot; state.</li>
+</ul></div></section><section class="comp" id="c-NewsCard"><h3>NewsCard</h3><div class="demo" id="demo-NewsCard"></div><div class="cdoc"><p>A news item in the news grid: cover, category chip, date, title, excerpt and a read link.</p>
+<ul>
+<li>Consumer provides <code>title</code>, <code>date</code> (<code>dd.mm.yyyy</code>), <code>category</code>, <code>excerpt</code> (about 200 characters), <code>href</code> (the article page) and <code>image</code> (the post&#x27;s own first photo).</li>
+<li>Without <code>image</code> the card shows <code>MediaPlaceholder</code> with the category. Never pass a stock photo.</li>
+<li><code>cta</code> defaults to &quot;Đọc bài&quot;.</li>
+<li>Lay cards out in a 3-column grid with 22px gaps (2 columns under 1000px, 1 under 640px); cards in a row stretch to equal height.</li>
+</ul></div></section><section class="comp" id="c-ProductCard"><h3>ProductCard</h3><div class="demo band" id="demo-ProductCard"></div><div class="cdoc"><p>A technology product on the maroon products band, with a short description, three points and two links.</p>
+<ul>
+<li>Place it on a <code>maroon</code> surface (the <code>.ct-band</code> wrapper in the preview); it is not designed for cream.</li>
+<li>Consumer provides <code>name</code>, <code>domain</code> (the product&#x27;s host, shown small above the name), <code>description</code> (one or two sentences), <code>points</code> (up to three strings), <code>learnHref</code> (the live product; opens in a new tab as &quot;Tìm hiểu thêm ↗&quot;) and <code>introHref</code> (the article that explains it, &quot;Giới thiệu&quot;).</li>
+<li><code>image</code> is optional. <code>highlight</code> fills the card <code>blush</code>; use it for the middle card of three only.</li>
+</ul></div></section><section class="comp" id="c-ProjectGrid"><h3>ProjectGrid</h3><div class="demo" id="demo-ProjectGrid"></div><div class="cdoc"><p>A ruled grid of projects: cells share hairline borders, with no gaps or shadows.</p>
+<ul>
+<li>Consumer provides <code>items</code>: <code>{ status, title, description, tags?, image?, href? }</code>. <code>status</code> is a short uppercase line such as &quot;Đang vận hành, 06.2026&quot; or &quot;Hoàn thành&quot;.</li>
+<li><code>columns</code> defaults to 3 and drops to 1 on phones. Give it a multiple of the column count, or accept one short row at the end.</li>
+<li>Images are optional per cell and bleed to the cell edges. External <code>href</code>s open in a new tab.</li>
+</ul></div></section><section class="comp" id="c-LecturerCard"><h3>LecturerCard</h3><div class="demo" id="demo-LecturerCard"></div><div class="cdoc"><p>A portrait card for one lecturer, used in the scrolling &quot;Giảng viên&quot; strip.</p>
+<ul>
+<li>Consumer provides <code>name</code> with the academic title as the faculty writes it (<code>TS</code>, <code>ThS</code>, <code>ThS NCS</code>), <code>role</code> (position, else field), <code>photo</code> (from the lecturer&#x27;s profile) and <code>href</code> (their profile page).</li>
+<li>Without <code>photo</code> the card shows the first letter of the given name (the last word) on <code>brand</code>.</li>
+<li>Cards are 230px wide (170px on phones). In the strip, repeat the list twice and translate by -50% so the loop is seamless; pause on hover.</li>
+</ul></div></section><section class="comp" id="c-NewsTicker"><h3>NewsTicker</h3><div class="demo" id="demo-NewsTicker"></div><div class="cdoc"><p>The &quot;TIN MỚI&quot; strip: a red label, latest headlines scrolling left, and an &quot;all news&quot; link.</p>
+<ul>
+<li>Consumer provides <code>items</code>: <code>{ date, title, href }</code>, newest first, up to 20.</li>
+<li><code>label</code> defaults to &quot;TIN MỚI&quot; (&quot;LATEST&quot; in English); <code>allHref</code> and <code>allLabel</code> set the right-hand link, hidden on phones.</li>
+<li><code>seconds</code> sets one loop&#x27;s duration (default 120). The strip pauses on hover and slows to near-still with <code>prefers-reduced-motion</code>.</li>
+<li>It sits over the hero with <code>shadow-float</code>, the only shadow in the system.</li>
+</ul></div></section><section class="comp" id="c-StatStrip"><h3>StatStrip</h3><div class="demo" id="demo-StatStrip"></div><div class="cdoc"><p>A ruled row of large numbers with short labels.</p>
+<ul>
+<li>Consumer provides <code>items</code>: <code>{ value, label }</code>. Values are real counts from the source (nodes, papers, portfolios); never round up or invent.</li>
+<li>3-4 items. The row stacks vertically under 520px.</li>
+</ul></div></section></section>
+<section class="s" id="files"><div class="ct-eyebrow">Package</div><h2>Files</h2><ul class="files">
+<li><code>index.html</code> this guide</li><li><code>tokens.json</code> all tokens as data</li><li><code>tokens.css</code> the same tokens as CSS variables and text-style classes</li>
+<li><code>components/bundle.js</code>, <code>components/bundle.css</code>, <code>components/index.d.ts</code> components, styles and props; <code>components/&lt;Name&gt;/README.md</code> usage</li>
+<li><code>lib/</code> React 18.3.1 used by the guide</li><li><code>assets/logo/</code> logos (SVG outlined, PNG 2000px, transparent); <code>assets/photos/</code> reference photos</li><li><code>README.md</code> guidelines as text</li></ul></section>
+</main>
+<script src="lib/react.production.min.js"></script>
+<script src="lib/react-dom.production.min.js"></script>
+<script src="components/bundle.js"></script>
+<script>
+(function(){
+var b=document.getElementById('th');b.onclick=function(){var d=document.documentElement,on=d.getAttribute('data-theme')==='dark';d.setAttribute('data-theme',on?'light':'dark');b.textContent=on?'Dark':'Light'};
+if(!window.React||!window.CTAS)return;var C=window.CTAS,h=React.createElement,P='assets/photos/';
+function m(id,el){ReactDOM.createRoot(document.getElementById('demo-'+id)).render(el)}
+var row=function(){return h.apply(null,['div',{style:{display:'flex',gap:'10px',flexWrap:'wrap',alignItems:'center'}}].concat([].slice.call(arguments)))};
+m('BrandMark',row(h(C.BrandMark,null),h(C.BrandMark,{showParent:false})));
+m('Button',row(h(C.Button,null,'Đăng ký ngay'),h(C.Button,{variant:'brand'},'Khám phá ngành học'),h(C.Button,{variant:'outline'},'Tin tức mới nhất')));
+m('Eyebrow',h(C.Eyebrow,null,'Tin tức & sự kiện'));
+m('Tag',row(h(C.Tag,null,'Docker Swarm'),h(C.Tag,null,'llama.cpp'),h(C.Tag,{active:true},'Tất cả')));
+m('MediaPlaceholder',h('div',{style:{maxWidth:'360px'}},h(C.MediaPlaceholder,{category:'Thông báo'})));
+var g3={display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(260px,1fr))',gap:'22px'};
+m('NewsCard',h('div',{style:g3},h(C.NewsCard,{title:'Giải Nhì & Giải Ba Olympic Trí tuệ nhân tạo OlpAI’26',category:'Thành tích',date:'02.11.2026',excerpt:'Hai đội tuyển FTU vươn từ Rank 38 lên Top 12 khu vực miền Bắc.',image:P+'olpai-2026.jpg',cta:'Đọc bài'}),h(C.NewsCard,{title:'Chào đón tân sinh viên K65',category:'Sự kiện',date:'25.08.2026',excerpt:'Gặp mặt Ban chủ nhiệm Khoa, cố vấn học tập và các anh chị K63, K64.',image:P+'k65-welcome.jpg',cta:'Đọc bài'}),h(C.NewsCard,{title:'Thông báo chung về các phương thức tuyển sinh',category:'Thông báo',date:'11.01.2024',excerpt:'Các phương thức xét tuyển năm 2024.',cta:'Đọc bài'})));
+m('ProductCard',h('div',{style:g3},h(C.ProductCard,{name:'LMS',domain:'ftds.online',description:'Hệ thống quản lý học tập của Khoa, chấm điểm tự động các học phần lập trình.',points:['Chấm bài bằng CodeRunner và sandbox Jobe','Cơ sở dữ liệu, Nhập môn lập trình, AI 101'],learnHref:'https://ftds.online',introHref:'#',image:P+'v100-team.jpg'}),h(C.ProductCard,{highlight:true,name:'FTULLM',domain:'swarm.ftds.online',description:'Nền tảng mô hình ngôn ngữ lớn tự vận hành của FTU.',points:['Cụm 43 node, 4×V100 NVLink','Định tuyến ngữ nghĩa, multi-LoRA'],learnHref:'https://swarm.ftds.online',introHref:'#'})));
+m('ProjectGrid',h(C.ProjectGrid,{items:[{status:'Đang vận hành, 06.2026',title:'Nền tảng phục vụ LLM cho trường đại học',description:'Định tuyến ngữ nghĩa giữa các tầng CPU, Xavier và V100.',tags:['LLM','LoRA'],image:P+'v100-node.jpg'},{status:'Hoàn thành, 06.2026',title:'Cụm GPU 4×V100 SXM2',description:'Chạy mô hình 28B-35B tham số với ~78 token/s.',tags:['GPU','NVLink'],image:P+'v100-team.jpg'},{status:'Đang vận hành, 02.2026',title:'Cụm LLM 40 node trên Docker Swarm',description:'88 laptop trong phòng Lab chạy suy luận 24/7.',tags:['Docker Swarm']}]}));
+m('LecturerCard',row(h(C.LecturerCard,{name:'TS Nguyễn Văn Tăng',role:'Phó trưởng Khoa',photo:P+'ts-nguyen-van-tang.jpg'}),h(C.LecturerCard,{name:'ThS Tô Thị Hải Yến',role:'Trưởng Bộ môn Tin học',photo:P+'ths-to-thi-hai-yen.jpg'}),h(C.LecturerCard,{name:'TS Đoàn Quang Hưng',role:'Công nghệ thông tin'})));
+m('NewsTicker',h(C.NewsTicker,{allHref:'#',allLabel:'Tất cả',seconds:60,items:[{date:'02.11.2026',title:'Giải Nhì & Giải Ba OlpAI’26'},{date:'06.10.2026',title:'Kết nối công nghệ - Kiến tạo đam mê'},{date:'25.08.2026',title:'Chào đón tân sinh viên K65'}]}));
+m('StatStrip',h(C.StatStrip,{items:[{value:'43',label:'node tính toán'},{value:'6',label:'bài blog kỹ thuật'},{value:'20',label:'portfolio sinh viên'}]}));
+})();
+</script>
+</body>
+</html>
