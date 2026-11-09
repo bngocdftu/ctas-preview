@@ -7,7 +7,7 @@ var RE=new RegExp('(^|[^\\p{L}])('+W.map(function(w){return esc(w).replace(/ /g,
 var SKIP={SCRIPT:1,STYLE:1,TEXTAREA:1,INPUT:1,CODE:1,PRE:1,SELECT:1,OPTION:1};
 function fix(root){if(!root)return;var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){for(var p=n.parentNode;p&&p!==root.parentNode;p=p.parentNode)if(SKIP[p.nodeName])return 2;return n.nodeValue.indexOf(' ')>-1?1:2}}),n,L=[];while(n=w.nextNode())L.push(n);
 L.forEach(function(n){var v=n.nodeValue.replace(RE,function(m,a,b){return a+b.replace(/ +/g,' ')});if(v!==n.nodeValue)n.nodeValue=v})}
-var busy=false;function run(){if(busy)return;busy=true;fix(document.body);busy=false}
+var busy=false;function run(){if(busy)return;busy=true;try{tr(document.body)}catch(e){}fix(document.body);busy=false}
 /* 2. Dải giảng viên */
 function lec(){var box=document.getElementById('lecRun');if(!box||!window.POSTS)return;var E=(localStorage.getItem('ctas-lang')||'vi')==='en';
 var R={'119':'Trưởng Bộ môn Toán, Xác suất và thống kê','651':'Phó trưởng Khoa, Khoa học máy tính','120':'Trưởng Bộ môn Tin học','945':'Huấn luyện đội tuyển Olympic AI','725':'Khoa học máy tính','191':'Công nghệ thông tin','128':'Toán tin ứng dụng','699':'Toán kinh tế','177':'Toán ứng dụng','159':'Toán giải tích','140':'Đại số tuyến tính','125':'Cơ sở toán học cho tin học','658':'Khoa học máy tính','132':'Tin học','130':'Đảm bảo toán học cho hệ thống tính toán','134':'Xử lý thông tin và truyền thông','148':'Phương trình vi phân','150':'Toán kinh tế','146':'Toán giải tích','144':'Toán kinh tế'};
@@ -17,6 +17,18 @@ L.sort(function(a,b){var i=ord.indexOf(a.id),j=ord.indexOf(b.id);return (i<0?99:
 var card=function(p){var nm=p.t.replace(/^Th\.S/,'ThS').replace(/\s+/g,' ').trim();var ini=nm.split(' ').slice(-1)[0][0];
 return '<a class="lc" href="bai-viet.html?id='+p.id+'"><div class="ph">'+(p.cover?'<img src="'+p.cover+'" alt="'+nm+'" loading="lazy">':ini)+'</div><div class="nm"><h4>'+nm+'</h4><small>'+(R[p.id]||(E?'Lecturer':'Giảng viên'))+'</small></div></a>'};
 var A=L.map(card).join('');box.innerHTML='<div class="lec-tr">'+A+A+'</div>'}
+
+
+/* 4. Dịch tiếng Anh cho chữ giao diện còn sót */
+var EN=(function(){try{return (localStorage.getItem('ctas-lang')||'vi')==='en'||new URLSearchParams(location.search).get('lang')==='en'}catch(e){return false}})();
+var NAMESEL='.lc h4,.person h4,.person .n,.lc img,.person img';
+function tr(root){if(!EN||!window.CTAS_EN||!root)return;var D=window.CTAS_EN,norm=function(v){return v.replace(/[\s ]+/g,' ').trim()};
+ var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),n,L=[];while(n=w.nextNode())L.push(n);
+ L.forEach(function(n){var p=n.parentElement;if(!p||/SCRIPT|STYLE/.test(p.tagName))return;var k=norm(n.nodeValue);if(!k)return;
+  if(D[k]){n.nodeValue=n.nodeValue.replace(/\S[\s\S]*\S|\S/,D[k]);return}
+  if(p.closest('.lc h4,.person h4,.person b')&&/^(TS|ThS|CN|PGS)/.test(k))n.nodeValue=window.CTAS_EN_TITLE(k)});
+ (root.querySelectorAll?root:document).querySelectorAll('[aria-label],[placeholder],[title],img[alt]').forEach(function(e){['aria-label','placeholder','title','alt'].forEach(function(a){var v=e.getAttribute(a);if(!v)return;var k=norm(v);
+  if(D['@'+k])e.setAttribute(a,D['@'+k]);else if(D[k])e.setAttribute(a,D[k]);else if(a==='alt'&&/^(TS|ThS|CN|PGS)/.test(k))e.setAttribute(a,window.CTAS_EN_TITLE(k))})})}
 
 /* 3. Menu điện thoại */
 function mnav(){var nav=document.querySelector('nav.gh .nav, nav .nav, .nv');if(!nav||document.querySelector('.mnav'))return;

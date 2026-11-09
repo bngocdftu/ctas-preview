@@ -250,6 +250,7 @@ if(!E)return;const T={"Giới thiệu ▾":"About ▾","Lịch sử":"History","
 const w=document.createTreeWalker(document.querySelector('nav.gh'),NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const k=n.nodeValue.trim();if(T[k])n.nodeValue=n.nodeValue.replace(k,T[k])}})();
 </script>
 <script src="assets/news/data.js"></script>
+<script src="assets/i18n-en.js"></script>
 <script src="assets/extra.js"></script>
 </body>
 </html>

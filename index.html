@@ -1031,6 +1031,7 @@ const I18N={"Chương trình ▾": "Programs ▾", "Tuyển sinh ▾": "Admissio
 <script>(function(){const E=(localStorage.getItem('ctas-lang')||'vi')==='en';const L=POSTS.filter(p=>p.news).slice(0,20);
 const h=L.map(p=>`<a href="bai-viet.html?id=${p.id}"><time>${p.d}</time>${(E&&p.te)||p.t}</a>`).join('');
 document.getElementById('nbTr').innerHTML=h+h;if(E){document.querySelector('.nb-lb').textContent='LATEST';document.querySelector('.nb-all').textContent='All news'}})();</script>
+<script src="assets/i18n-en.js"></script>
 <script src="assets/extra.js"></script>
 </body>
 </html>

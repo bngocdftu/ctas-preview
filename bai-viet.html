@@ -158,7 +158,7 @@ aside dl{display:grid;gap:4px;font-size:14px}aside dt{font-size:11px;font-weight
 <footer id="ft"></footer>
 <script src="assets/news/data.js"></script>
 <script>
-const CE={"Thành tích":"Achievements","Tuyển sinh":"Admissions","Thông báo":"Notices","Doanh nghiệp":"Industry","Nghiên cứu":"Research","Đào tạo":"Education","Sự kiện":"Event","Giảng viên":"Faculty","Định hướng":"Orientation","Quốc tế":"International","Cuộc thi":"Competition"};
+const CE={"Thành tích":"Achievements","Tuyển sinh":"Admissions","Thông báo":"Notices","Doanh nghiệp":"Industry","Nghiên cứu":"Research","Đào tạo":"Education","Sự kiện":"Event","Giảng viên":"Faculty","Dự án sinh viên":"Student projects","Định hướng":"Orientation","Quốc tế":"International","Cuộc thi":"Competition"};
 const root=document.documentElement;root.dataset.theme=localStorage.getItem('ctas-theme')||'light';
 const LANG=new URLSearchParams(location.search).get('lang')||localStorage.getItem('ctas-lang')||'vi';localStorage.setItem('ctas-lang',LANG);root.lang=LANG;const E=LANG==='en';
 const lb=document.getElementById('langBtn');lb.onclick=()=>{const q=new URLSearchParams(location.search);q.set('lang',E?'vi':'en');localStorage.setItem('ctas-lang',q.get('lang'));location.search=q};
@@ -174,7 +174,7 @@ document.getElementById('eb').textContent=cc(P);document.getElementById('h1').te
 const words=P.html.replace(/<[^>]+>/g,' ').split(/\s+/).filter(Boolean).length;
 document.getElementById('am').innerHTML=`<span>${P.d}</span><span>${Math.max(1,Math.round(words/220))} ${E?'min read':'phút đọc'}</span><span>${P.imgs.length} ${E?'photos':'ảnh'}</span>`;
 if(P.cover)document.getElementById('cv').innerHTML=`<img src="${P.cover}" alt="">`;else document.getElementById('cv').remove();
-const body=document.getElementById('body');body.innerHTML=(E&&!P.te?`<p class="note">${T.vi}</p>`:'')+(E&&P.pe?`<p>${P.pe}</p>`:P.html);
+const body=document.getElementById('body');body.innerHTML=E?(P.he||(`<p class="note">${T.vi}</p>`+(P.pe?`<p>${P.pe}</p>`:P.html))):P.html;
 const inBody=new Set([...body.querySelectorAll('img')].map(i=>i.getAttribute('src')));
 const rest=P.imgs.filter(u=>u!==P.cover&&!inBody.has(u));
 if(rest.length)document.getElementById('gal').innerHTML=`<div class="yr">${T.photos}</div><div class="gal">${rest.map(u=>`<img src="${u}" loading="lazy" alt="">`).join('')}</div>`;
@@ -193,6 +193,7 @@ const tb=document.getElementById('themeBtn');const st=()=>tb.textContent=documen
 if(!E)return;const T={"Giới thiệu ▾":"About ▾","Lịch sử":"History","Gần 40 năm phát triển":"Nearly 40 years of growth","Tin tức":"News","Hoạt động mới nhất":"Latest activities","Đào tạo & Khoa ▾":"Education & Faculties ▾","Đào tạo":"Programs","Khoa":"Faculties","Khoa học máy tính":"Computer Science","Khoa học dữ liệu":"Data Science","Trí tuệ nhân tạo":"Artificial Intelligence","Khoa Khoa học máy tính":"Faculty of Computer Science","Khoa Khoa học dữ liệu và Trí tuệ nhân tạo":"Faculty of Data Science and AI","Khoa Khoa học tính toán và định lượng":"Faculty of Computational & Quantitative Science","Khoa Liên ngành":"Interdisciplinary Department","Quản lý ngành Khoa học máy tính":"Manages Computer Science","Quản lý ngành Khoa học dữ liệu, Trí tuệ nhân tạo":"Manages Data Science, AI","Nền tảng toán, thống kê, định lượng":"Math, statistics & quantitative foundations","Nghiên cứu ▾":"Research ▾","Sản phẩm công nghệ":"Technical products","Nghiên cứu":"Research","Không gian học tập & nghiên cứu":"Learning & research spaces","Hội thảo khoa học 2026":"Scientific Conference 2026","Đăng nhập":"Log in","Đăng ký ngay":"Apply now","Đại học Ngoại thương":"Foreign Trade University","← Về trang chủ":"← Back to home"};
 const w=document.createTreeWalker(document.querySelector('nav.gh'),NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const k=n.nodeValue.trim();if(T[k])n.nodeValue=n.nodeValue.replace(k,T[k])}})();
 </script>
+<script src="assets/i18n-en.js"></script>
 <script src="assets/extra.js"></script>
 </body>
 </html>
