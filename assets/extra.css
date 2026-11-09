@@ -152,3 +152,12 @@ code,pre,kbd,samp,input,select,textarea,button{font-family:'Open Sans',Arial,san
 [data-theme=dark] .pj a,[data-theme=dark] .pj div.pc{color:#FFFEF4}
 [data-theme=dark] .pj p{color:#d6b1ae;opacity:1}
 [data-theme=dark] .fa p,[data-theme=dark] .labs-nums span{color:#d6b1ae;opacity:1}
+/* ===== Hiệu năng ===== */
+/* Bỏ làm mờ nền (rất tốn GPU trên máy yếu); thanh menu dùng nền đặc */
+*,*::before,*::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+nav,.gh,nav.gh{background:var(--bg,var(--cream,#FFFEF4))!important}
+[data-theme=dark] nav,[data-theme=dark] .gh{background:#1F0607!important}
+/* Phần nằm ngoài màn hình không cần vẽ trước */
+section,footer{content-visibility:auto;contain-intrinsic-size:auto 800px}
+/* Hoạt ảnh tắt hẳn khi người dùng chọn giảm chuyển động */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}}

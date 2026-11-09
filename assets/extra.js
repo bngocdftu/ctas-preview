@@ -15,7 +15,7 @@ var ord=['119','651','120','725','191','128','945','699','177','125','159','140'
 var L=POSTS.filter(function(p){return p.c==='Giảng viên'&&!/DANH SÁCH/i.test(p.t)});
 L.sort(function(a,b){var i=ord.indexOf(a.id),j=ord.indexOf(b.id);return (i<0?99:i)-(j<0?99:j)});
 var card=function(p){var nm=p.t.replace(/^Th\.S/,'ThS').replace(/\s+/g,' ').trim();var ini=nm.split(' ').slice(-1)[0][0];
-return '<a class="lc" href="bai-viet.html?id='+p.id+'"><div class="ph">'+(p.cover?'<img src="'+p.cover+'" alt="'+nm+'" loading="lazy">':ini)+'</div><div class="nm"><h4>'+nm+'</h4><small>'+(R[p.id]||(E?'Lecturer':'Giảng viên'))+'</small></div></a>'};
+return '<a class="lc" href="bai-viet.html?id='+p.id+'"><div class="ph">'+(p.cover?'<img src="'+(p.th||p.cover)+'" alt="'+nm+'" loading="lazy" decoding="async">':ini)+'</div><div class="nm"><h4>'+nm+'</h4><small>'+(R[p.id]||(E?'Lecturer':'Giảng viên'))+'</small></div></a>'};
 var A=L.map(card).join('');box.innerHTML='<div class="lec-tr">'+A+A+'</div>'}
 
 

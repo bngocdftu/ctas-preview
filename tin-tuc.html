@@ -146,10 +146,10 @@ const T=E?{back:'← Back to home',eb:'News & events',h1:'All news',sub:'Activit
 for(const k of ['back','eb','h1','sub','ft'])document.getElementById(k).textContent=T[k];document.getElementById('q').placeholder=T.q;document.title=T.h1+' - CTAS';
 const lb=document.getElementById('langBtn');lb.onclick=()=>{const q=new URLSearchParams(location.search);q.set('lang',E?'vi':'en');localStorage.setItem('ctas-lang',q.get('lang'));location.search=q};
 const th=document.getElementById('themeBtn');const st=()=>th.textContent=root.dataset.theme==='dark'?'☀':'☾';st();th.onclick=()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('ctas-theme',root.dataset.theme);st()};
-const PIC=n=>n.cover?`<img src="${n.cover}" alt="" loading="lazy">`:`<div class="noimg"><b>CTAS</b><span>${cc(n)}</span></div>`;
+const PIC=(n,big)=>n.cover?`<img src="${big?n.cover:(n.th||n.cover)}" alt="" loading="lazy" decoding="async">`:`<div class="noimg"><b>CTAS</b><span>${cc(n)}</span></div>`;
 const tt=n=>E?n.te:n.t,pp=n=>E?n.pe:n.p,cc=n=>E?n.ce:n.c,yr=n=>n.d.slice(-4);
 const f=NEWS.find(n=>n.cover)||NEWS[0];
-document.getElementById('feat').innerHTML=`<a class="feat" href="${f.u}">${PIC(f)}<div class="tx"><span class="tag">${T.latest}, ${f.d}</span><h2>${tt(f)}</h2><p>${pp(f)}</p><em>${T.read}</em></div></a>`;
+document.getElementById('feat').innerHTML=`<a class="feat" href="${f.u}">${PIC(f,1)}<div class="tx"><span class="tag">${T.latest}, ${f.d}</span><h2>${tt(f)}</h2><p>${pp(f)}</p><em>${T.read}</em></div></a>`;
 const cats=[...new Set(NEWS.map(n=>n.c))];let cur='',q='';
 const flt=document.getElementById('flt');
 function drawF(){flt.innerHTML=`<button data-c="" class="${cur?'':'on'}">${T.all}</button>`+cats.map(c=>`<button data-c="${c}" class="${cur===c?'on':''}">${E?NEWS.find(n=>n.c===c).ce:c}</button>`).join('')}
