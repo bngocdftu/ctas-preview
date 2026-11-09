@@ -10,7 +10,7 @@ L.forEach(function(n){var v=n.nodeValue.replace(RE,function(m,a,b){return a+b.re
 var busy=false;function run(){if(busy)return;busy=true;fix(document.body);busy=false}
 /* 2. Dải giảng viên */
 function lec(){var box=document.getElementById('lecRun');if(!box||!window.POSTS)return;var E=(localStorage.getItem('ctas-lang')||'vi')==='en';
-var R={'119':'Trưởng Bộ môn Toán · Xác suất và thống kê','651':'Phó trưởng Khoa · Khoa học máy tính','120':'Trưởng Bộ môn Tin học','945':'Huấn luyện đội tuyển Olympic AI','725':'Khoa học máy tính','191':'Công nghệ thông tin','128':'Toán tin ứng dụng','699':'Toán kinh tế','177':'Toán ứng dụng','159':'Toán giải tích','140':'Đại số tuyến tính','125':'Cơ sở toán học cho tin học','658':'Khoa học máy tính','132':'Tin học','130':'Đảm bảo toán học cho hệ thống tính toán','134':'Xử lý thông tin và truyền thông','148':'Phương trình vi phân','150':'Toán kinh tế','146':'Toán giải tích','144':'Toán kinh tế'};
+var R={'119':'Trưởng Bộ môn Toán, Xác suất và thống kê','651':'Phó trưởng Khoa, Khoa học máy tính','120':'Trưởng Bộ môn Tin học','945':'Huấn luyện đội tuyển Olympic AI','725':'Khoa học máy tính','191':'Công nghệ thông tin','128':'Toán tin ứng dụng','699':'Toán kinh tế','177':'Toán ứng dụng','159':'Toán giải tích','140':'Đại số tuyến tính','125':'Cơ sở toán học cho tin học','658':'Khoa học máy tính','132':'Tin học','130':'Đảm bảo toán học cho hệ thống tính toán','134':'Xử lý thông tin và truyền thông','148':'Phương trình vi phân','150':'Toán kinh tế','146':'Toán giải tích','144':'Toán kinh tế'};
 var ord=['119','651','120','725','191','128','945','699','177','125','159','140','658','944','934'];
 var L=POSTS.filter(function(p){return p.c==='Giảng viên'&&!/DANH SÁCH/i.test(p.t)});
 L.sort(function(a,b){var i=ord.indexOf(a.id),j=ord.indexOf(b.id);return (i<0?99:i)-(j<0?99:j)});
@@ -31,6 +31,17 @@ var cta=[].slice.call(nr.querySelectorAll(':scope > a'));if(cta.length)h+='<div 
 d.innerHTML=h;document.body.appendChild(d);
 var tog=function(on){d.classList.toggle('on',on);document.body.classList.toggle('mnav-open',on)};
 b.onclick=function(){tog(true)};d.querySelector('.mnav-x').onclick=function(){tog(false)};d.addEventListener('click',function(e){if(e.target.closest('a'))tog(false)})}
-function go(){try{mnav()}catch(e){}lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
+/* 4. Footer chung: trang nào chưa có footer (hoặc footer rỗng) thì chèn bản giống trang chủ */
+function sfoot(){var f=document.querySelector('footer');if(f&&f.children.length)return;
+if(!f){f=document.createElement('footer');var s=document.querySelector('body > script');document.body.insertBefore(f,s||null)}
+f.className+=' sf';f.innerHTML='<div class="sf-in"><div class="foot-grid">'
++'<div class="f-brand"><a href="index.html" class="f-logo"><img src="assets/ftu-logo.png" alt="FTU" class="seal"><span><small>Trường Đại học Ngoại thương</small><b>Trường Công nghệ và Khoa học ứng dụng</b></span></a><p>91 Chùa Láng, Đống Đa, Hà Nội</p></div>'
++'<div><h5>Kết nối</h5><a href="index.html#engage">Hợp tác doanh nghiệp</a><a href="index.html#engage">Tài trợ</a><a href="#">Cựu sinh viên</a><a href="index.html#news">Báo chí</a></div>'
++'<div><h5>Người học tương lai</h5><a href="index.html#study">Đào tạo</a><a href="gioi-thieu.html#apply">Tuyển sinh</a><a href="#">Học phí</a><a href="#">Học bổng</a><a href="#">Hỏi đáp</a></div>'
++'<div><h5>Sinh viên</h5><a href="#">Thời khoá biểu</a><a href="#">Chương trình học</a><a href="#">Công tác sinh viên</a><a href="gioi-thieu.html#apply">CLB CTE</a></div>'
++'<div><h5>Liên hệ</h5><a href="https://maps.google.com/?q=91+Chùa+Láng,+Đống+Đa,+Hà+Nội" target="_blank">91 Chùa Láng, Đống Đa, Hà Nội</a><a href="tel:0947396248">094 739 62 48</a><a href="mailto:cnkhdl@ftu.edu.vn">cnkhdl@ftu.edu.vn</a><a href="https://ftu.edu.vn" target="_blank">ftu.edu.vn</a><a href="https://www.facebook.com/KHOACNKHDL" target="_blank">Facebook</a></div>'
++'</div><div class="ftu-foot"><img src="assets/ftu-logo.png" alt="FTU" class="seal"><span>Trường Công nghệ và Khoa học ứng dụng là đơn vị thành viên của <strong>Trường Đại học Ngoại thương</strong></span><a href="https://ftu.edu.vn" target="_blank">ftu.edu.vn ↗</a></div>'
++'<div class="copy"><span>© 2026 Trường Công nghệ và Khoa học ứng dụng - Trường Đại học Ngoại thương</span><span>Chính sách bảo mật, Điều khoản</span></div></div>'}
+function go(){try{sfoot()}catch(e){}try{mnav()}catch(e){}lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 })();

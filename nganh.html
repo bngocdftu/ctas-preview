@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ngành đào tạo - CTAS</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?display=swap" rel="stylesheet">
 <style>
 :root{--blue:#B3151B;--bg:#F3F3EC;--slide:#FFFEF4;--fg:#1F0607;--mut:#5a5f7a;--line:rgba(31,6,7,.1);--soft:rgba(179,21,27,.07)}
 [data-theme=dark]{--bg:#00001c;--slide:#000039;--fg:#FFFEF4;--mut:#d6b1ae;--line:rgba(255,180,168,.16);--soft:rgba(255,180,168,.08)}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}html,body{overflow-x:clip}
-body{font-family:Montserrat,sans-serif;background:var(--bg);color:var(--fg)}
+body{font-family:'Open Sans',sans-serif;background:var(--bg);color:var(--fg)}
 a{color:inherit;text-decoration:none}
 nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nv{width:min(1280px,calc(100% - 40px));margin:auto;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}.brand span{width:32px;height:32px;border-radius:0;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:15px}.brand small{display:block;font-size:11px;font-weight:500;color:var(--mut)}
 .tabs{display:flex;gap:6px}.tabs a{padding:8px 16px;border-radius:0;font-size:13px;font-weight:700;border:1px solid var(--line)}.tabs a.on{background:var(--fg);color:var(--bg)}
-.nr{display:flex;gap:8px}.pill{border:1px solid var(--line);border-radius:0;padding:8px 14px;background:none;color:inherit;font:600 13px Montserrat;cursor:pointer}
+.nr{display:flex;gap:8px}.pill{border:1px solid var(--line);border-radius:0;padding:8px 14px;background:none;color:inherit;font:600 13px 'Open Sans';cursor:pointer}
 .deck{width:min(1280px,calc(100% - 40px));margin:30px auto 60px;display:grid;gap:28px}
 .sl{position:relative;background:var(--slide);border-radius:0;border:1px solid var(--line);aspect-ratio:16/9;overflow:hidden;display:grid;scroll-margin-top:90px}
 .sl .no{position:absolute;right:28px;bottom:22px;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--mut);z-index:2}
@@ -58,7 +58,7 @@ nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,
 @media(max-width:900px){.sl{aspect-ratio:auto}.cover,.agenda,.ct,.loop{grid-template-columns:1fr}.ct .img,.cover .img{aspect-ratio:16/10}.ct.rev .img{order:0}.tabs{display:none}.ct .tx,.cover .tx{padding:70px 24px 40px}.agenda,.loop{padding:70px 24px 40px}.sl .tg{left:24px}}
 </style>
 <style>
-.ftu-bar{background:#1F0607;color:#FFFEF4;font:500 12.5px Montserrat,sans-serif;position:relative;z-index:60}
+.ftu-bar{background:#1F0607;color:#FFFEF4;font:500 12.5px 'Open Sans',sans-serif;position:relative;z-index:60}
 .fb-in{width:min(1280px,calc(100% - 40px));margin:auto;height:40px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .fb-ftu{display:flex;align-items:center;gap:10px;color:#FFFEF4;text-decoration:none}.fb-ftu i{font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;padding:3px 7px;border-radius:0;background:#FFB4A8;color:#1F0607}
 .fb-ftu span{font-weight:700;letter-spacing:.06em;text-transform:uppercase}.fb-ftu em{font-style:normal;color:#FFB4A8}
@@ -74,7 +74,7 @@ nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,
 .logo .sep,.brand .sep{width:1px;height:30px;background:currentColor;opacity:.25;margin:0 4px}
 </style>
 <style>
-nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(31,6,7,.08);font-family:Montserrat,sans-serif;color:#3A0B0D;height:auto}
+nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(31,6,7,.08);font-family:'Open Sans',sans-serif;color:#3A0B0D;height:auto}
 [data-theme=dark] nav.gh{background:rgba(31,6,7,.85);border-color:rgba(255,180,168,.16);color:#FFFEF4}
 .gh .container{width:min(1280px,calc(100% - 40px));margin:auto}
 .gh .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px}
@@ -87,7 +87,7 @@ nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdro
 .gh .btn{display:inline-flex;align-items:center;background:#3A0B0D;color:#FFFEF4;padding:12px 26px;border-radius:0;font-weight:600;font-size:14px}.gh .btn:hover{background:#B3151B}
 [data-theme=dark] .gh .btn{background:transparent;border:1.5px solid #B3151B;box-shadow:0 0 18px rgba(200,32,42,.35)}
 .gh .theme-btn{width:40px;height:40px;border-radius:50%;border:1px solid #BABABA;background:none;cursor:pointer;font-size:16px;color:inherit;display:grid;place-items:center}
-.gh .lang-btn{height:40px;padding:0 4px;border-radius:0;border:1px solid #BABABA;background:none;display:flex;align-items:center;gap:2px;cursor:pointer;font:600 12px Montserrat;color:inherit}
+.gh .lang-btn{height:40px;padding:0 4px;border-radius:0;border:1px solid #BABABA;background:none;display:flex;align-items:center;gap:2px;cursor:pointer;font:600 12px 'Open Sans';color:inherit}
 .gh .lang-btn span{padding:6px 10px;border-radius:0}.gh .lang-btn span.on{background:#B3151B;color:#fff}
 [data-theme=dark] .gh .lang-btn,[data-theme=dark] .gh .theme-btn{border-color:rgba(255,180,168,.25)}
 .gh .dd{position:relative}.gh .dd>a{padding:10px 0;display:inline-block}
@@ -98,7 +98,7 @@ nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdro
 .gh .dd-pan a{display:block;padding:9px 10px;border-radius:0;font-size:14px}.gh .dd-pan a:hover{background:rgba(179,21,27,.08);color:#B3151B}
 .gh .dd-pan b{font-weight:600}.gh .dd-pan small{display:block;font-size:12px;color:#777;margin-top:2px}
 [data-theme=dark] .gh .dd-pan{background:#3A0B0D;color:#FFFEF4;border-color:rgba(255,180,168,.25)}[data-theme=dark] .gh .dd-pan h6{color:#FFB4A8}
-.subbar{border-bottom:1px solid rgba(128,128,160,.18);font-family:Montserrat,sans-serif}
+.subbar{border-bottom:1px solid rgba(128,128,160,.18);font-family:'Open Sans',sans-serif}
 .sb-in{width:min(1280px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:54px}
 .sb-in #back{font-size:13px;font-weight:600;opacity:.7}.sb-in #back:hover{opacity:1}
 .sb-in .tabs{display:flex;gap:6px;flex-wrap:wrap}.sb-in .tabs a{padding:7px 14px;border-radius:0;font-size:13px;font-weight:700;border:1px solid rgba(128,128,160,.3)}.sb-in .tabs a.on{background:#B3151B;color:#fff;border-color:#B3151B}
@@ -155,7 +155,7 @@ const M={
    {k:'code',t:'Nền tảng',h:'Toán học & lập trình',p:'Tư duy thuật toán, cấu trúc dữ liệu và lập trình - viên gạch đầu tiên của mọi hệ thống số.',l:['Tư duy thuật toán','Lập trình','Toán rời rạc']},
    {k:'network',t:'Hạ tầng',h:'Hệ thống & mạng',p:'Hiểu cách máy tính, hệ điều hành, mạng và điện toán đám mây vận hành để xây hạ tầng ổn định.',l:['Hệ điều hành','Mạng máy tính','Cloud']},
    {k:'dbapp',t:'Dữ liệu',h:'Phần mềm & cơ sở dữ liệu',p:'Thiết kế phần mềm và cơ sở dữ liệu phục vụ hoạt động thực tế của doanh nghiệp.',l:['Công nghệ phần mềm','Cơ sở dữ liệu']},
-   {k:'city',t:'Ứng dụng',h:'Công nghệ trong kinh tế & kinh doanh',p:'Kết hợp thế mạnh kinh tế – kinh doanh của Trường Đại học Ngoại thương để đưa công nghệ vào bài toán thực tế.',l:['Hệ thống thông tin doanh nghiệp','Chuyển đổi số']},
+   {k:'city',t:'Ứng dụng',h:'Công nghệ trong kinh tế & kinh doanh',p:'Kết hợp thế mạnh kinh tế - kinh doanh của Trường Đại học Ngoại thương để đưa công nghệ vào bài toán thực tế.',l:['Hệ thống thông tin doanh nghiệp','Chuyển đổi số']},
    {k:'globe',t:'Vòng lặp',h:'Nền móng cho Dữ liệu & AI',p:'Hạ tầng số do Khoa học máy tính xây dựng là nơi Khoa học dữ liệu khai thác và Trí tuệ nhân tạo tạo ra giá trị - và dữ liệu mới lại đòi hỏi hạ tầng được nâng cấp.',l:[],next:'ds'}]},
  ds:{name:'Khoa học dữ liệu',short:'KHDL',khoa:'Khoa Khoa học dữ liệu và Trí tuệ nhân tạo',prog:'Chương trình tích hợp Khoa học dữ liệu cho đổi mới sáng tạo trong kinh tế và kinh doanh',
   role:'Tìm ra <em>vấn đề kinh doanh</em> cốt lõi',
@@ -206,12 +206,12 @@ const body=m.st.slice(0,-1),last=m.st[m.st.length-1];
 let h=`<section class="sl cover" id="s1"><span class="tg">${m.khoa}</span><div class="tx"><h1>${m.name}</h1><h2 style="font-size:clamp(20px,2.2vw,32px);font-weight:600">${m.role}</h2><p>${m.intro}</p>
 <div class="meta"><div><small>${T.prog}</small><b>${m.prog}</b></div><div><small>${T.unit}</small><b>${T.unitv}</b></div></div></div><div class="img"><img src="${U(COVER[key])}" alt=""></div>${no(1)}</section>`;
 h+=`<section class="sl agenda" id="s2"><span class="tg">${T.agenda}</span><div><h2>${T.agh}</h2><p style="margin-top:18px">${T.agp}</p></div><div class="ag-list">${m.st.map((s,i)=>`<a href="#s${i+3}"><i>${pad(i+1)}</i>${s.h}<span>${s.t}</span></a>`).join('')}</div>${no(2)}</section>`;
-body.forEach((s,i)=>{h+=`<section class="sl ct ${i%2?'rev':''}" id="s${i+3}"><span class="tg">${T.stage} ${pad(i+1)} · ${s.t}</span><span class="big">${pad(i+1)}</span><div class="tx"><h2>${s.h}</h2><p>${s.p}</p>${s.l.length?`<div class="chips">${s.l.map(x=>`<span>${x}</span>`).join('')}</div>`:''}</div><div class="img"><img src="${U(IMG[s.k]||COVER[key])}" alt="" loading="lazy"><span class="cap">${s.t}</span></div>${no(i+3)}</section>`});
+body.forEach((s,i)=>{h+=`<section class="sl ct ${i%2?'rev':''}" id="s${i+3}"><span class="tg">${T.stage} ${pad(i+1)}, ${s.t}</span><span class="big">${pad(i+1)}</span><div class="tx"><h2>${s.h}</h2><p>${s.p}</p>${s.l.length?`<div class="chips">${s.l.map(x=>`<span>${x}</span>`).join('')}</div>`:''}</div><div class="img"><img src="${U(IMG[s.k]||COVER[key])}" alt="" loading="lazy"><span class="cap">${s.t}</span></div>${no(i+3)}</section>`});
 const order=['cs','ds','ai'],P=[[50,8],[90,75],[10,75]];
-h+=`<section class="sl loop" id="s${body.length+3}"><span class="tg">${T.stage} ${pad(m.st.length)} · ${last.t}</span><div><h2>${last.h}</h2><p style="margin:18px 0 26px">${last.p}</p><div class="cta">${last.next&&last.next!=='qt'?`<a class="btn" href="?m=${last.next}&lang=${LANG}">${T.next}${M[last.next].name} →</a>`:''}<a class="btn ghost" href="dao-tao.html">${T.home}</a></div></div>
-<div class="cyc"><svg viewBox="0 0 100 100"><defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#FFB4A8"/></marker></defs><circle cx="50" cy="52" r="34" fill="none" stroke="rgba(255,180,168,.35)" stroke-width=".6" stroke-dasharray="2 2"/><path d="M62 18 A34 34 0 0 1 82 66" fill="none" stroke="#FFB4A8" stroke-width=".8" marker-end="url(#ar)"/><path d="M72 84 A34 34 0 0 1 28 84" fill="none" stroke="#FFB4A8" stroke-width=".8" marker-end="url(#ar)"/><path d="M18 66 A34 34 0 0 1 38 18" fill="none" stroke="#FFB4A8" stroke-width=".8" marker-end="url(#ar)"/><text x="50" y="55" text-anchor="middle" fill="#FFFEF4" font-size="7" font-weight="700" font-family="Montserrat">∞</text></svg>
+h+=`<section class="sl loop" id="s${body.length+3}"><span class="tg">${T.stage} ${pad(m.st.length)}, ${last.t}</span><div><h2>${last.h}</h2><p style="margin:18px 0 26px">${last.p}</p><div class="cta">${last.next&&last.next!=='qt'?`<a class="btn" href="?m=${last.next}&lang=${LANG}">${T.next}${M[last.next].name}</a>`:''}<a class="btn ghost" href="dao-tao.html">${T.home}</a></div></div>
+<div class="cyc"><svg viewBox="0 0 100 100"><defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#FFB4A8"/></marker></defs><circle cx="50" cy="52" r="34" fill="none" stroke="rgba(255,180,168,.35)" stroke-width=".6" stroke-dasharray="2 2"/><path d="M62 18 A34 34 0 0 1 82 66" fill="none" stroke="#FFB4A8" stroke-width=".8" marker-end="url(#ar)"/><path d="M72 84 A34 34 0 0 1 28 84" fill="none" stroke="#FFB4A8" stroke-width=".8" marker-end="url(#ar)"/><path d="M18 66 A34 34 0 0 1 38 18" fill="none" stroke="#FFB4A8" stroke-width=".8" marker-end="url(#ar)"/><text x="50" y="55" text-anchor="middle" fill="#FFFEF4" font-size="7" font-weight="700" font-family='Open Sans'>∞</text></svg>
 ${order.map((k,i)=>`<a href="?m=${k}&lang=${LANG}" class="${k===key?'on':''}" style="left:${P[i][0]}%;top:${P[i][1]}%">${M[k].name}</a>`).join('')}</div>${no(body.length+3)}</section>`;
-h+=`<section class="sl cover" id="s${N}" style="aspect-ratio:auto"><span class="tg">${T.khoa}</span><div class="tx" style="padding-top:80px"><h2>${m.khoa}</h2><p>${E?'Learn more about the faculty, its lecturers and academic activities.':'Tìm hiểu đội ngũ giảng viên, bộ môn và hoạt động học thuật của khoa.'}</p><div class="cta"><a class="btn" href="khoa.html?k=${key==='cs'?'cs':'dsai'}&lang=${LANG}">${E?'Faculty profile →':'Giới thiệu khoa →'}</a><a class="btn ghost" href="mailto:cnkhdl@ftu.edu.vn">cnkhdl@ftu.edu.vn</a></div></div><div class="img"><img src="${U('1523240795612-9a054b0db644')}" alt="" loading="lazy"></div>${no(N)}</section>`;
+h+=`<section class="sl cover" id="s${N}" style="aspect-ratio:auto"><span class="tg">${T.khoa}</span><div class="tx" style="padding-top:80px"><h2>${m.khoa}</h2><p>${E?'Learn more about the faculty, its lecturers and academic activities.':'Tìm hiểu đội ngũ giảng viên, bộ môn và hoạt động học thuật của khoa.'}</p><div class="cta"><a class="btn" href="khoa.html?k=${key==='cs'?'cs':'dsai'}&lang=${LANG}">${E?'Faculty profile':'Giới thiệu khoa'}</a><a class="btn ghost" href="mailto:cnkhdl@ftu.edu.vn">cnkhdl@ftu.edu.vn</a></div></div><div class="img"><img src="${U('1523240795612-9a054b0db644')}" alt="" loading="lazy"></div>${no(N)}</section>`;
 document.getElementById('deck').innerHTML=h;
 addEventListener('keydown',e=>{if(!['ArrowDown','ArrowUp','PageDown','PageUp'].includes(e.key))return;const S=[...document.querySelectorAll('.sl')];const y=scrollY+100;let i=S.findIndex(s=>s.offsetTop+s.offsetHeight/2>y);if(i<0)i=S.length-1;const d=e.key==='ArrowDown'||e.key==='PageDown'?1:-1;const t=S[Math.max(0,Math.min(S.length-1,i+d))];if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}});
 </script>

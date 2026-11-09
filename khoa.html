@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Khoa - CTAS</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?display=swap" rel="stylesheet">
 <style>
 :root{--navy:#1F0607;--navy2:#3A0B0D;--blue:#B3151B;--cream:#FFFEF4;--grey:#BABABA;--bg:#FFFEF4;--fg:#1F0607;--mut:#5a5f7a;--line:rgba(31,6,7,.12);--card:#fff;--soft:rgba(179,21,27,.07)}
 [data-theme=dark]{--bg:#1F0607;--fg:#FFFEF4;--mut:#d6b1ae;--line:rgba(255,180,168,.16);--card:#3A0B0D;--soft:rgba(255,180,168,.08)}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{overflow-x:clip}
-body{font-family:Montserrat,sans-serif;background:var(--bg);color:var(--fg);transition:background .4s,color .4s}
+body{font-family:'Open Sans',sans-serif;background:var(--bg);color:var(--fg);transition:background .4s,color .4s}
 a{color:inherit;text-decoration:none}
 .c{width:min(1240px,calc(100% - 48px));margin:auto}
 nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nv{display:flex;align-items:center;justify-content:space-between;height:70px;gap:20px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px}.logo span{width:32px;height:32px;border-radius:0;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:15px}
 .nr{display:flex;gap:10px;align-items:center;font-size:14px;font-weight:500}
-.pill{border:1px solid var(--line);border-radius:0;padding:8px 14px;background:none;color:inherit;font:600 13px Montserrat;cursor:pointer}
+.pill{border:1px solid var(--line);border-radius:0;padding:8px 14px;background:none;color:inherit;font:600 13px 'Open Sans';cursor:pointer}
 .tabs{display:flex;gap:6px;flex-wrap:wrap}.tabs a{padding:8px 14px;border-radius:0;font-size:13px;font-weight:600;border:1px solid var(--line)}.tabs a.on{background:var(--blue);color:#fff;border-color:var(--blue)}
 .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:14px}
 [data-theme=dark] .eyebrow{color:#FFB4A8}
@@ -35,8 +35,8 @@ section{padding:80px 0}
 @keyframes dash{to{stroke-dashoffset:-24}}
 .map .pulse{fill:var(--blue)}
 .node{cursor:pointer}.node rect{fill:var(--card);stroke:var(--line);stroke-width:1.5;transition:.3s}.node:hover rect,.node.on rect{stroke:var(--blue);stroke-width:2.5}
-.node text{fill:var(--fg);font:600 15px Montserrat;text-anchor:middle}.node .sm{font-size:11px;fill:var(--mut);font-weight:500}
-.core circle{fill:var(--blue)}.core text{fill:#fff;font:700 15px Montserrat;text-anchor:middle}
+.node text{fill:var(--fg);font:600 15px 'Open Sans';text-anchor:middle}.node .sm{font-size:11px;fill:var(--mut);font-weight:500}
+.core circle{fill:var(--blue)}.core text{fill:#fff;font:700 15px 'Open Sans';text-anchor:middle}
 .panel{position:absolute;left:18px;right:18px;bottom:18px;padding:18px 20px;border-radius:0;background:var(--card);border:1px solid var(--line);box-shadow:0 14px 40px rgba(31,6,7,.12);transition:.35s;font-size:14px}
 .panel h4{font-size:15px;margin-bottom:6px}.panel p{color:var(--mut);font-size:13.5px}.panel a{display:inline-block;margin-top:8px;font-weight:600;color:var(--blue)}[data-theme=dark] .panel a{color:#FFB4A8}
 .panel ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin-top:8px}.panel li{font-size:12px;padding:5px 10px;border-radius:0;background:var(--soft)}
@@ -65,7 +65,7 @@ section{padding:80px 0}
 @media(max-width:900px){.hero,.grid2{grid-template-columns:1fr}.act{grid-template-columns:1fr}.tabs{display:none}}
 </style>
 <style>
-.ftu-bar{background:#1F0607;color:#FFFEF4;font:500 12.5px Montserrat,sans-serif;position:relative;z-index:60}
+.ftu-bar{background:#1F0607;color:#FFFEF4;font:500 12.5px 'Open Sans',sans-serif;position:relative;z-index:60}
 .fb-in{width:min(1280px,calc(100% - 40px));margin:auto;height:40px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .fb-ftu{display:flex;align-items:center;gap:10px;color:#FFFEF4;text-decoration:none}.fb-ftu i{font-style:normal;font-weight:800;font-size:11px;letter-spacing:.08em;padding:3px 7px;border-radius:0;background:#FFB4A8;color:#1F0607}
 .fb-ftu span{font-weight:700;letter-spacing:.06em;text-transform:uppercase}.fb-ftu em{font-style:normal;color:#FFB4A8}
@@ -81,7 +81,7 @@ section{padding:80px 0}
 .logo .sep,.brand .sep{width:1px;height:30px;background:currentColor;opacity:.25;margin:0 4px}
 </style>
 <style>
-nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(31,6,7,.08);font-family:Montserrat,sans-serif;color:#3A0B0D;height:auto}
+nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(31,6,7,.08);font-family:'Open Sans',sans-serif;color:#3A0B0D;height:auto}
 [data-theme=dark] nav.gh{background:rgba(31,6,7,.85);border-color:rgba(255,180,168,.16);color:#FFFEF4}
 .gh .container{width:min(1280px,calc(100% - 40px));margin:auto}
 .gh .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px}
@@ -94,7 +94,7 @@ nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdro
 .gh .btn{display:inline-flex;align-items:center;background:#3A0B0D;color:#FFFEF4;padding:12px 26px;border-radius:0;font-weight:600;font-size:14px}.gh .btn:hover{background:#B3151B}
 [data-theme=dark] .gh .btn{background:transparent;border:1.5px solid #B3151B;box-shadow:0 0 18px rgba(200,32,42,.35)}
 .gh .theme-btn{width:40px;height:40px;border-radius:50%;border:1px solid #BABABA;background:none;cursor:pointer;font-size:16px;color:inherit;display:grid;place-items:center}
-.gh .lang-btn{height:40px;padding:0 4px;border-radius:0;border:1px solid #BABABA;background:none;display:flex;align-items:center;gap:2px;cursor:pointer;font:600 12px Montserrat;color:inherit}
+.gh .lang-btn{height:40px;padding:0 4px;border-radius:0;border:1px solid #BABABA;background:none;display:flex;align-items:center;gap:2px;cursor:pointer;font:600 12px 'Open Sans';color:inherit}
 .gh .lang-btn span{padding:6px 10px;border-radius:0}.gh .lang-btn span.on{background:#B3151B;color:#fff}
 [data-theme=dark] .gh .lang-btn,[data-theme=dark] .gh .theme-btn{border-color:rgba(255,180,168,.25)}
 .gh .dd{position:relative}.gh .dd>a{padding:10px 0;display:inline-block}
@@ -105,7 +105,7 @@ nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdro
 .gh .dd-pan a{display:block;padding:9px 10px;border-radius:0;font-size:14px}.gh .dd-pan a:hover{background:rgba(179,21,27,.08);color:#B3151B}
 .gh .dd-pan b{font-weight:600}.gh .dd-pan small{display:block;font-size:12px;color:#777;margin-top:2px}
 [data-theme=dark] .gh .dd-pan{background:#3A0B0D;color:#FFFEF4;border-color:rgba(255,180,168,.25)}[data-theme=dark] .gh .dd-pan h6{color:#FFB4A8}
-.subbar{border-bottom:1px solid rgba(128,128,160,.18);font-family:Montserrat,sans-serif}
+.subbar{border-bottom:1px solid rgba(128,128,160,.18);font-family:'Open Sans',sans-serif}
 .sb-in{width:min(1280px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:54px}
 .sb-in #back{font-size:13px;font-weight:600;opacity:.7}.sb-in #back:hover{opacity:1}
 .sb-in .tabs{display:flex;gap:6px;flex-wrap:wrap}.sb-in .tabs a{padding:7px 14px;border-radius:0;font-size:13px;font-weight:700;border:1px solid rgba(128,128,160,.3)}.sb-in .tabs a.on{background:#B3151B;color:#fff;border-color:#B3151B}
@@ -160,16 +160,16 @@ const SRC='bai-viet.html?id=';
 const MAJ={cs:[t('Khoa học máy tính','Computer Science'),'nganh.html?m=cs'],ds:[t('Khoa học dữ liệu','Data Science'),'nganh.html?m=ds'],ai:[t('Trí tuệ nhân tạo','Artificial Intelligence'),'nganh.html?m=ai']};
 const D={
  qt:{name:t('Khoa Khoa học tính toán và định lượng','Faculty of Computational & Quantitative Science'),short:t('KHTT&ĐL','CQS'),
-  lead:t('Khoa nền tảng của Trường Công nghệ và Khoa học ứng dụng: cung cấp toán học, xác suất – thống kê và mô hình định lượng cho cả ba ngành đào tạo và cho toàn Trường Đại học Ngoại thương.','The foundational faculty of CTAS: mathematics, probability & statistics and quantitative modelling for all three majors and for Foreign Trade University as a whole.'),
+  lead:t('Khoa nền tảng của Trường Công nghệ và Khoa học ứng dụng: cung cấp toán học, xác suất - thống kê và mô hình định lượng cho cả ba ngành đào tạo và cho toàn Trường Đại học Ngoại thương.','The foundational faculty of CTAS: mathematics, probability & statistics and quantitative modelling for all three majors and for Foreign Trade University as a whole.'),
   serve:['cs','ds','ai'],
   rel:{cs:t('Toán rời rạc, đại số tuyến tính và giải tích làm nền cho thuật toán và hệ thống.','Discrete maths, linear algebra and calculus underpin algorithms and systems.'),
-       ds:t('Xác suất – thống kê, chuỗi thời gian và mô hình định lượng để phân tích dữ liệu kinh tế.','Probability, statistics, time series and quantitative models for economic data.'),
-       ai:t('Toán học trong học máy – học sâu: tối ưu, đại số tuyến tính, xác suất.','Mathematics of machine & deep learning: optimisation, linear algebra, probability.')},
+       ds:t('Xác suất - thống kê, chuỗi thời gian và mô hình định lượng để phân tích dữ liệu kinh tế.','Probability, statistics, time series and quantitative models for economic data.'),
+       ai:t('Toán học trong học máy - học sâu: tối ưu, đại số tuyến tính, xác suất.','Mathematics of machine & deep learning: optimisation, linear algebra, probability.')},
   facts:[['9',t('giảng viên Bộ môn Toán','Mathematics lecturers')],['5',t('tiến sĩ','PhDs')],['3',t('ngành được hỗ trợ','majors supported')]],
   duties:[t('Giảng dạy Toán cao cấp, Lý thuyết xác suất và thống kê toán, Toán kinh tế cho các hệ đào tạo của Trường.','Teaching Advanced Mathematics, Probability & Mathematical Statistics and Mathematical Economics across the University.'),
           t('Giảng dạy bằng tiếng Anh: Toán trong khoa học quản lý; Đại số và Giải tích trong kinh tế và kinh doanh (chương trình tiên tiến).','English-taught: Mathematics for Management Science; Algebra & Calculus in Economics and Business (advanced programmes).'),
-          t('Nghiên cứu ứng dụng mô hình toán học trong khoa học dữ liệu cho các bài toán kinh tế – xã hội.','Research on mathematical models in data science for socio-economic problems.')],
-  units:[[t('Bộ môn Toán','Mathematics Division'),t('Xác suất – thống kê, giải tích, đại số tuyến tính, toán ứng dụng và toán kinh tế. Tổ chức semina thường kỳ hằng tháng.','Probability & statistics, analysis, linear algebra, applied and economic mathematics. Monthly regular seminars.'),'?cat=20']],
+          t('Nghiên cứu ứng dụng mô hình toán học trong khoa học dữ liệu cho các bài toán kinh tế - xã hội.','Research on mathematical models in data science for socio-economic problems.')],
+  units:[[t('Bộ môn Toán','Mathematics Division'),t('Xác suất - thống kê, giải tích, đại số tuyến tính, toán ứng dụng và toán kinh tế. Tổ chức semina thường kỳ hằng tháng.','Probability & statistics, analysis, linear algebra, applied and economic mathematics. Monthly regular seminars.'),'?cat=20']],
   people:[['TS GVC Phùng Duy Quang',t('Trưởng Bộ môn Toán','Head of Mathematics'),t('Lý thuyết xác suất và thống kê','Probability & statistics'),119],
    ['TS Nguyễn Văn Minh','',t('Toán giải tích','Mathematical analysis'),159],
    ['TS GVC Hà Thị Thu Hiền','',t('Đại số tuyến tính','Linear algebra'),140],
@@ -181,19 +181,19 @@ const D={
    ['ThS NCS Nguyễn Hữu Thịnh','',t('Toán kinh tế','Mathematical economics'),144]],
   courses:[t('Toán cao cấp','Advanced Mathematics'),t('Lý thuyết xác suất và thống kê toán','Probability & Mathematical Statistics'),t('Toán kinh tế','Mathematical Economics'),t('Toán, xác suất và thống kê trong kinh tế','Mathematics, Probability and Statistics in Economics'),t('Mô hình chuỗi thời gian trong kinh tế và kinh doanh (TOA206)','Time-series Models in Economics and Business (TOA206)'),t('Toán trong khoa học quản lý (tiếng Anh)','Mathematics for Management Science (English)'),t('Đại số và Giải tích trong kinh tế và kinh doanh (tiếng Anh)','Algebra & Calculus in Economics and Business (English)')],
   acts:[['31.05.2025',t('Semina Bộ môn Toán thường kỳ tháng 5/2025','Mathematics regular seminar, May 2025'),t('Phương pháp hiệu chỉnh cho hệ phương trình toán tử không chỉnh; LSTM kết hợp trung bình động dự báo giá Bitcoin.','Regularisation for ill-posed operator equations; LSTM with moving averages for Bitcoin forecasting.'),1091],
-   ['21.03.2025',t('Semina thường kỳ tháng 2 và 3/2025','Regular seminar, Feb–Mar 2025'),t('Tổ chức tại phòng B411.','Held in room B411.'),null,'?cat=20'],
-   ['22.11.2024',t('Semina thường kỳ tháng 11/2024','Regular seminar, Nov 2024'),t('Hướng nghiên cứu mới về Toán trong khoa học máy tính và khoa học dữ liệu (NCS Đỗ Hoàng Khôi Nguyên – Đại học Florida).','New directions in mathematics for CS and data science (Đỗ Hoàng Khôi Nguyên – University of Florida).'),886],
+   ['21.03.2025',t('Semina thường kỳ tháng 2 và 3/2025','Regular seminar, Feb-Mar 2025'),t('Tổ chức tại phòng B411.','Held in room B411.'),null,'?cat=20'],
+   ['22.11.2024',t('Semina thường kỳ tháng 11/2024','Regular seminar, Nov 2024'),t('Hướng nghiên cứu mới về Toán trong khoa học máy tính và khoa học dữ liệu (NCS Đỗ Hoàng Khôi Nguyên - Đại học Florida).','New directions in mathematics for CS and data science (Đỗ Hoàng Khôi Nguyên - University of Florida).'),886],
    ['27.07.2024',t('Toạ đàm “Một số hướng nghiên cứu mới về khoa học dữ liệu, thống kê và học máy”','Seminar: “New research directions in data science, statistics and machine learning”'),t('Thuộc chương trình nghiên cứu FTURP02-2023 do TS Phùng Duy Quang chủ nhiệm.','Part of research programme FTURP02-2023 led by Dr. Phùng Duy Quang.'),639],
-   ['13.07.2024',t('Toạ đàm “Toán học trong học máy – học sâu”','Seminar: “Mathematics in machine & deep learning”'),t('Diễn giả PGS. TS Nguyễn Minh Tân – Đại học Quốc gia Singapore.','Speaker: Assoc. Prof. Nguyễn Minh Tân – National University of Singapore.'),634]]},
+   ['13.07.2024',t('Toạ đàm “Toán học trong học máy - học sâu”','Seminar: “Mathematics in machine & deep learning”'),t('Diễn giả PGS. TS Nguyễn Minh Tân - Đại học Quốc gia Singapore.','Speaker: Assoc. Prof. Nguyễn Minh Tân - National University of Singapore.'),634]]},
  cs:{name:t('Khoa Khoa học máy tính','Faculty of Computer Science'),short:t('KHMT','CS'),
-  lead:t('Khoa quản lý ngành Khoa học máy tính - ngành được xây dựng đề án và tuyển sinh thành công từ năm học 2024–2025.','The faculty managing the Computer Science major - launched and first enrolled in 2024–2025.'),
+  lead:t('Khoa quản lý ngành Khoa học máy tính - ngành được xây dựng đề án và tuyển sinh thành công từ năm học 2024-2025.','The faculty managing the Computer Science major - launched and first enrolled in 2024-2025.'),
   serve:['cs'],rel:{cs:t('Quản lý chương trình tích hợp Khoa học máy tính và Dữ liệu trong Kinh tế và Kinh doanh.','Manages the integrated programme in Computer Science and Data for Economics and Business.')},
   facts:[['2024',t('tuyển sinh khoá đầu','first intake')],['1',t('ngành quản lý','major managed')]],
   duties:[t('Đào tạo ngành Khoa học máy tính gắn với kinh tế và kinh doanh.','Training Computer Science linked with economics and business.'),t('Kết nối doanh nghiệp: WorldQuant (học phần iTEC1), DEHA Việt Nam.','Industry links: WorldQuant (iTEC1 course), DEHA Vietnam.'),t('Bồi dưỡng đội tuyển Olympic Tin học, Olympic AI, ICPC và hackathon.','Coaching teams for the Informatics and AI Olympiads, ICPC and hackathons.')],
   units:[[t('Bộ môn Khoa học máy tính và Dữ liệu','Computer Science & Data Division'),t('Seminar định kỳ, hướng nghiệp và các đội tuyển thi đấu.','Regular seminars, career orientation and competition teams.'),'?cat=22'],[t('Bộ môn Tin học','Informatics Division'),t('Tin học, tin học ứng dụng, công nghệ số và ứng dụng AI cho toàn Trường.','Informatics, applied computing, digital technology and AI for the University.'),'?cat=21']],
   people:[['TS Nguyễn Văn Tăng',t('Phó trưởng Khoa','Deputy Dean'),t('Khoa học máy tính','Computer science'),651],['TS Đoàn Quang Hưng','',t('Công nghệ thông tin','Information technology'),191],['TS Phạm Thị Kim Dung','',t('Khoa học máy tính','Computer science'),725],['TS Trần Trọng Huy','',t('Toán tin ứng dụng','Applied informatics'),128],['ThS NCS Trần Thị Thu Ngân','',t('Tin học','Informatics'),132],['ThS Trần Công Minh',t('Huấn luyện đội tuyển Olympic AI','Olympic AI team coach'),'',945],['CN Bùi Hải Đăng','',t('Khoa học máy tính','Computer science'),658],
    ['ThS GVC Tô Thị Hải Yến',t('Trưởng Bộ môn Tin học','Head of Informatics'),t('Đảm bảo toán học cho hệ thống tính toán','Mathematical foundations of computing systems'),120],['TS GVC Phùng Thị Thu Hiền','',t('Cơ sở toán học cho tin học','Mathematical foundations of informatics'),125],['ThS GVC Trần Phương Chi','',t('Đảm bảo toán học cho hệ thống tính toán','Mathematical foundations of computing systems'),130],['ThS GVC Lê Thanh Nguyệt','',t('Xử lý thông tin và truyền thông','Information processing & communication'),134]],
-  courses:[t('iTEC1 – Định hướng nghề nghiệp','iTEC1 – Career orientation'),t('Tư duy thiết kế','Design thinking'),t('Tin học','Informatics'),t('Tin học ứng dụng','Applied informatics'),t('Công nghệ số và ứng dụng trí tuệ nhân tạo','Digital technology & applied AI')],
+  courses:[t('iTEC1 - Định hướng nghề nghiệp','iTEC1 - Career orientation'),t('Tư duy thiết kế','Design thinking'),t('Tin học','Informatics'),t('Tin học ứng dụng','Applied informatics'),t('Công nghệ số và ứng dụng trí tuệ nhân tạo','Digital technology & applied AI')],
   acts:[['13.12.2025',t('Olympic Tin học, Olympic AI & ICPC 2025','Informatics Olympiad, AI Olympiad & ICPC 2025'),t('Giải Nhì, Giải Ba Olympic Tin học; Giải Ba miền Bắc Olympic AI.','Second & Third Prizes in Informatics; Northern Third Prize in AI.'),1168],['29.10.2025',t('Tham quan thực tế tại DEHA Việt Nam','Field visit to DEHA Vietnam'),'',1142],['02.06.2025',t('K63 định hướng nghề nghiệp cùng WorldQuant','K63 career orientation with WorldQuant'),'',1096],['25.05.2025',t('Giải Nhất toàn quốc AI for Accessibility Hackathon 2025','National First Prize, AI for Accessibility Hackathon 2025'),t('Cuộc thi do Microsoft Việt Nam tổ chức.','Organised by Microsoft Vietnam.'),1080]]},
  dsai:{name:t('Khoa Khoa học dữ liệu và Trí tuệ nhân tạo','Faculty of Data Science & AI'),short:t('KHDL&AI','DS&AI'),
   lead:t('Khoa quản lý hai ngành Khoa học dữ liệu và Trí tuệ nhân tạo cho đổi mới sáng tạo trong kinh tế và kinh doanh.','The faculty managing Data Science and Artificial Intelligence for innovation in economics and business.'),
@@ -201,8 +201,8 @@ const D={
   facts:[['2',t('ngành quản lý','majors managed')]],duties:[],units:[],people:[],courses:[],
   acts:[['16.06.2026',t('Hội thảo khoa học 2026','Scientific Conference 2026'),t('31 bài viết về Toán, KHMT, KHDL và AI.','31 papers in mathematics, CS, data science and AI.'),1189],['22.08.2025',t('Hội thảo lấy ý kiến mở ngành Khoa học dữ liệu','Consultation workshop on the Data Science programme'),'',1102]]},
  ln:{name:t('Khoa Liên ngành','Interdisciplinary Department'),short:t('Liên ngành','Interdisc.'),lead:t('Thông tin về Khoa Liên ngành đang được cập nhật.','Information about this department is coming soon.'),serve:[],rel:{},facts:[],duties:[],units:[],people:[],courses:[],acts:[]}};
-const TX=E?{map:'Faculty ↔ Majors',click:'Click a major to see how the faculty supports it',open:'Open major page →',about:'Mission',units:'Divisions',people:'Faculty members',all:'All',courses:'Courses taught',acts:'Academic activities',contact:'Contact the faculty',upd:'Content coming soon.',src:'Source: cnkhdl.ftu.edu.vn - staff list as published by the former Faculty of Technology and Data Science.',back:'← Home',read:'Read ↗',more:'More ↗'}
-:{map:'Khoa ↔ Ngành',click:'Bấm vào một ngành để xem khoa hỗ trợ ngành đó thế nào',open:'Mở trang ngành →',about:'Chức năng – nhiệm vụ',units:'Bộ môn',people:'Đội ngũ giảng viên',all:'Tất cả',courses:'Học phần phụ trách',acts:'Hoạt động học thuật',contact:'Liên hệ khoa',upd:'Nội dung đang được cập nhật.',src:'Nguồn: cnkhdl.ftu.edu.vn - danh sách giảng viên theo công bố của Khoa Công nghệ và Khoa học dữ liệu (tiền thân).',back:'← Trang chủ',read:'Đọc ↗',more:'Xem thêm ↗'};
+const TX=E?{map:'Faculty ↔ Majors',click:'Click a major to see how the faculty supports it',open:'Open major page',about:'Mission',units:'Divisions',people:'Faculty members',all:'All',courses:'Courses taught',acts:'Academic activities',contact:'Contact the faculty',upd:'Content coming soon.',src:'Source: cnkhdl.ftu.edu.vn - staff list as published by the former Faculty of Technology and Data Science.',back:'← Home',read:'Read ↗',more:'More ↗'}
+:{map:'Khoa ↔ Ngành',click:'Bấm vào một ngành để xem khoa hỗ trợ ngành đó thế nào',open:'Mở trang ngành',about:'Chức năng - nhiệm vụ',units:'Bộ môn',people:'Đội ngũ giảng viên',all:'Tất cả',courses:'Học phần phụ trách',acts:'Hoạt động học thuật',contact:'Liên hệ khoa',upd:'Nội dung đang được cập nhật.',src:'Nguồn: cnkhdl.ftu.edu.vn - danh sách giảng viên theo công bố của Khoa Công nghệ và Khoa học dữ liệu (tiền thân).',back:'← Trang chủ',read:'Đọc ↗',more:'Xem thêm ↗'};
 const k=D[new URLSearchParams(location.search).get('k')]?new URLSearchParams(location.search).get('k'):'qt',d=D[k];
 document.title=d.name+' - CTAS';
 document.getElementById('tabs').innerHTML=Object.entries(D).map(([x,v])=>`<a href="?k=${x}&lang=${LANG}" class="${x===k?'on':''}">${v.short}</a>`).join('');
