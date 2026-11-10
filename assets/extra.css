@@ -240,3 +240,4 @@ a.org-node:hover{border-color:#B3151B;background:#FFF6F4}
 .hof a:not([href]){cursor:default}.hof a:not([href]):hover{border-color:rgba(128,128,128,.35);color:inherit}
 .labs-nums div{min-width:0}
 .labs .big,.mvv-a p,.labs-nums span{text-align:left!important}
+.org-node h3+p{margin-top:8px}
