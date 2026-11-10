@@ -233,3 +233,7 @@ a.org-node:hover{border-color:#B3151B;background:#FFF6F4}
 @media(max-width:700px){.theme-btn.th-sw span{width:30px;height:32px}}
 .foot-grid .f-meta a{display:inline!important;padding:0!important;margin:0!important}
 .foot-grid .f-brand .f-logo{margin-bottom:0}
+.org-ppl li{display:flex;flex-direction:column;gap:1px;padding:5px 0 5px 14px!important}
+.org-ppl li b{font-size:15px;font-weight:700}.org-ppl li span{font-size:12.5px;font-weight:600;opacity:.8}
+.org-lead .org-ppl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 20px}
+@media(max-width:700px){.org-lead .org-ppl{grid-template-columns:1fr}}
