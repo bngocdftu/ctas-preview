@@ -209,3 +209,27 @@ a.org-node:hover{border-color:#B3151B;background:#FFF6F4}
 [data-theme=dark] .dt-codes b{color:#FFB4A8}[data-theme=dark] .mvv-a{border-top-color:#C8202A}
 @media(max-width:900px){.mvv{grid-template-columns:1fr}.mvv-a+.mvv-a{border-left:0;border-top:4px solid #B3151B}.dt-codes{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.xsec .pj{grid-template-columns:1fr!important}}
+/* ===== Bộ nhận diện mới: dấu CT + chữ CTAS ===== */
+.mk{width:40px;height:40px;flex:none;display:block}
+.mk .mk-c{fill:#B3151B}.mk .mk-t{fill:#1F0607}
+[data-theme=dark] .mk .mk-t,footer .mk .mk-t{fill:#FFFEF4}
+[data-theme=dark] .mk .mk-c,footer .mk .mk-c{fill:#E0473F}
+.logo .lk{line-height:1.05}
+.logo .lk b{display:block;font:700 24px/1 'Open Sans',Arial,sans-serif;letter-spacing:.2em}
+.logo .lk small{display:block;margin-top:4px;font-size:9.5px!important;font-weight:600!important;letter-spacing:.12em!important;text-transform:uppercase;opacity:.75}
+.f-ctas{display:flex;align-items:center;gap:12px}.f-ctas .mk{width:52px;height:52px}
+.f-ctas b{display:block;font:700 26px/1 'Open Sans',Arial,sans-serif;letter-spacing:.2em;color:#FFFEF4}
+.f-ctas small{display:block;margin-top:6px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#FFD9D3}
+.f-brand p{margin-top:14px;font-size:14px;line-height:1.7;color:#FFD9D3}.f-meta a{color:inherit}
+/* ===== Menu thả xuống: bỏ chữ nhỏ xám ===== */
+.dd-pan small,.mnav a small{display:none!important}
+/* ===== Công tắc sáng / tối ===== */
+.theme-btn.th-sw{width:auto!important;height:auto!important;border-radius:0!important;padding:0!important;display:inline-flex!important;border:1px solid rgba(128,128,128,.45)!important;background:none!important;overflow:hidden}
+.theme-btn.th-sw span{display:grid;place-items:center;width:34px;height:34px;font-size:15px;line-height:1;opacity:.55;transition:background .2s,color .2s,opacity .2s}
+.theme-btn.th-sw span.on{background:#B3151B;color:#fff;opacity:1}
+[data-theme=dark] .theme-btn.th-sw span.on{background:#C8202A}
+/* ===== Dải tin chạy bằng JS ===== */
+#nbTr{will-change:transform}
+@media(max-width:700px){.theme-btn.th-sw span{width:30px;height:32px}}
+.foot-grid .f-meta a{display:inline!important;padding:0!important;margin:0!important}
+.foot-grid .f-brand .f-logo{margin-bottom:0}
