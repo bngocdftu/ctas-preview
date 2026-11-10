@@ -237,3 +237,6 @@ a.org-node:hover{border-color:#B3151B;background:#FFF6F4}
 .org-ppl li b{font-size:15px;font-weight:700}.org-ppl li span{font-size:12.5px;font-weight:600;opacity:.8}
 .org-lead .org-ppl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 20px}
 @media(max-width:700px){.org-lead .org-ppl{grid-template-columns:1fr}}
+.hof a:not([href]){cursor:default}.hof a:not([href]):hover{border-color:rgba(128,128,128,.35);color:inherit}
+.labs-nums div{min-width:0}
+.labs .big,.mvv-a p,.labs-nums span{text-align:left!important}
