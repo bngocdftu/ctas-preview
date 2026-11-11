@@ -322,3 +322,8 @@ html[data-logo=mono] .logo .lk{display:none!important}
 /* hero không tràn nền xuống section sau; icon mặt trời dạng chữ trên iOS */
 .hero.container{padding-bottom:12vh!important}
 .th-sw span,.theme-btn{font-variant-emoji:text}
+/* đường kẻ phân cách giữa các section */
+section+section{position:relative}
+section+section::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(1176px,calc(100% - 64px));height:1px;background:currentColor;opacity:.14;pointer-events:none;z-index:1}
+@media(max-width:700px){section+section::before{width:calc(100% - 40px)}}
+#numbers{padding-top:64px!important}@media(max-width:700px){#numbers{padding-top:44px!important}}
