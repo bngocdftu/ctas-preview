@@ -189,7 +189,7 @@ document.getElementById('cp').onclick=e=>{navigator.clipboard?.writeText(locatio
 const L=POSTS.filter(p=>p.news&&p.id!==P.id);const R=[...L.filter(p=>p.c===P.c),...L.filter(p=>p.c!==P.c)].slice(0,3);
 document.getElementById('rh').textContent=T.rel;
 document.getElementById('rel').innerHTML=R.map(n=>`<a class="card" href="bai-viet.html?id=${n.id}"><div class="im">${PIC(n)}</div><div class="tx"><div class="meta"><b>${cc(n)}</b>${n.d}</div><h3>${tt(n)}</h3><p>${E&&n.pe?n.pe:n.ex}</p></div></a>`).join('');
-document.getElementById('ft').textContent=T.ft;
+(document.getElementById('ft')||{}).textContent=T.ft;
 const lbx=document.getElementById('lb');document.addEventListener('click',e=>{const i=e.target.closest('.body img,.gal img');if(i){lbx.querySelector('img').src=i.src;lbx.classList.add('on')}else if(e.target.closest('#lb'))lbx.classList.remove('on')});
 </script>
 <script>
