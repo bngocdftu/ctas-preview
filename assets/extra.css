@@ -302,3 +302,8 @@ html[data-logo=mono] .f-ctas .logo-b-ft{height:56px}
 @media(max-width:1280px){.logo .logo-b{height:40px}}
 .nav-r a,.nav-r .btn{white-space:nowrap}
 html[data-logo=mono] .logo .lk{display:none!important}
+/* Tên người không bị cắt dòng */
+.org-ppl li b{white-space:nowrap}
+.org-lead .org-ppl{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),max-content))!important;column-gap:40px!important}
+.person h4,.lc h4{white-space:normal}
+@media(max-width:420px){.org-ppl li b{white-space:normal}}
