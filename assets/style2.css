@@ -1,0 +1,130 @@
+/* CTAS giao diện 2: Swiss / brutalist (theo phong cách FTU Cloud). Chỉ áp dụng khi html[data-style="2"]. */
+html[data-style="2"]{
+  --s2-bg:#EFEEE8;--s2-paper:#FAF9F5;--s2-ink:#111214;--s2-muted:#55565B;--s2-line:#111214;--s2-soft:rgba(17,18,20,.14);
+  --s2-acc:#C8102E;--s2-acc2:#A50D25;--s2-dot:rgba(17,18,20,.13);
+  --s2-head:"Archivo Narrow","Arial Narrow",Arial,sans-serif;--s2-body:"Archivo",Helvetica,Arial,sans-serif;--s2-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+html[data-style="2"][data-theme="dark"]{
+  --s2-bg:#121214;--s2-paper:#1B1B1E;--s2-ink:#ECEBE6;--s2-muted:#A3A39E;--s2-line:#ECEBE6;--s2-soft:rgba(236,235,230,.16);
+  --s2-acc:#E0283F;--s2-acc2:#FF4A5E;--s2-dot:rgba(236,235,230,.10);
+}
+html[data-style="2"] body{background:var(--s2-bg)!important;background-image:radial-gradient(var(--s2-dot) 1px,transparent 1.2px)!important;background-size:22px 22px!important;color:var(--s2-ink)!important;font-family:var(--s2-body)!important}
+html[data-style="2"] body *{border-radius:0!important;text-shadow:none!important}
+html[data-style="2"] body :is(p,li,span,small,a,td,th,label,input,button,div){font-family:var(--s2-body)}
+/* bỏ hiệu ứng nền, hạt, icon trôi */
+html[data-style="2"] :is(canvas#wave,.float-ic,.hero-img::after,#blobWrap,.code-tag,.bg-fx,.glow,.orb){display:none!important}
+html[data-style="2"] :is(section,header,footer,.xsec,.org,main){background:transparent!important;box-shadow:none!important}
+html[data-style="2"] :is(section,header,footer)::after{background:none!important}
+
+/* chữ */
+html[data-style="2"] :is(h1,h2,h3,h4,h5){font-family:var(--s2-head)!important;font-weight:700!important;color:var(--s2-ink)!important;letter-spacing:-.01em!important;text-transform:uppercase;line-height:.95!important}
+html[data-style="2"] h2{font-size:clamp(40px,6vw,84px)!important}
+html[data-style="2"] h3{line-height:1.05!important}
+html[data-style="2"] :is(p,.lead,li){color:var(--s2-muted)}
+html[data-style="2"] :is(.eyebrow,.org-k,.date,time,.crumb,.nb-lb,h6,.ft-k,.tag){font-family:var(--s2-mono)!important;font-weight:700!important;letter-spacing:.14em!important;text-transform:uppercase;color:var(--s2-muted)!important;font-size:13px!important}
+html[data-style="2"] .eyebrow::before{display:none!important}
+html[data-style="2"] .eyebrow::after{content:"";display:inline-block;width:8px;height:8px;margin-left:10px;background:var(--s2-acc);vertical-align:middle}
+html[data-style="2"] :is(em,h1 em,h2 em){font-style:normal!important;color:var(--s2-acc)!important;-webkit-text-fill-color:var(--s2-acc)!important;background:none!important}
+html[data-style="2"] a{color:inherit}
+
+/* thanh FTU + nav */
+html[data-style="2"] .ftu-bar{background:var(--s2-ink)!important;color:var(--s2-bg)!important;border:0!important}
+html[data-style="2"] .ftu-bar *{color:var(--s2-bg)!important;font-family:var(--s2-mono)!important;font-size:12px!important;letter-spacing:.08em}
+html[data-style="2"] nav,html[data-style="2"] nav.scrolled,html[data-style="2"] .nav{background:var(--s2-bg)!important;border-bottom:3px solid var(--s2-line)!important;box-shadow:none!important;backdrop-filter:none!important}
+html[data-style="2"] .menu>a,html[data-style="2"] .dd>a{font-family:var(--s2-mono)!important;text-transform:uppercase;font-size:13px!important;letter-spacing:.06em;font-weight:700!important;color:var(--s2-ink)!important}
+html[data-style="2"] .dd-pan{background:var(--s2-paper)!important;border:2px solid var(--s2-line)!important;box-shadow:8px 8px 0 var(--s2-acc)!important}
+html[data-style="2"] .dd-pan b{color:var(--s2-ink)!important}
+html[data-style="2"] :is(.lang-btn,.theme-btn,.th-sw){border:2px solid var(--s2-line)!important;background:transparent!important;box-shadow:none!important}
+html[data-style="2"] :is(.lang-btn,.th-sw) span{color:var(--s2-ink)!important;font-family:var(--s2-mono)!important}
+html[data-style="2"] :is(.lang-btn,.th-sw) span.on,html[data-style="2"] .lang-btn [data-l].on{background:var(--s2-ink)!important;color:var(--s2-bg)!important}
+html[data-style="2"] .logo img:not(.logo-b),html[data-style="2"] .ctas-logo{filter:none}
+
+/* nút */
+html[data-style="2"] :is(.btn,.round,.nav-r>a:last-child,.lk){font-family:var(--s2-head)!important;text-transform:uppercase;letter-spacing:.06em;font-weight:700!important;border:2px solid var(--s2-line)!important;box-shadow:none!important;transition:transform .15s,box-shadow .15s!important}
+html[data-style="2"] :is(.btn.blue,.btn.red,.btn.primary,.nav-r>a:last-child){background:var(--s2-acc)!important;color:#fff!important;border-color:var(--s2-ink)!important}
+html[data-style="2"] :is(.btn.ghost,.btn:not(.blue):not(.red):not(.primary)){background:transparent!important;color:var(--s2-ink)!important}
+html[data-style="2"] :is(.btn,.round,.nav-r>a:last-child):hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--s2-ink)!important}
+
+/* hero */
+html[data-style="2"] .hero-wave{background:transparent!important;height:auto!important;min-height:0!important;margin:0!important;width:auto!important;clip-path:none!important;padding:110px var(--side,32px) 70px!important;max-width:1240px;margin-inline:auto!important}
+html[data-style="2"] .hero-wave::before,html[data-style="2"] .hero-wave::after{display:none!important}
+html[data-style="2"] .hw-in{text-align:left!important;max-width:none!important;margin:0!important;align-items:flex-start!important}
+html[data-style="2"] .hw-school{justify-content:flex-start!important;text-align:left!important;flex-direction:row!important;gap:14px!important;margin-bottom:26px!important}
+html[data-style="2"] .hw-school .seal{width:44px!important;height:44px!important}
+html[data-style="2"] .hw-school small{font-family:var(--s2-mono)!important;color:var(--s2-muted)!important;letter-spacing:.14em;text-transform:uppercase}
+html[data-style="2"] .hw-school strong{font-family:var(--s2-head)!important;color:var(--s2-ink)!important;text-transform:uppercase;font-size:clamp(18px,2vw,24px)!important}
+html[data-style="2"] .hero h1{font-size:clamp(56px,10.5vw,168px)!important;line-height:.88!important;text-align:left!important;margin:0 0 30px!important;color:var(--s2-ink)!important}
+html[data-style="2"] .hero h1 b{display:block;font-weight:700!important;color:var(--s2-ink)!important}
+html[data-style="2"] .hw-sub{text-align:left!important;margin:0 0 34px!important;max-width:620px!important;font-size:clamp(17px,1.6vw,22px)!important;color:var(--s2-muted)!important}
+html[data-style="2"] .hw-cta{justify-content:flex-start!important}
+html[data-style="2"] .scroll-cue{display:none!important}
+html[data-style="2"] .hero.container{padding-bottom:0!important}
+html[data-style="2"] .finder,html[data-style="2"] .newsbar{margin:0 auto 70px!important;max-width:1176px!important;width:calc(100% - 64px)!important;background:var(--s2-paper)!important;border:2px solid var(--s2-line)!important;box-shadow:10px 10px 0 var(--s2-acc)!important;backdrop-filter:none!important}
+html[data-style="2"] .nb-lb{background:var(--s2-ink)!important;color:var(--s2-bg)!important}
+html[data-style="2"] .nb-tr a{color:var(--s2-ink)!important;font-family:var(--s2-body)!important}
+html[data-style="2"] .nb-tr time{color:var(--s2-acc)!important;font-family:var(--s2-mono)!important}
+html[data-style="2"] .ticker{background:var(--s2-ink)!important;color:var(--s2-bg)!important;border:0!important;transform:none!important}
+html[data-style="2"] .ticker span{font-family:var(--s2-head)!important;text-transform:uppercase;color:var(--s2-bg)!important;font-weight:700}
+html[data-style="2"] .ticker i{color:var(--s2-acc)!important}
+
+/* đường kẻ section: dày, đặc */
+html[data-style="2"] section+section::before{height:3px!important;background:var(--s2-line)!important;opacity:1!important}
+
+/* khối, thẻ */
+html[data-style="2"] :is(.card,.news,.feat,.box,.dept,.maj-card,.svc-card,.unit,.ex-tile,.org-node,.conf,.prog-list,.news-feat,.ab-col,.lc,.pj,.tile){background:var(--s2-paper)!important;border:2px solid var(--s2-line)!important;box-shadow:none!important;color:var(--s2-ink)!important;transition:transform .15s,box-shadow .15s!important}
+html[data-style="2"] :is(.card,.news,.feat,.maj-card,.svc-card,.ex-tile,a.org-node,.news-feat):hover{transform:translate(-4px,-4px)!important;box-shadow:8px 8px 0 var(--s2-acc)!important}
+html[data-style="2"] img{filter:grayscale(.15) contrast(1.05)}
+html[data-style="2"] :is(.news,.card) img{border-bottom:2px solid var(--s2-line)}
+
+/* sơ đồ tổ chức */
+html[data-style="2"] .org-lead{background:var(--s2-acc)!important;border-color:var(--s2-ink)!important;box-shadow:10px 10px 0 var(--s2-ink)!important}
+html[data-style="2"] .org-lead :is(h3,b,span,.org-k){color:#fff!important}
+html[data-style="2"] .org-adv{border-style:dashed!important;background:transparent!important}
+html[data-style="2"] .org-ppl b{font-family:var(--s2-body)!important;color:inherit}
+html[data-style="2"] .org-chart :is(.org-top,.org-mid,.org-bot)::before,html[data-style="2"] .org-chart :is(.org-top,.org-mid,.org-bot)::after{background:var(--s2-line)!important}
+html[data-style="2"] .av{border:2px solid var(--s2-line)!important}
+
+/* số liệu */
+html[data-style="2"] :is(.ab-stats,.org-stats){border-top:3px solid var(--s2-line)!important;border-bottom:0!important}
+html[data-style="2"] :is(.ab-stats,.org-stats)>div{border-color:var(--s2-soft)!important;background:transparent!important}
+html[data-style="2"] :is(.ab-stats,.org-stats) strong{font-family:var(--s2-head)!important;color:var(--s2-ink)!important;font-size:clamp(48px,6vw,88px)!important;line-height:1!important}
+html[data-style="2"] :is(.ab-stats,.org-stats) span{font-family:var(--s2-mono)!important;text-transform:uppercase;letter-spacing:.1em;font-size:12px!important;color:var(--s2-muted)!important}
+
+/* đầu trang con */
+html[data-style="2"] .pg-head{padding-top:70px!important;padding-bottom:40px!important;border-bottom:3px solid var(--s2-line)}
+html[data-style="2"] .pg-head h1{font-size:clamp(52px,9vw,140px)!important;line-height:.9!important}
+
+/* footer */
+html[data-style="2"] footer{background:var(--s2-ink)!important;color:var(--s2-bg)!important;border-top:0!important}
+html[data-style="2"] footer *{color:var(--s2-bg)!important;border-color:rgba(127,127,127,.35)!important}
+html[data-style="2"] footer :is(h2,h5){color:var(--s2-bg)!important}
+html[data-style="2"] footer .talk h2{font-size:clamp(56px,10vw,150px)!important}
+html[data-style="2"] footer h5{font-family:var(--s2-mono)!important;letter-spacing:.14em;font-size:12px!important}
+html[data-style="2"] footer .round{background:var(--s2-acc)!important;border-color:var(--s2-bg)!important}
+html[data-style="2"][data-theme="dark"] footer{background:#000!important}
+html[data-style="2"] .logo-b-ft{filter:none}
+
+/* nút chuyển */
+html[data-style="2"] .logo-sw{font-family:var(--s2-mono)!important;border:2px solid var(--s2-line)!important;background:var(--s2-paper)!important;box-shadow:4px 4px 0 var(--s2-ink)!important}
+html[data-style="2"] .logo-sw *{color:var(--s2-ink)!important}
+html[data-style="2"] .logo-sw button.on{background:var(--s2-ink)!important;color:var(--s2-bg)!important}
+@media(max-width:700px){
+  html[data-style="2"] .hero-wave{padding:60px 20px 44px!important}
+  html[data-style="2"] .finder,html[data-style="2"] .newsbar{width:calc(100% - 40px)!important;box-shadow:6px 6px 0 var(--s2-acc)!important;margin-bottom:44px!important}
+  html[data-style="2"] .hero h1{font-size:clamp(48px,15vw,80px)!important}
+}
+/* sửa hero: nội dung chảy bình thường, không bị cắt */
+html[data-style="2"] .hero-img{overflow:visible!important;transform:none!important}
+html[data-style="2"] .hw-in{position:static!important;padding:0!important;color:var(--s2-ink)!important}
+html[data-style="2"] .hero h1 :is(b,em,.w){display:inline!important}
+html[data-style="2"] .hero h1 b{display:block!important}
+html[data-style="2"] .hero h1{letter-spacing:-.02em!important;word-break:normal}
+html[data-style="2"] h2{font-size:clamp(34px,4.6vw,68px)!important}
+/* thẻ ảnh: giữ chữ trắng trên ảnh */
+html[data-style="2"] .ex-tile{padding:0!important}
+html[data-style="2"] .ex-tile :is(h3,em){color:#fff!important}
+html[data-style="2"] .ex-tile>div{background:linear-gradient(transparent,rgba(17,18,20,.9))!important}
+html[data-style="2"] .ex-tile span{color:#fff!important;font-family:var(--s2-mono)!important}
+html[data-style="2"] .eyebrow{display:block!important}
+html[data-style="2"] .hero h1,html[data-style="2"] .hero h1 *{font-family:var(--s2-head)!important;font-weight:700!important;letter-spacing:-.015em!important}
+html[data-style="2"] .hero h1 em,html[data-style="2"][data-theme="dark"] .hero h1 em{color:var(--s2-acc2)!important;-webkit-text-fill-color:var(--s2-acc2)!important;background:none!important}

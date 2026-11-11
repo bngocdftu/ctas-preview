@@ -68,10 +68,10 @@ function langHook(){var b=document.getElementById('langBtn');if(!b||b.dataset.hk
 
 
 /* 6. Nút so sánh 2 logo */
-function logoSwitch(){if(document.querySelector('.logo-sw'))return;var b=document.createElement('div');b.className='logo-sw';b.setAttribute('role','group');b.setAttribute('aria-label','Chọn logo');
- b.innerHTML='<span>Logo</span><button type="button" data-v="color">A</button><button type="button" data-v="mono">B</button>';document.body.appendChild(b);
- var set=function(v){document.documentElement.dataset.logo=v;try{localStorage.setItem('ctas-logo',v)}catch(e){}[].forEach.call(b.querySelectorAll('button'),function(x){x.classList.toggle('on',x.dataset.v===v)})};
- set(document.documentElement.dataset.logo||'mono');b.addEventListener('click',function(e){var t=e.target.closest('button');if(t)set(t.dataset.v)})}
+function logoSwitch(){if(document.querySelector('.logo-sw'))return;var b=document.createElement('div');b.className='logo-sw';b.setAttribute('role','group');b.setAttribute('aria-label','Chọn giao diện');
+ b.innerHTML='<span>'+(document.documentElement.lang==='en'||document.documentElement.dataset.lang==='en'?'Style':'Giao diện')+'</span><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button>';document.body.appendChild(b);
+ var set=function(v){var h=document.documentElement;h.dataset.style=v;try{localStorage.setItem('ctas-style',v)}catch(e){}if(v==='2'&&!document.getElementById('s2f')){var l=document.createElement('link');l.id='s2f';l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Archivo+Narrow:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap';document.head.appendChild(l)}[].forEach.call(b.querySelectorAll('button'),function(x){x.classList.toggle('on',x.dataset.v===v)})};
+ set(document.documentElement.dataset.style||'1');b.addEventListener('click',function(e){var t=e.target.closest('button');if(t)set(t.dataset.v)})}
 
 
 /* 7. Không để một từ đứng một mình ở dòng cuối */
