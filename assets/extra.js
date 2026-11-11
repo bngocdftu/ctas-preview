@@ -71,7 +71,7 @@ function langHook(){var b=document.getElementById('langBtn');if(!b||b.dataset.hk
 function logoSwitch(){if(document.querySelector('.logo-sw'))return;var b=document.createElement('div');b.className='logo-sw';b.setAttribute('role','group');b.setAttribute('aria-label','Chọn logo');
  b.innerHTML='<span>Logo</span><button type="button" data-v="color">A</button><button type="button" data-v="mono">B</button>';document.body.appendChild(b);
  var set=function(v){document.documentElement.dataset.logo=v;try{localStorage.setItem('ctas-logo',v)}catch(e){}[].forEach.call(b.querySelectorAll('button'),function(x){x.classList.toggle('on',x.dataset.v===v)})};
- set(document.documentElement.dataset.logo||'color');b.addEventListener('click',function(e){var t=e.target.closest('button');if(t)set(t.dataset.v)})}
+ set(document.documentElement.dataset.logo||'mono');b.addEventListener('click',function(e){var t=e.target.closest('button');if(t)set(t.dataset.v)})}
 
 
 /* 7. Không để một từ đứng một mình ở dòng cuối */
