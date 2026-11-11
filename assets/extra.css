@@ -319,3 +319,6 @@ html[data-logo=mono] .logo .lk{display:none!important}
 .org-lead .org-ppl{display:grid!important;grid-template-columns:repeat(2,max-content)!important;justify-content:center;column-gap:56px!important;row-gap:18px!important}
 .org-lead .org-ppl li:first-child{grid-column:1/-1;justify-self:center}
 @media(max-width:700px){.org-lead .org-ppl{grid-template-columns:1fr!important;justify-content:start}.org-lead .org-ppl li:first-child{justify-self:start}}
+/* hero không tràn nền xuống section sau; icon mặt trời dạng chữ trên iOS */
+.hero.container{padding-bottom:12vh!important}
+.th-sw span,.theme-btn{font-variant-emoji:text}
