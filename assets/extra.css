@@ -278,3 +278,27 @@ html[data-logo=mono] .f-ctas small{display:block!important}
 .logo .logo-b{height:56px}
 html[data-logo=mono] .f-ctas .logo-b-ft{height:72px}
 @media(max-width:700px){.logo .logo-b{height:40px}}
+.logo .logo-b{height:52px}
+html[data-logo=mono] .f-ctas .logo-b-ft{height:56px}
+@media(max-width:1100px){.logo .logo-b{height:40px}}
+@media(max-width:700px){.logo .logo-b{height:32px}}
+/* ===== LET'S TALK nhỏ lại, đồng bộ footer ===== */
+.talk{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:36px;margin-bottom:36px;border-bottom:1px solid rgba(255,254,244,.15)}
+.talk h2{font:700 clamp(36px,5vw,72px)/1 'Source Serif 4',Georgia,serif!important;letter-spacing:-.01em!important;color:#FFFEF4;margin:0}
+.talk a.round{width:110px!important;height:110px!important;border-radius:50%;display:grid;place-items:center;background:#B3151B;color:#fff;font-weight:700;font-size:14px}
+.sf .talk{margin-top:0}
+.sf,.sf *{text-align:left}
+.sf .foot-grid{grid-template-columns:1.6fr 1fr 1fr 1fr 1.2fr}
+.sf .foot-grid a{color:#d6b1ae}
+@media(max-width:900px){.sf .foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.sf .foot-grid{grid-template-columns:1fr}.talk a.round{width:88px!important;height:88px!important}}
+/* ===== Đào tạo: bỏ khoảng trống thừa ===== */
+#study{padding-top:0!important}
+#study .prog-list{margin-top:0!important}
+#programs{padding-bottom:40px!important}
+/* Logo B rộng: giữ cỡ chữ lớn, ẩn dòng phụ khi màn hình chưa đủ rộng; nút menu không xuống dòng */
+.logo .logo-b{height:50px}
+@media(max-width:1600px){html[data-logo=mono] .logo .lk{display:none!important}}
+@media(max-width:1280px){.logo .logo-b{height:40px}}
+.nav-r a,.nav-r .btn{white-space:nowrap}
+html[data-logo=mono] .logo .lk{display:none!important}

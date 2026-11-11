@@ -7,7 +7,7 @@ var RE=new RegExp('(^|[^\\p{L}])('+W.map(function(w){return esc(w).replace(/ /g,
 var SKIP={SCRIPT:1,STYLE:1,TEXTAREA:1,INPUT:1,CODE:1,PRE:1,SELECT:1,OPTION:1};
 function fix(root){if(!root)return;var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){for(var p=n.parentNode;p&&p!==root.parentNode;p=p.parentNode)if(SKIP[p.nodeName])return 2;return n.nodeValue.indexOf(' ')>-1?1:2}}),n,L=[];while(n=w.nextNode())L.push(n);
 L.forEach(function(n){var v=n.nodeValue.replace(RE,function(m,a,b){return a+b.replace(/ +/g,' ')});if(v!==n.nodeValue)n.nodeValue=v})}
-var busy=false;function run(){if(busy)return;busy=true;try{tr(document.body)}catch(e){}fix(document.body);busy=false}
+var busy=false;function run(){if(busy)return;busy=true;try{tr(document.body)}catch(e){}fix(document.body);try{noOrphan()}catch(e){}busy=false}
 /* 2. Dải giảng viên */
 function lec(){var box=document.getElementById('lecRun');if(!box||!window.POSTS)return;var E=(localStorage.getItem('ctas-lang')||'vi')==='en';
 var R={'119':'Trưởng Bộ môn Toán, Xác suất và thống kê','651':'Trưởng khoa Khoa học tính toán và định lượng','120':'Trưởng Bộ môn Tin học','945':'Huấn luyện đội tuyển Olympic AI','725':'Khoa học máy tính','191':'Công nghệ thông tin','128':'Toán tin ứng dụng','699':'Toán kinh tế','177':'Toán ứng dụng','159':'Toán giải tích','140':'Đại số tuyến tính','125':'Cơ sở toán học cho tin học','658':'Khoa học máy tính','132':'Tin học','130':'Đảm bảo toán học cho hệ thống tính toán','134':'Xử lý thông tin và truyền thông','148':'Phương trình vi phân','150':'Toán kinh tế','146':'Toán giải tích','144':'Toán kinh tế'};
@@ -33,7 +33,7 @@ function tr(root){if(!isEN()||!window.CTAS_EN||!root)return;var D=window.CTAS_EN
 
 
 /* 5. Footer chung, nút quay lại, công tắc sáng/tối, dải tin tự chạy */
-var MARK='<img class="ctas-logo ctas-logo-ft" src="assets/logo/ctas-color/ctas-logo-160.png" alt="CTAS" width="160" height="56"><img class="logo-b logo-b-ft" src="assets/logo/ctas-mono/ctas-b-white-160.png" alt="" width="190" height="60">';
+var MARK='<img class="ctas-logo ctas-logo-ft" src="assets/logo/ctas-color/ctas-logo-160.png" alt="CTAS" width="160" height="56"><img class="logo-b logo-b-ft" src="assets/logo/ctas-mono/ctas-b2-white-160.png" alt="" width="190" height="60">';
 function footer(){var g=document.querySelector('.foot-grid');if(!g)return;
  g.innerHTML='<div class="f-brand"><a href="index.html" class="f-logo f-ctas">'+MARK+'<span><small>Trường Công nghệ và Khoa học ứng dụng</small></span></a>'
  +'<p>Đơn vị thành viên của Trường Đại học Ngoại thương</p>'
@@ -72,6 +72,11 @@ function logoSwitch(){if(document.querySelector('.logo-sw'))return;var b=documen
  b.innerHTML='<span>Logo</span><button type="button" data-v="color">A</button><button type="button" data-v="mono">B</button>';document.body.appendChild(b);
  var set=function(v){document.documentElement.dataset.logo=v;try{localStorage.setItem('ctas-logo',v)}catch(e){}[].forEach.call(b.querySelectorAll('button'),function(x){x.classList.toggle('on',x.dataset.v===v)})};
  set(document.documentElement.dataset.logo||'color');b.addEventListener('click',function(e){var t=e.target.closest('button');if(t)set(t.dataset.v)})}
+
+
+/* 7. Không để một từ đứng một mình ở dòng cuối */
+function noOrphan(root){(root||document).querySelectorAll('p,li,h1,h2,h3,h4,h5,dd,.lead,small,figcaption').forEach(function(el){if(el.dataset.no)return;var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),n,last=null;while(n=w.nextNode())if(n.nodeValue.trim())last=n;
+ if(!last)return;var v=last.nodeValue,m=v.match(/^([\s\S]*\S)[ ]+(\S+\s*)$/);if(m&&m[2].trim().length<=12){last.nodeValue=m[1]+' '+m[2]}el.dataset.no=1})}
 
 /* 3. Menu điện thoại */
 function mnav(){var nav=document.querySelector('nav.gh .nav, nav .nav, .nv');if(!nav||document.querySelector('.mnav'))return;
