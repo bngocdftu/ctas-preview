@@ -33,7 +33,7 @@ function tr(root){if(!isEN()||!window.CTAS_EN||!root)return;var D=window.CTAS_EN
 
 
 /* 5. Footer chung, nút quay lại, công tắc sáng/tối, dải tin tự chạy */
-var MARK='<img class="ctas-logo ctas-logo-ft" src="assets/logo/ctas-color/ctas-logo-160.png" alt="CTAS" width="160" height="56">';
+var MARK='<img class="ctas-logo ctas-logo-ft" src="assets/logo/ctas-color/ctas-logo-160.png" alt="CTAS" width="160" height="56"><img class="logo-b logo-b-ft" src="assets/logo/ctas-mono/web-white-160.png" alt="" width="190" height="60">';
 function footer(){var g=document.querySelector('.foot-grid');if(!g)return;
  g.innerHTML='<div class="f-brand"><a href="index.html" class="f-logo f-ctas">'+MARK+'<span><small>Trường Công nghệ và Khoa học ứng dụng</small></span></a>'
  +'<p>Đơn vị thành viên của Trường Đại học Ngoại thương</p>'
@@ -66,6 +66,13 @@ function langHook(){var b=document.getElementById('langBtn');if(!b||b.dataset.hk
   try{back();themeSwitch&&(document.getElementById('themeBtn').dataset.sw='',themeSwitch())}catch(_){}
   var m=document.querySelector('.mnav');if(m){m.remove();try{mnav()}catch(_){}}}}
 
+
+/* 6. Nút so sánh 2 logo */
+function logoSwitch(){if(document.querySelector('.logo-sw'))return;var b=document.createElement('div');b.className='logo-sw';b.setAttribute('role','group');b.setAttribute('aria-label','Chọn logo');
+ b.innerHTML='<span>Logo</span><button type="button" data-v="color">A</button><button type="button" data-v="mono">B</button>';document.body.appendChild(b);
+ var set=function(v){document.documentElement.dataset.logo=v;try{localStorage.setItem('ctas-logo',v)}catch(e){}[].forEach.call(b.querySelectorAll('button'),function(x){x.classList.toggle('on',x.dataset.v===v)})};
+ set(document.documentElement.dataset.logo||'color');b.addEventListener('click',function(e){var t=e.target.closest('button');if(t)set(t.dataset.v)})}
+
 /* 3. Menu điện thoại */
 function mnav(){var nav=document.querySelector('nav.gh .nav, nav .nav, .nv');if(!nav||document.querySelector('.mnav'))return;
 var menu=document.querySelector('nav .menu');var nr=document.querySelector('.nav-r, .nr');if(!nr)return;
@@ -90,6 +97,6 @@ f.className+=' sf';f.innerHTML='<div class="sf-in"><div class="foot-grid">'
 +'<div><h5>Liên hệ</h5><a href="https://maps.google.com/?q=91+Chùa+Láng,+Đống+Đa,+Hà+Nội" target="_blank">91 Chùa Láng, Đống Đa, Hà Nội</a><a href="tel:0947396248">094 739 62 48</a><a href="mailto:cnkhdl@ftu.edu.vn">cnkhdl@ftu.edu.vn</a><a href="https://ftu.edu.vn" target="_blank">ftu.edu.vn</a><a href="https://www.facebook.com/KHOACNKHDL" target="_blank">Facebook</a></div>'
 +'</div>'
 +'<div class="copy"><span>© 2026 Trường Công nghệ và Khoa học ứng dụng - Trường Đại học Ngoại thương</span><span>Chính sách bảo mật, Điều khoản</span></div></div>'}
-function go(){try{sfoot()}catch(e){}try{footer()}catch(e){}try{back()}catch(e){}try{themeSwitch()}catch(e){}try{ticker()}catch(e){}try{mnav()}catch(e){}try{langHook()}catch(e){}lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
+function go(){try{sfoot()}catch(e){}try{footer()}catch(e){}try{back()}catch(e){}try{themeSwitch()}catch(e){}try{ticker()}catch(e){}try{mnav()}catch(e){}try{langHook()}catch(e){}try{logoSwitch()}catch(e){}lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 })();

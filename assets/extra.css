@@ -258,3 +258,17 @@ footer{padding-top:64px!important}
 .f-ctas{flex-direction:column;align-items:flex-start!important;gap:10px!important}
 .ctas-logo-ft{height:56px;width:auto;display:block}
 @media(max-width:700px){.logo .ctas-logo{height:36px}}
+/* ===== Logo B (đơn sắc) và nút so sánh ===== */
+.logo-b{display:none;width:auto;flex:none}
+.logo .logo-b{height:48px}
+html[data-logo=mono] .logo .ctas-logo,html[data-logo=mono] .logo .lk,html[data-logo=mono] .f-ctas .ctas-logo-ft,html[data-logo=mono] .f-ctas small{display:none!important}
+html[data-logo=mono] .logo .logo-b-ink{display:block}
+html[data-logo=mono][data-theme=dark] .logo .logo-b-ink{display:none}
+html[data-logo=mono][data-theme=dark] .logo .logo-b-white{display:block}
+html[data-logo=mono] .f-ctas .logo-b-ft{display:block;height:60px}
+@media(max-width:700px){.logo .logo-b{height:34px}}
+.logo-sw{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:150;display:flex;align-items:center;background:#fff;border:1px solid rgba(31,6,7,.25);box-shadow:0 8px 24px rgba(31,6,7,.15);font:700 12px 'Open Sans',Arial,sans-serif}
+.logo-sw span{padding:0 10px;letter-spacing:.1em;text-transform:uppercase;color:#5a5f7a}
+.logo-sw button{width:36px;height:34px;border:0;border-left:1px solid rgba(31,6,7,.15);background:none;font:700 13px 'Open Sans',Arial,sans-serif;color:#1F0607;cursor:pointer}
+.logo-sw button.on{background:#B3151B;color:#fff}
+[data-theme=dark] .logo-sw{background:#3A0B0D;border-color:rgba(255,180,168,.3)}[data-theme=dark] .logo-sw span{color:#d6b1ae}[data-theme=dark] .logo-sw button{color:#FFFEF4;border-color:rgba(255,180,168,.25)}
