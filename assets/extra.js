@@ -1,6 +1,6 @@
 (function(){
 /* 1. Không ngắt dòng giữa các âm tiết của cùng một từ ghép */
-var W=['khoa học','máy tính','dữ liệu','trí tuệ','nhân tạo','đại học','ngoại thương','công nghệ','nghiên cứu','sinh viên','giảng viên','học viên','nghiên cứu sinh','tiến sĩ','thạc sĩ','cử nhân','phó giáo sư','giáo sư','hội thảo','khoa học dữ liệu','thông tin','tin học','toán học','ứng dụng','kinh tế','kinh doanh','tài chính','doanh nghiệp','hợp tác','đào tạo','chương trình','tuyển sinh','học tập','giảng dạy','thực hành','thực tế','phòng thí nghiệm','hệ thống','quản lý','điện toán','đám mây','mô hình','ngôn ngữ','phần mềm','phần cứng','lập trình','thuật toán','xác suất','thống kê','định lượng','tính toán','liên ngành','bộ môn','hiệu trưởng','trưởng khoa','phó trưởng','tân sinh viên','thành tích','sự kiện','hoạt động','cuộc thi','giải nhất','giải nhì','giải ba','khuyến khích','quốc tế','quốc gia','việt nam','hà nội','trung quốc','năm học','học kỳ','học phần','môn học','tốt nghiệp','việc làm','nghề nghiệp','định hướng','chuyển đổi số','kỹ năng','dự án','sản phẩm','nền tảng','hạ tầng','trải nghiệm','cơ hội','phát triển','chuyên ngành','chuyên môn','tham gia','tổ chức','thành lập','giới thiệu','tin tức','liên hệ','đăng ký','học bổng','tài trợ','olympic tin học','cơ sở dữ liệu','học máy','học sâu','thị giác máy tính','xử lý','ngôn ngữ tự nhiên','an ninh mạng','trường đại học','ngoại thương','đội tuyển','đội ngũ','cán bộ','luận án','bảo vệ','vinh danh','sáng tạo','đời sống','khu vực','miền bắc','toàn quốc'];
+var W=['Trường Đại học Ngoại thương','Đại học Ngoại thương','tầm nhìn','sứ mạng','lịch sử','giá trị cốt lõi','cốt lõi','Ngoại thương','khoa học','máy tính','dữ liệu','trí tuệ','nhân tạo','đại học','ngoại thương','công nghệ','nghiên cứu','sinh viên','giảng viên','học viên','nghiên cứu sinh','tiến sĩ','thạc sĩ','cử nhân','phó giáo sư','giáo sư','hội thảo','khoa học dữ liệu','thông tin','tin học','toán học','ứng dụng','kinh tế','kinh doanh','tài chính','doanh nghiệp','hợp tác','đào tạo','chương trình','tuyển sinh','học tập','giảng dạy','thực hành','thực tế','phòng thí nghiệm','hệ thống','quản lý','điện toán','đám mây','mô hình','ngôn ngữ','phần mềm','phần cứng','lập trình','thuật toán','xác suất','thống kê','định lượng','tính toán','liên ngành','bộ môn','hiệu trưởng','trưởng khoa','phó trưởng','tân sinh viên','thành tích','sự kiện','hoạt động','cuộc thi','giải nhất','giải nhì','giải ba','khuyến khích','quốc tế','quốc gia','việt nam','hà nội','trung quốc','năm học','học kỳ','học phần','môn học','tốt nghiệp','việc làm','nghề nghiệp','định hướng','chuyển đổi số','kỹ năng','dự án','sản phẩm','nền tảng','hạ tầng','trải nghiệm','cơ hội','phát triển','chuyên ngành','chuyên môn','tham gia','tổ chức','thành lập','giới thiệu','tin tức','liên hệ','đăng ký','học bổng','tài trợ','olympic tin học','cơ sở dữ liệu','học máy','học sâu','thị giác máy tính','xử lý','ngôn ngữ tự nhiên','an ninh mạng','trường đại học','ngoại thương','đội tuyển','đội ngũ','cán bộ','luận án','bảo vệ','vinh danh','sáng tạo','đời sống','khu vực','miền bắc','toàn quốc'];
 W.sort(function(a,b){return b.length-a.length});
 var esc=function(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')};
 var RE=new RegExp('(^|[^\\p{L}])('+W.map(function(w){return esc(w).replace(/ /g,'[ \\u00A0]+')}).join('|')+')(?=$|[^\\p{L}])','giu');
@@ -22,7 +22,8 @@ var A=L.map(card).join('');box.innerHTML='<div class="lec-tr">'+A+A+'</div>'}
 /* 4. Dịch tiếng Anh cho chữ giao diện còn sót */
 var EN=(function(){try{return (localStorage.getItem('ctas-lang')||'vi')==='en'||new URLSearchParams(location.search).get('lang')==='en'}catch(e){return false}})();
 var NAMESEL='.lc h4,.person h4,.person .n,.lc img,.person img';
-function tr(root){if(!EN||!window.CTAS_EN||!root)return;var D=window.CTAS_EN,norm=function(v){return v.replace(/[\s ]+/g,' ').trim()};
+function isEN(){try{return document.documentElement.lang==='en'||(localStorage.getItem('ctas-lang')||'vi')==='en'}catch(e){return false}}
+function tr(root){if(!isEN()||!window.CTAS_EN||!root)return;var D=window.CTAS_EN,norm=function(v){return v.replace(/[\s ]+/g,' ').trim()};
  var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),n,L=[];while(n=w.nextNode())L.push(n);
  L.forEach(function(n){var p=n.parentElement;if(!p||/SCRIPT|STYLE/.test(p.tagName))return;var k=norm(n.nodeValue);if(!k)return;
   if(D[k]){n.nodeValue=n.nodeValue.replace(/\S[\s\S]*\S|\S/,D[k]);return}
@@ -39,8 +40,8 @@ function footer(){var g=document.querySelector('.foot-grid');if(!g)return;
  +'<p class="f-meta">91 Chùa Láng, Đống Đa, Hà Nội<br>Văn phòng B401, B402, Tòa B<br><a href="tel:0947396248">094 739 62 48</a><br><a href="mailto:cnkhdl@ftu.edu.vn">cnkhdl@ftu.edu.vn</a></p></div>'
  +'<div><h5>Giới thiệu</h5><a href="gioi-thieu.html">Lịch sử, sứ mạng, tầm nhìn</a><a href="gioi-thieu.html#co-cau">Cơ cấu tổ chức</a><a href="tin-tuc.html">Tin tức</a><a href="khong-gian.html">Không gian học tập &amp; nghiên cứu</a></div>'
  +'<div><h5>Đào tạo</h5><a href="dao-tao.html">Tổng quan đào tạo</a><a href="nganh.html?m=cs">Khoa học máy tính</a><a href="nganh.html?m=ds">Khoa học dữ liệu</a><a href="nganh.html?m=ai">Trí tuệ nhân tạo</a><a href="dinh-huong.html">Định hướng phát triển</a></div>'
- +'<div><h5>Nghiên cứu</h5><a href="lms.html">LMS</a><a href="ftullm.html">FTULLM</a><a href="cloud.html">Cloud</a><a href="hoi-thao.html">Hội thảo khoa học 2026</a><a href="du-an-sinh-vien.html">Dự án sinh viên</a></div>'
- +'<div><h5>Liên kết</h5><a href="https://ftu.edu.vn" target="_blank" rel="noopener">Trường Đại học Ngoại thương ↗</a><a href="https://ftds.online" target="_blank" rel="noopener">Hệ thống học tập LMS ↗</a><a href="https://cloud.ftds.online" target="_blank" rel="noopener">FTU Cloud ↗</a><a href="https://ftulabs.github.io" target="_blank" rel="noopener">FTU Labs ↗</a><a href="https://www.facebook.com/KHOACNKHDL" target="_blank" rel="noopener">Fanpage Facebook ↗</a></div>';
+ +'<div><h5>Nghiên cứu</h5><a href="lms.html">FTU LMS</a><a href="ftullm.html">FTULLM Assistant</a><a href="cloud.html">FTU Cloud</a><a href="hoi-thao.html">Hội thảo khoa học 2026</a><a href="du-an-sinh-vien.html">Dự án sinh viên</a></div>'
+ +'<div><h5>Liên kết</h5><a href="https://ftu.edu.vn" target="_blank" rel="noopener">Trường Đại học Ngoại thương</a><a href="https://ftds.online" target="_blank" rel="noopener">Hệ thống học tập LMS</a><a href="https://cloud.ftds.online" target="_blank" rel="noopener">FTU Cloud</a><a href="https://ftulabs.github.io" target="_blank" rel="noopener">FTU Labs</a><a href="https://www.facebook.com/KHOACNKHDL" target="_blank" rel="noopener">Fanpage Facebook</a></div>';
  var c=document.querySelector('footer .copy');if(c)c.innerHTML='<span>© 2026 Trường Công nghệ và Khoa học ứng dụng, Trường Đại học Ngoại thương</span><span>Nexus of Excellence</span>';}
 function back(){var b=document.getElementById('back');if(!b)return;var E2=(localStorage.getItem('ctas-lang')||'vi')==='en';
  var same=document.referrer&&document.referrer.indexOf(location.origin)===0&&history.length>1;
@@ -54,6 +55,16 @@ function ticker(){var tr=document.getElementById('nbTr');if(!tr||tr.dataset.js)r
  var x=0,last=0,paused=false,speed=40;var vp=tr.parentElement;vp.addEventListener('mouseenter',function(){paused=true});vp.addEventListener('mouseleave',function(){paused=false});
  function step(t){if(!last)last=t;var dt=Math.min(64,t-last);last=t;if(!paused&&!document.hidden){x-=speed*dt/1000;var half=tr.scrollWidth/2;if(half>0&&-x>=half)x+=half;tr.style.transform='translate3d('+x.toFixed(1)+'px,0,0)'}requestAnimationFrame(step)}
  requestAnimationFrame(step);}
+
+
+function langHook(){var b=document.getElementById('langBtn');if(!b||b.dataset.hk)return;b.dataset.hk=1;var orig=b.onclick;if(!orig)return;
+ b.onclick=function(e){orig.call(b,e);try{localStorage.setItem('ctas-lang',document.documentElement.lang==='en'?'en':'vi')}catch(_){}
+  var en=document.documentElement.lang==='en',nb=document.getElementById('nbTr');
+  if(nb&&window.POSTS){var L=POSTS.filter(function(p){return p.news}).slice(0,20),h=L.map(function(p){return '<a href="bai-viet.html?id='+p.id+'"><time>'+p.d+'</time>'+((en&&p.te)||p.t)+'</a>'}).join('');nb.innerHTML=h+h;
+   var lb2=document.querySelector('.nb-lb');if(lb2)lb2.textContent=en?'LATEST':'TIN MỚI';var al=document.querySelector('.nb-all');if(al)al.textContent=en?'All news':'Tất cả'}
+  if(en){busy=true;tr(document.body);busy=false}
+  try{back();themeSwitch&&(document.getElementById('themeBtn').dataset.sw='',themeSwitch())}catch(_){}
+  var m=document.querySelector('.mnav');if(m){m.remove();try{mnav()}catch(_){}}}}
 
 /* 3. Menu điện thoại */
 function mnav(){var nav=document.querySelector('nav.gh .nav, nav .nav, .nv');if(!nav||document.querySelector('.mnav'))return;
@@ -79,6 +90,6 @@ f.className+=' sf';f.innerHTML='<div class="sf-in"><div class="foot-grid">'
 +'<div><h5>Liên hệ</h5><a href="https://maps.google.com/?q=91+Chùa+Láng,+Đống+Đa,+Hà+Nội" target="_blank">91 Chùa Láng, Đống Đa, Hà Nội</a><a href="tel:0947396248">094 739 62 48</a><a href="mailto:cnkhdl@ftu.edu.vn">cnkhdl@ftu.edu.vn</a><a href="https://ftu.edu.vn" target="_blank">ftu.edu.vn</a><a href="https://www.facebook.com/KHOACNKHDL" target="_blank">Facebook</a></div>'
 +'</div>'
 +'<div class="copy"><span>© 2026 Trường Công nghệ và Khoa học ứng dụng - Trường Đại học Ngoại thương</span><span>Chính sách bảo mật, Điều khoản</span></div></div>'}
-function go(){try{sfoot()}catch(e){}try{footer()}catch(e){}try{back()}catch(e){}try{themeSwitch()}catch(e){}try{ticker()}catch(e){}try{mnav()}catch(e){}lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
+function go(){try{sfoot()}catch(e){}try{footer()}catch(e){}try{back()}catch(e){}try{themeSwitch()}catch(e){}try{ticker()}catch(e){}try{mnav()}catch(e){}try{langHook()}catch(e){}lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 })();

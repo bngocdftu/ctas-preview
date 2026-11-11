@@ -241,3 +241,13 @@ a.org-node:hover{border-color:#B3151B;background:#FFF6F4}
 .labs-nums div{min-width:0}
 .labs .big,.mvv-a p,.labs-nums span{text-align:left!important}
 .org-node h3+p{margin-top:8px}
+/* ===== Giảm khoảng trống giữa các phần ===== */
+section{padding-top:72px;padding-bottom:72px}
+.xsec,.org{padding-top:64px;padding-bottom:64px}
+.band{padding-top:80px!important;padding-bottom:72px!important;margin-bottom:0!important}
+.pg-head{padding-top:48px!important;padding-bottom:24px!important}
+.talk{padding-bottom:20px}
+footer{padding-top:64px!important}
+@media(max-width:700px){section{padding-top:48px;padding-bottom:48px}.xsec,.org{padding-top:44px;padding-bottom:44px}.band{padding-top:56px!important;padding-bottom:48px!important}}
+/* menu thả xuống: không ngắt dòng mục */
+.dd-pan a b{white-space:nowrap}.dd-pan{min-width:260px}
