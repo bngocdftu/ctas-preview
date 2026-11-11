@@ -33,7 +33,7 @@ function tr(root){if(!isEN()||!window.CTAS_EN||!root)return;var D=window.CTAS_EN
 
 
 /* 5. Footer chung, nút quay lại, công tắc sáng/tối, dải tin tự chạy */
-var MARK='<img class="ctas-logo ctas-logo-ft" src="assets/logo/ctas-color/ctas-logo-160.png" alt="CTAS" width="160" height="56"><img class="logo-b logo-b-ft" src="assets/logo/ctas-mono/web-white-160.png" alt="" width="190" height="60">';
+var MARK='<img class="ctas-logo ctas-logo-ft" src="assets/logo/ctas-color/ctas-logo-160.png" alt="CTAS" width="160" height="56"><img class="logo-b logo-b-ft" src="assets/logo/ctas-mono/ctas-b-white-160.png" alt="" width="190" height="60">';
 function footer(){var g=document.querySelector('.foot-grid');if(!g)return;
  g.innerHTML='<div class="f-brand"><a href="index.html" class="f-logo f-ctas">'+MARK+'<span><small>Trường Công nghệ và Khoa học ứng dụng</small></span></a>'
  +'<p>Đơn vị thành viên của Trường Đại học Ngoại thương</p>'
