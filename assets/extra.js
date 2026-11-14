@@ -35,7 +35,7 @@ function tr(root){if(!isEN()||!window.CTAS_EN||!root)return;var D=window.CTAS_EN
 /* 5. Footer chung, nút quay lại, công tắc sáng/tối, dải tin tự chạy */
 var MARK='<img class="ctas-logo ctas-logo-ft" src="assets/logo/ctas-color/ctas-logo-160.png" alt="CTAS" width="160" height="56"><img class="logo-b logo-b-ft" src="assets/logo/ctas-mono/ctas-b2-white-160.png" alt="" width="190" height="60">';
 function footer(){var g=document.querySelector('.foot-grid');if(!g)return;
- g.innerHTML='<div class="f-brand"><a href="index.html" class="f-logo f-ctas">'+MARK+'<span><small>Trường Công nghệ và Khoa học ứng dụng</small></span></a>'
+ g.innerHTML='<div class="f-brand"><a href="index.html" class="f-logo f-ctas">'+MARK+'<span><small>Trường Công nghệ và<br>Khoa học ứng dụng</small></span></a>'
  +'<p>Đơn vị thành viên của Trường Đại học Ngoại thương</p>'
  +'<p class="f-meta">91 Chùa Láng, Đống Đa, Hà Nội<br>Văn phòng B401, B402, Tòa B<br><a href="tel:0947396248">094 739 62 48</a><br><a href="mailto:ctas@ftu.edu.vn">ctas@ftu.edu.vn</a></p></div>'
  +'<div><h5>Giới thiệu</h5><a href="gioi-thieu.html">Lịch sử, sứ mạng, tầm nhìn</a><a href="gioi-thieu.html#co-cau">Cơ cấu tổ chức</a><a href="tin-tuc.html">Tin tức</a><a href="khong-gian.html">Không gian học tập &amp; nghiên cứu</a></div>'

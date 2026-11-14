@@ -2,6 +2,8 @@
 window.CTAS_EN = {
 "Trường Đại học Ngoại thương":"Foreign Trade University",
 "Trường Công nghệ và Khoa học ứng dụng":"College of Technology and Applied Sciences",
+"Trường Công nghệ và":"College of Technology and",
+"Khoa học ứng dụng":"Applied Sciences",
 "Trường Công nghệ và Khoa học ứng dụng là đơn vị thành viên của":"The College of Technology and Applied Sciences is a member school of",
 "© 2026 Trường Công nghệ và Khoa học ứng dụng - Trường Đại học Ngoại thương":"© 2026 College of Technology and Applied Sciences - Foreign Trade University",
 "Chính sách bảo mật, Điều khoản":"Privacy policy, Terms",
