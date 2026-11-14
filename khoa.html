@@ -41,7 +41,9 @@ section{padding:80px 0}
 .core circle{fill:var(--blue)}.core text{fill:#fff;font:700 15px 'Open Sans';text-anchor:middle}
 .panel{position:absolute;left:18px;right:18px;bottom:18px;padding:18px 20px;border-radius:0;background:var(--card);border:1px solid var(--line);box-shadow:0 14px 40px rgba(31,6,7,.12);transition:.35s;font-size:14px}
 .panel h4{font-size:15px;margin-bottom:6px}.panel p{color:var(--mut);font-size:13.5px}.panel a{display:inline-block;margin-top:8px;font-weight:600;color:var(--blue)}[data-theme=dark] .panel a{color:#FFB4A8}
-.panel ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin-top:8px}.panel li{font-size:12px;padding:5px 10px;border-radius:0;background:var(--soft)}
+.panel ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin-top:8px}.panel li{font-size:12px;border-radius:0}
+.map img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.panel li a.node{display:block;margin:0;padding:6px 12px;background:var(--soft);color:var(--fg);font-weight:600;font-size:13px}.panel li a.node.on,.panel li a.node:hover{background:var(--blue);color:#fff}.panel #rel{margin-top:10px}
 /* blocks */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:50px}
 .duties{display:grid;gap:12px}.duties div{padding:18px 20px;border-left:3px solid var(--blue);background:var(--soft);border-radius:0;font-size:15px}
@@ -137,7 +139,7 @@ nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdro
       </div></div>
       <div class="dd"><a href="khoa.html?k=cs">Khoa ▾</a><div class="dd-pan">
           <a href="khoa.html?k=cs"><b>Khoa Khoa học máy tính</b><small>Quản lý ngành Khoa học máy tính</small></a>
-          <a href="khoa.html?k=dsai"><b>Khoa Khoa học dữ liệu và Trí tuệ nhân tạo</b><small>Quản lý ngành Khoa học dữ liệu, Trí tuệ nhân tạo</small></a>
+          <a href="khoa.html?k=dsai"><b>Khoa Trí tuệ nhân tạo và Khoa học dữ liệu</b><small>Quản lý ngành Khoa học dữ liệu, Trí tuệ nhân tạo</small></a>
           <a href="khoa.html?k=qt"><b>Khoa Khoa học tính toán và định lượng</b><small>Nền tảng toán, thống kê, định lượng</small></a>
           <a href="khoa.html?k=ln"><b>Khoa Công nghệ liên ngành</b></a>
       </div></div>
@@ -173,20 +175,22 @@ const D={
   rel:{cs:t('Toán rời rạc, đại số tuyến tính và giải tích làm nền cho thuật toán và hệ thống.','Discrete maths, linear algebra and calculus underpin algorithms and systems.'),
        ds:t('Xác suất - thống kê, chuỗi thời gian và mô hình định lượng để phân tích dữ liệu kinh tế.','Probability, statistics, time series and quantitative models for economic data.'),
        ai:t('Toán học trong học máy - học sâu: tối ưu, đại số tuyến tính, xác suất.','Mathematics of machine & deep learning: optimisation, linear algebra, probability.')},
-  facts:[['8',t('giảng viên Bộ môn Toán','Mathematics lecturers')],['3',t('ngành được hỗ trợ','majors supported')]],
+  facts:[['11',t('giảng viên','lecturers')],['3',t('ngành được hỗ trợ','majors supported')]],
   duties:[t('Giảng dạy Toán cao cấp, Lý thuyết xác suất và thống kê toán, Toán kinh tế cho các hệ đào tạo của Trường.','Teaching Advanced Mathematics, Probability & Mathematical Statistics and Mathematical Economics across the University.'),
           t('Giảng dạy bằng tiếng Anh: Toán trong khoa học quản lý; Đại số và Giải tích trong kinh tế và kinh doanh (chương trình tiên tiến).','English-taught: Mathematics for Management Science; Algebra & Calculus in Economics and Business (advanced programmes).'),
           t('Nghiên cứu ứng dụng mô hình toán học trong khoa học dữ liệu cho các bài toán kinh tế - xã hội.','Research on mathematical models in data science for socio-economic problems.')],
   units:[[t('Bộ môn Toán','Mathematics Division'),t('Xác suất - thống kê, giải tích, đại số tuyến tính, toán ứng dụng và toán kinh tế. Tổ chức semina thường kỳ hằng tháng.','Probability & statistics, analysis, linear algebra, applied and economic mathematics. Monthly regular seminars.'),'?cat=20']],
-  people:[['TS Nguyễn Văn Tăng',t('Trưởng khoa','Head of Faculty'),t('Khoa học máy tính','Computer science'),651],['TS GVC Phùng Duy Quang',t('Trưởng Bộ môn Toán','Head of Mathematics'),t('Lý thuyết xác suất và thống kê','Probability & statistics'),119],
-   ['TS Nguyễn Văn Minh','',t('Toán giải tích','Mathematical analysis'),159],
-   ['TS GVC Hà Thị Thu Hiền','',t('Đại số tuyến tính','Linear algebra'),140],
+  people:[['TS Nguyễn Văn Tăng',t('Trưởng khoa','Head of Faculty'),t('Khoa học máy tính','Computer science'),651],
+   ['TS Nguyễn Văn Minh','',t('Hình học và hệ động lực','Geometry & dynamical systems'),159],
+   ['TS GVC Hà Thị Thu Hiền','',t('Đại số và lý thuyết số','Algebra & number theory'),140],
+   ['TS GVC Phùng Thị Thu Hiền','',t('Cơ sở toán học cho tin học','Mathematical foundations of informatics'),125],
    ['TS Nguyễn Dương Nguyễn','',t('Toán ứng dụng','Applied mathematics'),177],
    ['TS GVC Lâm Văn Sơn','',t('Toán kinh tế','Mathematical economics'),699],
-   ['ThS NCS Phan Thị Hương','',t('Phương trình vi phân và đạo hàm riêng','Differential & partial differential equations'),148],
-   ['ThS NCS Vũ Thị Hương Sắc','',t('Toán kinh tế','Mathematical economics'),150],
+   ['ThS GVC Trần Phương Chi','',t('Đảm bảo toán học cho hệ thống tính toán','Mathematical foundations of computing systems'),130],
+   ['ThS NCS Phan Thị Hương','',t('Toán học','Mathematics'),148],
    ['ThS NCS Phạm Ngọc Mai','',t('Toán giải tích','Mathematical analysis'),146],
-   ['ThS NCS Nguyễn Hữu Thịnh','',t('Toán kinh tế','Mathematical economics'),144]],
+   ['ThS GVC Lê Thanh Nguyệt','',t('Xử lý thông tin và truyền thông','Information processing & communication'),134],
+   ['ThS NCS Vũ Thị Hương Sắc','',t('Toán học','Mathematics'),150]],
   courses:[t('Toán cao cấp','Advanced Mathematics'),t('Lý thuyết xác suất và thống kê toán','Probability & Mathematical Statistics'),t('Toán kinh tế','Mathematical Economics'),t('Toán, xác suất và thống kê trong kinh tế','Mathematics, Probability and Statistics in Economics'),t('Mô hình chuỗi thời gian trong kinh tế và kinh doanh (TOA206)','Time-series Models in Economics and Business (TOA206)'),t('Toán trong khoa học quản lý (tiếng Anh)','Mathematics for Management Science (English)'),t('Đại số và Giải tích trong kinh tế và kinh doanh (tiếng Anh)','Algebra & Calculus in Economics and Business (English)')],
   acts:[['31.05.2025',t('Semina Bộ môn Toán thường kỳ tháng 5/2025','Mathematics regular seminar, May 2025'),t('Phương pháp hiệu chỉnh cho hệ phương trình toán tử không chỉnh; LSTM kết hợp trung bình động dự báo giá Bitcoin.','Regularisation for ill-posed operator equations; LSTM with moving averages for Bitcoin forecasting.'),1091],
    ['21.03.2025',t('Semina thường kỳ tháng 2 và 3/2025','Regular seminar, Feb-Mar 2025'),t('Tổ chức tại phòng B411.','Held in room B411.'),null,'?cat=20'],
@@ -199,18 +203,22 @@ const D={
   facts:[['2024',t('tuyển sinh khoá đầu','first intake')],['118',t('sinh viên K63, K64, K65','students in K63, K64, K65')],['1',t('ngành quản lý','major managed')]],
   duties:[t('Đào tạo ngành Khoa học máy tính gắn với kinh tế và kinh doanh.','Training Computer Science linked with economics and business.'),t('Kết nối doanh nghiệp: WorldQuant (học phần iTEC1), DEHA Việt Nam.','Industry links: WorldQuant (iTEC1 course), DEHA Vietnam.'),t('Bồi dưỡng đội tuyển Olympic Tin học, Olympic AI, ICPC và hackathon.','Coaching teams for the Informatics and AI Olympiads, ICPC and hackathons.')],
   units:[[t('Bộ môn Khoa học máy tính và Dữ liệu','Computer Science & Data Division'),t('Seminar định kỳ, hướng nghiệp và các đội tuyển thi đấu.','Regular seminars, career orientation and competition teams.'),'?cat=22'],[t('Bộ môn Tin học','Informatics Division'),t('Tin học, tin học ứng dụng, công nghệ số và ứng dụng AI cho toàn Trường.','Informatics, applied computing, digital technology and AI for the University.'),'?cat=21']],
-  people:[['TS Nguyễn Văn Tăng',t('Trưởng khoa Khoa học tính toán và định lượng','Head of the Faculty of Computational and Quantitative Science'),t('Khoa học máy tính','Computer science'),651],['TS Đoàn Quang Hưng','',t('Công nghệ thông tin','Information technology'),191],['TS Phạm Thị Kim Dung','',t('Khoa học máy tính','Computer science'),725],['TS Trần Trọng Huy','',t('Toán tin ứng dụng','Applied informatics'),128],['ThS NCS Trần Thị Thu Ngân','',t('Tin học','Informatics'),132],['ThS Trần Công Minh',t('Huấn luyện đội tuyển Olympic AI','Olympic AI team coach'),'',945],['CN Bùi Hải Đăng','',t('Khoa học máy tính','Computer science'),658],
-   ['ThS GVC Tô Thị Hải Yến',t('Trưởng Bộ môn Tin học','Head of Informatics'),t('Đảm bảo toán học cho hệ thống tính toán','Mathematical foundations of computing systems'),120],['TS GVC Phùng Thị Thu Hiền','',t('Cơ sở toán học cho tin học','Mathematical foundations of informatics'),125],['ThS GVC Trần Phương Chi','',t('Đảm bảo toán học cho hệ thống tính toán','Mathematical foundations of computing systems'),130],['ThS GVC Lê Thanh Nguyệt','',t('Xử lý thông tin và truyền thông','Information processing & communication'),134]],
+  people:[['GS TS Lê Sỹ Vinh',t('Hiệu trưởng','Rector'),t('Công nghệ thông tin','Information technology'),null],
+   ['PGS TS Đặng Xuân Thọ',t('Phó Hiệu trưởng','Vice Rector'),t('Khoa học máy tính','Computer science'),null],
+   ['ThS GVC Tô Thị Hải Yến',t('Trưởng Bộ môn Tin học','Head of Informatics'),t('Đảm bảo toán học cho hệ thống tính toán','Mathematical foundations of computing systems'),120],
+   ['TS Trần Trọng Huy','',t('Toán tin ứng dụng','Applied informatics'),128],
+   ['ThS Trần Thị Thu Ngân','',t('Công nghệ phần mềm','Software engineering'),132],
+   ['CN Nguyễn Duy Chí Dũng','',t('Khoa học máy tính (đang học sau đại học ở nước ngoài)','Computer science (pursuing graduate study abroad)'),null]],
   courses:[t('iTEC1 - Định hướng nghề nghiệp','iTEC1 - Career orientation'),t('Tư duy thiết kế','Design thinking'),t('Tin học','Informatics'),t('Tin học ứng dụng','Applied informatics'),t('Công nghệ số và ứng dụng trí tuệ nhân tạo','Digital technology & applied AI')],
   acts:[['13.12.2025',t('Olympic Tin học, Olympic AI & ICPC 2025','Informatics Olympiad, AI Olympiad & ICPC 2025'),t('Giải Nhì, Giải Ba Olympic Tin học; Giải Ba miền Bắc Olympic AI.','Second & Third Prizes in Informatics; Northern Third Prize in AI.'),1168],['29.10.2025',t('Tham quan thực tế tại DEHA Việt Nam','Field visit to DEHA Vietnam'),'',1142],['02.06.2025',t('K63 định hướng nghề nghiệp cùng WorldQuant','K63 career orientation with WorldQuant'),'',1096],['25.05.2025',t('Giải Nhất toàn quốc AI for Accessibility Hackathon 2025','National First Prize, AI for Accessibility Hackathon 2025'),t('Cuộc thi do Microsoft Việt Nam tổ chức.','Organised by Microsoft Vietnam.'),1080]]},
- dsai:{name:t('Khoa Khoa học dữ liệu và Trí tuệ nhân tạo','Faculty of Data Science & AI'),short:t('KHDL&AI','DS&AI'),
-  lead:t('Khoa quản lý hai ngành Khoa học dữ liệu và Trí tuệ nhân tạo cho đổi mới sáng tạo trong kinh tế và kinh doanh.','The faculty managing Data Science and Artificial Intelligence for innovation in economics and business.'),
+ dsai:{name:t('Khoa Trí tuệ nhân tạo và Khoa học dữ liệu','Faculty of AI & Data Science'),short:t('AI&KHDL','AI&DS'),
+  lead:t('Khoa quản lý hai ngành Trí tuệ nhân tạo và Khoa học dữ liệu cho đổi mới sáng tạo trong kinh tế và kinh doanh.','The faculty managing Data Science and Artificial Intelligence for innovation in economics and business.'),
   serve:['ds','ai'],rel:{ds:t('Chương trình Khoa học dữ liệu trong Đổi mới sáng tạo Kinh tế và Kinh doanh - hội thảo lấy ý kiến mở ngành ngày 22/8/2025.','Data Science for Innovation in Economics and Business - consultation workshop on 22/8/2025.'),ai:t('Chương trình Trí tuệ nhân tạo cho đổi mới sáng tạo trong kinh tế và kinh doanh.','Artificial Intelligence for innovation in economics and business.')},
-  facts:[['2',t('ngành quản lý','majors managed')],['75',t('sinh viên khoá đầu K65 (55 KHDL, 20 AI)','first-intake K65 students (55 DS, 20 AI)')]],duties:[],units:[],people:[],courses:[],
+  facts:[['2',t('ngành quản lý','majors managed')],['75',t('sinh viên khoá đầu K65 (55 KHDL, 20 AI)','first-intake K65 students (55 DS, 20 AI)')]],duties:[],units:[],people:[['PGS TS Lê Hồng Phương',t('Phó Hiệu trưởng','Vice Rector'),t('Khoa học máy tính','Computer science'),null],['TS GVC Phùng Duy Quang','',t('Lý thuyết xác suất và thống kê','Probability & statistics'),119],['TS Phạm Thị Kim Dung','',t('Khoa học máy tính','Computer science'),725],['TS Đoàn Quang Hưng','',t('Công nghệ thông tin','Information technology'),191],['ThS Trần Công Minh',t('Huấn luyện đội tuyển Olympic AI','Olympic AI team coach'),t('Khoa học dữ liệu, Thị giác máy tính','Data science, Computer vision'),945],['ThS NCS Nguyễn Hữu Thịnh','',t('Toán ứng dụng','Applied mathematics'),144]],courses:[],
   acts:[['16.06.2026',t('Hội thảo khoa học 2026','Scientific Conference 2026'),t('31 bài viết về Toán, KHMT, KHDL và AI.','31 papers in mathematics, CS, data science and AI.'),1189],['22.08.2025',t('Hội thảo lấy ý kiến mở ngành Khoa học dữ liệu','Consultation workshop on the Data Science programme'),'',1102]]},
  ln:{name:t('Khoa Công nghệ liên ngành','Faculty of Interdisciplinary Technology'),short:t('CNLN','IT'),lead:t('Khoa phụ trách các chương trình đào tạo liên ngành, kết hợp khoa học máy tính, trí tuệ nhân tạo và khoa học dữ liệu với các lĩnh vực thế mạnh của Trường Đại học Ngoại thương như kinh doanh, tài chính, chuỗi cung ứng và logistics.','The faculty for interdisciplinary programmes that combine computer science, AI and data science with Foreign Trade University strengths such as business, finance, supply chain and logistics.'),serve:[],rel:{},facts:[['2',t('chương trình liên ngành dự kiến','planned interdisciplinary programmes')]],duties:[],units:[],people:[],courses:[],acts:[]}};
-const TX=E?{map:'Faculty ↔ Majors',click:'Click a major to see how the faculty supports it',open:'Open major page',about:'Mission',units:'Divisions',people:'Faculty members',all:'All',courses:'Courses taught',acts:'Academic activities',contact:'Contact the faculty',upd:'Content coming soon.',src:'Source: cnkhdl.ftu.edu.vn - staff list as published by the former Faculty of Technology and Data Science.',back:'← Home',read:'Read',more:'More'}
-:{map:'Khoa ↔ Ngành',click:'Bấm vào một ngành để xem khoa hỗ trợ ngành đó thế nào',open:'Mở trang ngành',about:'Chức năng - nhiệm vụ',units:'Bộ môn',people:'Đội ngũ giảng viên',all:'Tất cả',courses:'Học phần phụ trách',acts:'Hoạt động học thuật',contact:'Liên hệ khoa',upd:'Nội dung đang được cập nhật.',src:'Nguồn: cnkhdl.ftu.edu.vn - danh sách giảng viên theo công bố của Khoa Công nghệ và Khoa học dữ liệu (tiền thân).',back:'← Trang chủ',read:'Đọc',more:'Xem thêm'};
+const TX=E?{map:'Faculty ↔ Majors',click:'Click a major to see how the faculty supports it',open:'Open major page',about:'Mission',units:'Divisions',people:'Faculty members',all:'All',courses:'Courses taught',acts:'Academic activities',contact:'Contact the faculty',upd:'Content coming soon.',src:'Staff list updated November 2026.',back:'← Home',read:'Read',more:'More'}
+:{map:'Khoa ↔ Ngành',click:'Bấm vào một ngành để xem khoa hỗ trợ ngành đó thế nào',open:'Mở trang ngành',about:'Chức năng - nhiệm vụ',units:'Bộ môn',people:'Đội ngũ giảng viên',all:'Tất cả',courses:'Học phần phụ trách',acts:'Hoạt động học thuật',contact:'Liên hệ khoa',upd:'Nội dung đang được cập nhật.',src:'Danh sách giảng viên cập nhật tháng 11/2026.',back:'← Trang chủ',read:'Đọc',more:'Xem thêm'};
 const k=D[new URLSearchParams(location.search).get('k')]?new URLSearchParams(location.search).get('k'):'qt',d=D[k];
 document.title=d.name+' - CTAS';
 document.getElementById('tabs').innerHTML=Object.entries(D).map(([x,v])=>`<a href="?k=${x}&lang=${LANG}" class="${x===k?'on':''}">${v.short}</a>`).join('');
@@ -218,17 +226,13 @@ const lb=document.getElementById('langBtn');lb.onclick=()=>{const q=new URLSearc
 const th=document.getElementById('themeBtn');const st=()=>th.textContent=root.dataset.theme==='dark'?'☀︎':'☾';st();th.onclick=()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('ctas-theme',root.dataset.theme);st()};
 const ini=n=>n.split(' ').slice(-2).map(w=>w[0]).join('');
 const empty=`<div class="empty">${TX.upd}</div>`;
-// map svg
-const POS=[[-240,-120],[240,-120],[0,170]];const sv=d.serve.map((m,i)=>({m,p:d.serve.length===1?[0,-150]:d.serve.length===2?[[-230,-60],[230,-60]][i]:POS[i]}));
-const svg=`<svg viewBox="-330 -240 660 520">${sv.map(s=>`<path class="ln" data-m="${s.m}" d="M0 0 L${s.p[0]} ${s.p[1]}"/><circle class="pulse" r="4"><animateMotion dur="2.4s" repeatCount="indefinite" path="M0 0 L${s.p[0]} ${s.p[1]}"/></circle>`).join('')}
-<g class="core"><circle r="74" opacity=".15"><animate attributeName="r" values="70;86;70" dur="3s" repeatCount="indefinite"/></circle><circle r="62"/><text y="-4">${d.short}</text><text y="16" style="font-size:11px;font-weight:500">${t('Khoa','Faculty')}</text></g>
-${sv.map(s=>`<g class="node" data-m="${s.m}" transform="translate(${s.p[0]} ${s.p[1]})"><rect x="-92" y="-30" width="184" height="60" rx="16"/><text y="-2">${MAJ[s.m][0]}</text><text class="sm" y="16">${t('Ngành đào tạo','Major')}</text></g>`).join('')}</svg>`;
+const PH={qt:'giang-vien-ctdt',cs:'lop-hoc-ftds',dsai:'hoi-thao-smu',ln:'blockchain-workshop'};
 const app=document.getElementById('app');
 app.innerHTML=`
 <div class="c hero">
  <div><div class="eyebrow">${t('Giới thiệu khoa','Faculty profile')}</div><h1>${d.name}</h1><p class="lead">${d.lead}</p>
  <div class="facts">${d.facts.map(f=>`<div><b>${f[0]}</b><span>${f[1]}</span></div>`).join('')}</div></div>
- <div class="map">${sv.length?svg:''}<div class="panel" id="panel">${sv.length?`<h4>${TX.map}</h4><p>${TX.click}</p>`:`<p>${TX.upd}</p>`}</div></div>
+ <div class="map"><img src="assets/photos/${PH[k]}.jpg" alt="${d.name}"><div class="panel" id="panel">${d.serve.length?`<h4>${TX.map}</h4><ul>${d.serve.map(m=>`<li><a class="node" data-m="${m}" href="${MAJ[m][1]}&lang=${LANG}">${MAJ[m][0]}</a></li>`).join('')}</ul><p id="rel"></p>`:`<p>${TX.upd}</p>`}</div></div>
 </div>
 <section><div class="c grid2">
  <div><div class="eyebrow">${TX.about}</div><h2>${d.name}</h2></div>
@@ -237,7 +241,7 @@ app.innerHTML=`
 <section style="padding-top:0"><div class="c"><div class="eyebrow">${TX.units}</div><h2>${TX.units}</h2>
  <div class="units">${d.units.length?d.units.map((u,i)=>`<a class="unit rv" href="https://cnkhdl.ftu.edu.vn/${u[2]}" target="_blank"><small>0${i+1}</small><h3>${u[0]}</h3><p>${u[1]}</p></a>`).join(''):empty}</div></div></section>
 <section style="padding-top:0"><div class="c"><div class="eyebrow">${TX.people}</div><h2>${TX.people}</h2>
- <div class="people">${d.people.length?d.people.map(p=>`<a class="person rv" href="${SRC}${p[3]}"><div class="av">${ini(p[0])}</div><div><h4>${p[0]}</h4>${p[1]?`<div class="r">${p[1]}</div>`:''}<p>${p[2]}</p></div></a>`).join(''):empty}</div>
+ <div class="people">${d.people.length?d.people.map(p=>`<a class="person rv"${p[3]?` href="${SRC}${p[3]}"`:''}><div class="av">${ini(p[0])}</div><div><h4>${p[0]}</h4>${p[1]?`<div class="r">${p[1]}</div>`:''}<p>${p[2]}</p></div></a>`).join(''):empty}</div>
  ${d.people.length?`<p class="src">${TX.src} <a href="${SRC}200">${TX.more}</a></p>`:''}</div></section>
 <section style="padding-top:0"><div class="c"><div class="eyebrow">${TX.courses}</div><h2>${TX.courses}</h2>
  <div class="courses">${d.courses.length?d.courses.map((c,i)=>`<div class="rv"><i>${String(i+1).padStart(2,'0')}</i>${c}</div>`).join(''):empty}</div></div></section>
@@ -245,16 +249,15 @@ app.innerHTML=`
  <div class="acts">${d.acts.length?d.acts.map(a=>`<a class="act rv" href="${a[3]?'bai-viet.html?id='+a[3]:'https://cnkhdl.ftu.edu.vn/'+a[4]}"><time>${a[0]}</time><div><h4>${a[1]}</h4>${a[2]?`<p>${a[2]}</p>`:''}</div><span>${TX.read}</span></a>`).join(''):empty}</div></div></section>
 <section style="padding-top:0"><div class="c"><div class="contact"><div><h2 style="margin-bottom:8px">${TX.contact}</h2><p>${t('Nhà B, Trường Đại học Ngoại thương - 91 Chùa Láng, Đống Đa, Hà Nội','Building B, Foreign Trade University - 91 Chua Lang, Dong Da, Hanoi')}</p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="mailto:ctas@ftu.edu.vn">ctas@ftu.edu.vn</a><a class="btn" style="background:transparent;border:1px solid #FFB4A8" href="dao-tao.html">${TX.back}</a></div></div></div></section>`;
 const panel=document.getElementById('panel');
-function pick(m){document.querySelectorAll('.node,.ln').forEach(e=>e.classList.toggle('on',e.dataset.m===m));
- panel.innerHTML=`<h4>${MAJ[m][0]}</h4><p>${d.rel[m]||''}</p><a href="${MAJ[m][1]}&lang=${LANG}">${TX.open}</a>`}
-document.querySelectorAll('.node').forEach(n=>{n.onclick=()=>pick(n.dataset.m);n.onmouseenter=()=>pick(n.dataset.m)});
+function pick(m){document.querySelectorAll('.node').forEach(e=>e.classList.toggle('on',e.dataset.m===m));const r=document.getElementById('rel');if(r)r.textContent=d.rel[m]||''}
+document.querySelectorAll('.node').forEach(n=>{n.onmouseenter=()=>pick(n.dataset.m)});if(d.serve.length)pick(d.serve[0]);
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
 document.querySelectorAll('.rv').forEach(e=>io.observe(e));
 </script>
 <script>
 (function(){const E=(localStorage.getItem('ctas-lang')||'vi')==='en';document.querySelectorAll('#langBtn span').forEach(s=>s.classList.toggle('on',s.dataset.l===(E?'en':'vi')));
 const tb=document.getElementById('themeBtn');const st=()=>tb.textContent=document.documentElement.dataset.theme==='dark'?'☀︎':'☾';st();new MutationObserver(st).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
-if(!E)return;const T={"Giới thiệu ▾":"About ▾","Lịch sử":"History","Gần 40 năm phát triển":"Nearly 40 years of growth","Tin tức":"News","Hoạt động mới nhất":"Latest activities","Đào tạo ▾":"Education ▾","Khoa ▾":"Departments ▾","Tổng quan đào tạo":"Programs overview","Chương trình, lộ trình học":"Programs and study paths","Đào tạo":"Programs","Khoa":"Faculties","Khoa học máy tính":"Computer Science","Khoa học dữ liệu":"Data Science","Trí tuệ nhân tạo":"Artificial Intelligence","Khoa Khoa học máy tính":"Faculty of Computer Science","Khoa Khoa học dữ liệu và Trí tuệ nhân tạo":"Faculty of Data Science and AI","Khoa Khoa học tính toán và định lượng":"Faculty of Computational & Quantitative Science","Khoa Công nghệ liên ngành":"Faculty of Interdisciplinary Technology","Quản lý ngành Khoa học máy tính":"Manages Computer Science","Quản lý ngành Khoa học dữ liệu, Trí tuệ nhân tạo":"Manages Data Science, AI","Nền tảng toán, thống kê, định lượng":"Math, statistics & quantitative foundations","Nghiên cứu ▾":"Research ▾","Sản phẩm công nghệ":"Technical products","Nghiên cứu":"Research","Không gian học tập & nghiên cứu":"Learning & research spaces","Hội thảo khoa học 2026":"Scientific Conference 2026","Đăng nhập":"Log in","Đăng ký ngay":"Apply now","Đại học Ngoại thương":"Foreign Trade University","← Về trang chủ":"← Back to home"};
+if(!E)return;const T={"Giới thiệu ▾":"About ▾","Lịch sử":"History","Gần 40 năm phát triển":"Nearly 40 years of growth","Tin tức":"News","Hoạt động mới nhất":"Latest activities","Đào tạo ▾":"Education ▾","Khoa ▾":"Departments ▾","Tổng quan đào tạo":"Programs overview","Chương trình, lộ trình học":"Programs and study paths","Đào tạo":"Programs","Khoa":"Faculties","Khoa học máy tính":"Computer Science","Khoa học dữ liệu":"Data Science","Trí tuệ nhân tạo":"Artificial Intelligence","Khoa Khoa học máy tính":"Faculty of Computer Science","Khoa Trí tuệ nhân tạo và Khoa học dữ liệu":"Faculty of AI and Data Science","Khoa Khoa học tính toán và định lượng":"Faculty of Computational & Quantitative Science","Khoa Công nghệ liên ngành":"Faculty of Interdisciplinary Technology","Quản lý ngành Khoa học máy tính":"Manages Computer Science","Quản lý ngành Khoa học dữ liệu, Trí tuệ nhân tạo":"Manages Data Science, AI","Nền tảng toán, thống kê, định lượng":"Math, statistics & quantitative foundations","Nghiên cứu ▾":"Research ▾","Sản phẩm công nghệ":"Technical products","Nghiên cứu":"Research","Không gian học tập & nghiên cứu":"Learning & research spaces","Hội thảo khoa học 2026":"Scientific Conference 2026","Đăng nhập":"Log in","Đăng ký ngay":"Apply now","Đại học Ngoại thương":"Foreign Trade University","← Về trang chủ":"← Back to home"};
 const w=document.createTreeWalker(document.querySelector('nav.gh'),NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const k=n.nodeValue.trim();if(T[k])n.nodeValue=n.nodeValue.replace(k,T[k])}})();
 </script>
 <script src="assets/news/data.js?v=20261111r"></script>
