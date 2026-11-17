@@ -9,13 +9,15 @@ function fix(root){if(!root)return;var w=document.createTreeWalker(root,NodeFilt
 L.forEach(function(n){var v=n.nodeValue.replace(RE,function(m,a,b){return a+b.replace(/ +/g,' ')});if(v!==n.nodeValue)n.nodeValue=v})}
 var busy=false;function run(){if(busy)return;busy=true;try{tr(document.body)}catch(e){}fix(document.body);try{noOrphan()}catch(e){}busy=false}
 /* 2. Dải giảng viên */
+window.ctasSlug=function(n){n=String(n).replace(/^(GS|PGS|TS|ThS|Th\.S|CN|GVC|NCS|[.,\s])+/g,'').replace(/^(GS|PGS|TS|ThS|Th\.S|CN|GVC|NCS|[.,\s])+/g,'').trim();return n.replace(/đ/g,'d').replace(/Đ/g,'D').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')};
+function orgLinks(){document.querySelectorAll('.org-ppl li').forEach(function(li){if(li.dataset.pf)return;var b=li.querySelector('b');if(!b)return;var u='giang-vien.html?id='+ctasSlug(b.textContent);li.dataset.pf=1;li.style.cursor='pointer';li.setAttribute('role','link');li.tabIndex=0;var go=function(e){e.preventDefault();e.stopPropagation();location.href=u};li.addEventListener('click',go);li.addEventListener('keydown',function(e){if(e.key==='Enter')go(e)})})}
 function lec(){var box=document.getElementById('lecRun');if(!box||!window.POSTS)return;var E=(localStorage.getItem('ctas-lang')||'vi')==='en';
 var R={'651':'Trưởng khoa Khoa học tính toán và định lượng','945':'Huấn luyện đội tuyển Olympic AI','725':'Khoa học máy tính','191':'Công nghệ thông tin','128':'Toán tin ứng dụng','699':'Toán kinh tế','177':'Toán ứng dụng','159':'Toán giải tích','140':'Đại số tuyến tính','125':'Cơ sở toán học cho tin học','658':'Khoa học máy tính','132':'Tin học','130':'Đảm bảo toán học cho hệ thống tính toán','134':'Xử lý thông tin và truyền thông','148':'Phương trình vi phân','150':'Toán kinh tế','146':'Toán giải tích','144':'Toán kinh tế'};
 var ord=['119','651','120','725','191','128','945','699','177','125','159','140','658','944','934'];
 var L=POSTS.filter(function(p){return p.c==='Giảng viên'&&!/DANH SÁCH/i.test(p.t)});
 L.sort(function(a,b){var i=ord.indexOf(a.id),j=ord.indexOf(b.id);return (i<0?99:i)-(j<0?99:j)});
 var card=function(p){var nm=p.t.replace(/^Th\.S/,'ThS').replace(/\s+/g,' ').trim();var ini=nm.split(' ').slice(-1)[0][0];
-return '<a class="lc" href="bai-viet.html?id='+p.id+'"><div class="ph">'+(p.cover?'<img src="'+(p.th||p.cover)+'" alt="'+nm+'" loading="lazy" decoding="async">':ini)+'</div><div class="nm"><h4>'+nm+'</h4><small>'+(R[p.id]||(E?'Lecturer':'Giảng viên'))+'</small></div></a>'};
+return '<a class="lc" href="giang-vien.html?id='+ctasSlug(nm)+'"><div class="ph">'+(p.cover?'<img src="'+(p.th||p.cover)+'" alt="'+nm+'" loading="lazy" decoding="async">':ini)+'</div><div class="nm"><h4>'+nm+'</h4><small>'+(R[p.id]||(E?'Lecturer':'Giảng viên'))+'</small></div></a>'};
 var A=L.map(card).join('');box.innerHTML='<div class="lec-tr">'+A+A+'</div>'}
 
 
@@ -102,6 +104,6 @@ f.className+=' sf';f.innerHTML='<div class="sf-in"><div class="foot-grid">'
 +'<div><h5>Liên hệ</h5><a href="https://maps.google.com/?q=91+Chùa+Láng,+Đống+Đa,+Hà+Nội" target="_blank">91 Chùa Láng, Đống Đa, Hà Nội</a><a href="mailto:ctas@ftu.edu.vn">ctas@ftu.edu.vn</a><a href="https://ftu.edu.vn" target="_blank">ftu.edu.vn</a><a href="https://www.facebook.com/KHOACNKHDL" target="_blank">Facebook</a></div>'
 +'</div>'
 +'<div class="copy"><span>© 2026 Trường Công nghệ và Khoa học ứng dụng - Trường Đại học Ngoại thương</span><span>Chính sách bảo mật, Điều khoản</span></div></div>'}
-function go(){try{sfoot()}catch(e){}try{footer()}catch(e){}try{back()}catch(e){}try{themeSwitch()}catch(e){}try{ticker()}catch(e){}try{mnav()}catch(e){}try{langHook()}catch(e){}lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
+function go(){try{sfoot()}catch(e){}try{footer()}catch(e){}try{back()}catch(e){}try{themeSwitch()}catch(e){}try{ticker()}catch(e){}try{mnav()}catch(e){}try{orgLinks()}catch(e){}try{langHook()}catch(e){}lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 })();
