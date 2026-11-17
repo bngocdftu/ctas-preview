@@ -10,7 +10,7 @@ L.forEach(function(n){var v=n.nodeValue.replace(RE,function(m,a,b){return a+b.re
 var busy=false;function run(){if(busy)return;busy=true;try{tr(document.body)}catch(e){}fix(document.body);try{noOrphan()}catch(e){}busy=false}
 /* 2. Dải giảng viên */
 function lec(){var box=document.getElementById('lecRun');if(!box||!window.POSTS)return;var E=(localStorage.getItem('ctas-lang')||'vi')==='en';
-var R={'119':'Trưởng Bộ môn Toán, Xác suất và thống kê','651':'Trưởng khoa Khoa học tính toán và định lượng','120':'Trưởng Bộ môn Tin học','945':'Huấn luyện đội tuyển Olympic AI','725':'Khoa học máy tính','191':'Công nghệ thông tin','128':'Toán tin ứng dụng','699':'Toán kinh tế','177':'Toán ứng dụng','159':'Toán giải tích','140':'Đại số tuyến tính','125':'Cơ sở toán học cho tin học','658':'Khoa học máy tính','132':'Tin học','130':'Đảm bảo toán học cho hệ thống tính toán','134':'Xử lý thông tin và truyền thông','148':'Phương trình vi phân','150':'Toán kinh tế','146':'Toán giải tích','144':'Toán kinh tế'};
+var R={'651':'Trưởng khoa Khoa học tính toán và định lượng','945':'Huấn luyện đội tuyển Olympic AI','725':'Khoa học máy tính','191':'Công nghệ thông tin','128':'Toán tin ứng dụng','699':'Toán kinh tế','177':'Toán ứng dụng','159':'Toán giải tích','140':'Đại số tuyến tính','125':'Cơ sở toán học cho tin học','658':'Khoa học máy tính','132':'Tin học','130':'Đảm bảo toán học cho hệ thống tính toán','134':'Xử lý thông tin và truyền thông','148':'Phương trình vi phân','150':'Toán kinh tế','146':'Toán giải tích','144':'Toán kinh tế'};
 var ord=['119','651','120','725','191','128','945','699','177','125','159','140','658','944','934'];
 var L=POSTS.filter(function(p){return p.c==='Giảng viên'&&!/DANH SÁCH/i.test(p.t)});
 L.sort(function(a,b){var i=ord.indexOf(a.id),j=ord.indexOf(b.id);return (i<0?99:i)-(j<0?99:j)});
@@ -37,11 +37,11 @@ var MARK='<img class="ctas-logo ctas-logo-ft" src="assets/logo/ctas-color/ctas-l
 function footer(){var g=document.querySelector('.foot-grid');if(!g)return;
  g.innerHTML='<div class="f-brand"><a href="index.html" class="f-logo f-ctas">'+MARK+'<span><small>Trường Công nghệ và<br>Khoa học ứng dụng</small></span></a>'
  +'<p>Đơn vị thành viên của Trường Đại học Ngoại thương</p>'
- +'<p class="f-meta">91 Chùa Láng, Đống Đa, Hà Nội<br>Văn phòng B401, B402, Tòa B<br><a href="tel:0947396248">094 739 62 48</a><br><a href="mailto:ctas@ftu.edu.vn">ctas@ftu.edu.vn</a></p></div>'
+ +'<p class="f-meta">91 Chùa Láng, Đống Đa, Hà Nội<br><a href="mailto:ctas@ftu.edu.vn">ctas@ftu.edu.vn</a></p></div>'
  +'<div><h5>Giới thiệu</h5><a href="gioi-thieu.html">Lịch sử, sứ mạng, tầm nhìn</a><a href="gioi-thieu.html#co-cau">Cơ cấu tổ chức</a><a href="tin-tuc.html">Tin tức</a><a href="khong-gian.html">Không gian học tập &amp; nghiên cứu</a></div>'
  +'<div><h5>Đào tạo</h5><a href="dao-tao.html">Tổng quan đào tạo</a><a href="nganh.html?m=cs">Khoa học máy tính</a><a href="nganh.html?m=ds">Khoa học dữ liệu</a><a href="nganh.html?m=ai">Trí tuệ nhân tạo</a><a href="dinh-huong.html">Định hướng phát triển</a></div>'
  +'<div><h5>Nghiên cứu</h5><a href="lms.html">FTU LMS</a><a href="ftullm.html">FTULLM Assistant</a><a href="cloud.html">FTU Cloud</a><a href="hoi-thao.html">Hội thảo khoa học 2026</a><a href="du-an-sinh-vien.html">Dự án sinh viên</a></div>'
- +'<div><h5>Liên kết</h5><a href="https://ftu.edu.vn" target="_blank" rel="noopener">Trường Đại học Ngoại thương</a><a href="https://ftds.online" target="_blank" rel="noopener">Hệ thống học tập LMS</a><a href="https://cloud.ftds.online" target="_blank" rel="noopener">FTU Cloud</a><a href="https://ftulabs.github.io" target="_blank" rel="noopener">FTU Labs</a><a href="https://www.facebook.com/KHOACNKHDL" target="_blank" rel="noopener">Fanpage Facebook</a></div>';
+ +'<div><h5>Liên kết</h5><a href="https://ftu.edu.vn" target="_blank" rel="noopener">Trường Đại học Ngoại thương</a><a href="https://ftds.online" target="_blank" rel="noopener">Hệ thống học tập LMS</a><a href="https://cloud.ftds.online" target="_blank" rel="noopener">FTU Cloud</a><a href="https://ftulabs.github.io" target="_blank" rel="noopener">FTU Labs</a></div>';
  var c=document.querySelector('footer .copy');if(c)c.innerHTML='<span>© 2026 Trường Công nghệ và Khoa học ứng dụng, Trường Đại học Ngoại thương</span><span>Nexus of Excellence</span>';}
 function back(){var b=document.getElementById('back');if(!b)return;var E2=(localStorage.getItem('ctas-lang')||'vi')==='en';
  var same=document.referrer&&document.referrer.indexOf(location.origin)===0&&history.length>1;
@@ -60,7 +60,7 @@ function ticker(){var tr=document.getElementById('nbTr');if(!tr||tr.dataset.js)r
 function langHook(){var b=document.getElementById('langBtn');if(!b||b.dataset.hk)return;b.dataset.hk=1;var orig=b.onclick;if(!orig)return;
  b.onclick=function(e){orig.call(b,e);try{localStorage.setItem('ctas-lang',document.documentElement.lang==='en'?'en':'vi')}catch(_){}
   var en=document.documentElement.lang==='en',nb=document.getElementById('nbTr');
-  if(nb&&window.POSTS){var L=POSTS.filter(function(p){return p.news}).slice(0,20),h=L.map(function(p){return '<a href="bai-viet.html?id='+p.id+'"><time>'+p.d+'</time>'+((en&&p.te)||p.t)+'</a>'}).join('');nb.innerHTML=h+h;
+  if(nb&&window.POSTS){var L=POSTS.filter(function(p){return p.news}).slice(0,20),h=L.map(function(p){return '<a href="bai-viet.html?id='+p.id+'">'+((en&&p.te)||p.t)+'</a>'}).join('');nb.innerHTML=h+h;
    var lb2=document.querySelector('.nb-lb');if(lb2)lb2.textContent=en?'LATEST':'TIN MỚI';var al=document.querySelector('.nb-all');if(al)al.textContent=en?'All news':'Tất cả'}
   if(en){busy=true;tr(document.body);busy=false}
   try{back();themeSwitch&&(document.getElementById('themeBtn').dataset.sw='',themeSwitch())}catch(_){}
@@ -99,9 +99,9 @@ f.className+=' sf';f.innerHTML='<div class="sf-in"><div class="foot-grid">'
 +'<div><h5>Kết nối</h5><a href="mailto:ctas@ftu.edu.vn">Hợp tác doanh nghiệp</a><a href="mailto:ctas@ftu.edu.vn">Tài trợ</a><a href="#">Cựu sinh viên</a><a href="index.html#news">Báo chí</a></div>'
 +'<div><h5>Người học tương lai</h5><a href="index.html#study">Đào tạo</a><a href="dao-tao.html">Tuyển sinh</a><a href="#">Học phí</a><a href="#">Học bổng</a><a href="#">Hỏi đáp</a></div>'
 +'<div><h5>Sinh viên</h5><a href="#">Thời khoá biểu</a><a href="#">Chương trình học</a><a href="#">Công tác sinh viên</a><a href="dao-tao.html">CLB CTE</a></div>'
-+'<div><h5>Liên hệ</h5><a href="https://maps.google.com/?q=91+Chùa+Láng,+Đống+Đa,+Hà+Nội" target="_blank">91 Chùa Láng, Đống Đa, Hà Nội</a><a href="tel:0947396248">094 739 62 48</a><a href="mailto:ctas@ftu.edu.vn">ctas@ftu.edu.vn</a><a href="https://ftu.edu.vn" target="_blank">ftu.edu.vn</a><a href="https://www.facebook.com/KHOACNKHDL" target="_blank">Facebook</a></div>'
++'<div><h5>Liên hệ</h5><a href="https://maps.google.com/?q=91+Chùa+Láng,+Đống+Đa,+Hà+Nội" target="_blank">91 Chùa Láng, Đống Đa, Hà Nội</a><a href="mailto:ctas@ftu.edu.vn">ctas@ftu.edu.vn</a><a href="https://ftu.edu.vn" target="_blank">ftu.edu.vn</a><a href="https://www.facebook.com/KHOACNKHDL" target="_blank">Facebook</a></div>'
 +'</div>'
 +'<div class="copy"><span>© 2026 Trường Công nghệ và Khoa học ứng dụng - Trường Đại học Ngoại thương</span><span>Chính sách bảo mật, Điều khoản</span></div></div>'}
-function go(){try{sfoot()}catch(e){}try{footer()}catch(e){}try{back()}catch(e){}try{themeSwitch()}catch(e){}try{ticker()}catch(e){}try{mnav()}catch(e){}try{langHook()}catch(e){}try{logoSwitch()}catch(e){}lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
+function go(){try{sfoot()}catch(e){}try{footer()}catch(e){}try{back()}catch(e){}try{themeSwitch()}catch(e){}try{ticker()}catch(e){}try{mnav()}catch(e){}try{langHook()}catch(e){}lec();run();new MutationObserver(function(){if(!busy){clearTimeout(go.t);go.t=setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 })();
