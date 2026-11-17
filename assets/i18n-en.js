@@ -1,6 +1,6 @@
 /* Bản dịch tiếng Anh cho các chữ giao diện dùng chung. Khoá là chữ tiếng Việt (khoảng trắng chuẩn hoá). */
 window.CTAS_EN = {
-"Tuyển dụng":"Careers","Đội ngũ":"People","Tóm tắt Đề án":"Founding proposal","Mục tiêu, đào tạo, nghiên cứu, cơ cấu":"Goals, education, research, structure",
+"Tuyển dụng":"Careers","Trường Công nghệ":"College of Technology","và Khoa học ứng dụng":"and Applied Sciences","Chức năng, nhiệm vụ":"Functions and duties","CTAS làm gì":"What CTAS does","Đội ngũ":"People","Tóm tắt Đề án":"Founding proposal","Mục tiêu, đào tạo, nghiên cứu, cơ cấu":"Goals, education, research, structure",
 "Trường Đại học Ngoại thương":"Foreign Trade University",
 "Trường Công nghệ và Khoa học ứng dụng":"College of Technology and Applied Sciences",
 "Trường Công nghệ và":"College of Technology and",

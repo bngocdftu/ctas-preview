@@ -253,7 +253,7 @@ footer{padding-top:64px!important}
 .dd-pan a b{white-space:nowrap}.dd-pan{min-width:260px}
 /* ===== Logo màu CTAS ===== */
 .logo .ctas-logo{height:48px;width:auto;display:block;flex:none}
-.logo .lk small{font-size:9.5px!important;letter-spacing:.12em!important;max-width:150px;line-height:1.35}
+.logo .lk small{font-size:9.5px!important;letter-spacing:.12em!important;max-width:none;white-space:nowrap;line-height:1.35}
 .logo{gap:12px!important;align-items:center}
 .f-ctas{flex-direction:column;align-items:flex-start!important;gap:10px!important}
 .ctas-logo-ft{height:56px;width:auto;display:block}
