@@ -586,8 +586,8 @@ html:not([data-theme=dark]) .hw-school strong{color:#1F0607}html:not([data-theme
 @media(max-width:700px){.hw-school{flex-direction:column;text-align:center}}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/extra.css?v=20261117b">
-<link rel="stylesheet" href="assets/style2.css?v=20261117b">
+<link rel="stylesheet" href="assets/extra.css?v=20261117c">
+<link rel="stylesheet" href="assets/style2.css?v=20261117c">
 </head>
 <body>
 <div class="ftu-bar"><div class="fb-in"><a href="https://ftu.edu.vn" target="_blank" class="fb-ftu"><img src="assets/ftu-logo.png" alt="FTU" class="seal"><span>Trường Đại học Ngoại thương</span><em>ftu.edu.vn</em></a><div class="fb-r"><a href="mailto:ctas@ftu.edu.vn">Hợp tác</a><a href="mailto:ctas@ftu.edu.vn">Tài trợ</a><a href="tel:0947396248">Liên hệ</a></div></div></div>
@@ -650,7 +650,7 @@ html:not([data-theme=dark]) .hw-school strong{color:#1F0607}html:not([data-theme
 .pf-share a,.pf-share button{border:1px solid rgba(128,128,128,.4);background:none;color:inherit;padding:8px 14px;font:inherit;cursor:pointer}
 @media(max-width:700px){.pf-top{grid-template-columns:1fr}.pf-ph{width:160px}}
 </style>
-<script src="assets/people.js?v=20261117b"></script>
+<script src="assets/people.js?v=20261117c"></script>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
 var E=(localStorage.getItem('ctas-lang')||'vi')==='en',el=document.getElementById('pf'),id=new URLSearchParams(location.search).get('id');
@@ -666,12 +666,13 @@ var lines=[];if(p.role)lines.push((E&&p.role_en)||p.role);lines.push(E?(UNIT_EN[
 var h='<div class="pf-top"><div class="pf-ph">'+(p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(nm)+'">':esc(nm.split(' ').slice(-1)[0][0]))+'</div><div><h1>'+esc(nm)+'</h1>'+lines.map(function(l){return '<p class="ln">'+esc(l)+'</p>'}).join('')+(dg?'<p class="dg">'+esc(dg)+'</p>':'')+'<div class="ct">'+(p.email?'<b>Email:</b> <a href="mailto:'+esc(p.email)+'">'+esc(p.email)+'</a><br>':'')+'<b>Web:</b> <a href="'+location.href.split('#')[0]+'">'+esc(location.host+location.pathname)+'?id='+esc(p.id)+'</a></div></div></div>';
 var sec=function(t,arr,ol){if(!arr||!arr.length)return '';return '<div class="pf-sec"><h3>'+t+'</h3><'+(ol?'ol':'ul')+'>'+arr.map(function(l){return /^\d+\.\s/.test(l)&&l.length<90?'<li class="sub">'+esc(l)+'</li>':'<li>'+esc(l.replace(/^\d+\s·\s/,''))+'</li>'}).join('')+'</'+(ol?'ol':'ul')+'></div>'};
 var S=p.sec||{};
-h+=sec(E?'Research areas':'Lĩnh vực nghiên cứu',p.field?[(E&&p.field_en)||p.field]:[]);
+h+=sec(E?'Research areas':'Lĩnh vực nghiên cứu',p.field?((E&&p.field_en)||p.field).split(/;\s*/):[]);
+if(p.intro&&!E)h+='<div class="pf-sec"><h3>Giới thiệu</h3><p style="line-height:1.75;max-width:900px">'+esc(p.intro)+'</p></div>';
 h+=sec(E?'Education':'Quá trình đào tạo',S['dao-tao']);
 h+=sec(E?'Career':'Quá trình công tác',S['cong-tac']);
 h+=sec(E?'Selected publications and research projects':'Các công trình khoa học tiêu biểu',S['cong-trinh']);
 h+=sec(E?'Other information':'Thông tin khác',S['khac']);
-if(!S['dao-tao']&&!S['cong-tac']&&!S['cong-trinh']&&!S['khac'])h+='<div class="pf-sec"><p>'+(E?'Detailed profile is being updated.':'Lý lịch khoa học chi tiết đang được cập nhật.')+'</p></div>';
+if(!p.intro&&!S['dao-tao']&&!S['cong-tac']&&!S['cong-trinh']&&!S['khac'])h+='<div class="pf-sec"><p>'+(E?'Detailed profile is being updated.':'Lý lịch khoa học chi tiết đang được cập nhật.')+'</p></div>';
 h+='<div class="pf-share"><a href="https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href)+'" target="_blank" rel="noopener">Facebook</a><a href="https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href)+'" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:?subject='+encodeURIComponent(nm)+'&body='+encodeURIComponent(location.href)+'">Email</a><button type="button" id="cpL">'+(E?'Copy link':'Sao chép liên kết')+'</button></div>';
 el.innerHTML=h;document.getElementById('cpL').onclick=function(e){navigator.clipboard&&navigator.clipboard.writeText(location.href);e.target.textContent=E?'Copied ✓':'Đã sao chép ✓'};
 });
@@ -699,8 +700,8 @@ const I18N={"Tuyển dụng": "Careers", "Gia nhập CTAS": "Join CTAS", "Trư�
  document.getElementById('langBtn').onclick=()=>apply(root.lang==='en'?'vi':'en');apply(localStorage.getItem('ctas-lang')||'vi')})();
 if(location.hash){const t=document.querySelector(location.hash);if(t)setTimeout(()=>t.scrollIntoView(),60)}
 </script>
-<script src="assets/news/data.js?v=20261117b"></script>
-<script src="assets/i18n-en.js?v=20261117b"></script>
-<script src="assets/extra.js?v=20261117b"></script>
+<script src="assets/news/data.js?v=20261117c"></script>
+<script src="assets/i18n-en.js?v=20261117c"></script>
+<script src="assets/extra.js?v=20261117c"></script>
 </body>
 </html>

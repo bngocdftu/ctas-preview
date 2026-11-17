@@ -541,28 +541,30 @@ window.PEOPLE=[
 "name": "GS TS Lê Sỹ Vinh",
 "role": "Hiệu trưởng",
 "role_en": "Rector",
-"field": "Công nghệ thông tin",
-"field_en": "Information technology",
+"field": "Khoa học máy tính; Trí tuệ nhân tạo; Khoa học dữ liệu; Khoa học sức khoẻ",
+"field_en": "Computer science; Artificial intelligence; Data science; Health science",
 "unit": "Khoa Khoa học máy tính",
 "k": "cs",
 "pid": "",
 "email": "",
 "photo": "assets/people/le-sy-vinh.jpg",
-"sec": {}
+"sec": {},
+"intro": "Nhà khoa học, chuyên gia công nghệ uy tín trên thế giới trong lĩnh vực Khoa học máy tính, trí tuệ nhân tạo, khoa học dữ liệu và khoa học sức khỏe với hơn 20 năm kinh nghiệm giảng dạy, nghiên cứu, quản lý và tư vấn cho các Tập đoàn và doanh nghiệp công nghệ thông tin hàng đầu Việt Nam."
 },
 {
 "id": "dang-xuan-tho",
 "name": "PGS TS Đặng Xuân Thọ",
 "role": "Phó Hiệu trưởng",
 "role_en": "Vice Rector",
-"field": "Khoa học máy tính",
-"field_en": "Computer science",
+"field": "Trí tuệ nhân tạo; Khoa học dữ liệu ứng dụng trong kinh tế, kinh doanh",
+"field_en": "Artificial intelligence; Data science for economics and business",
 "unit": "Khoa Khoa học máy tính",
 "k": "cs",
 "pid": "",
 "email": "",
 "photo": "assets/people/dang-xuan-tho.jpg",
-"sec": {}
+"sec": {},
+"intro": "Thầy có nhiều năm kinh nghiệm trong giảng dạy, nghiên cứu khoa học và quản lý giáo dục đại học. Nhà khoa học có uy tín trong lĩnh vực trí tuệ nhân tạo và khoa học dữ liệu ứng dụng trong kinh tế, kinh doanh."
 },
 {
 "id": "to-thi-hai-yen",
@@ -784,14 +786,15 @@ window.PEOPLE=[
 "name": "PGS TS Lê Hồng Phương",
 "role": "Phó Hiệu trưởng",
 "role_en": "Vice Rector",
-"field": "Khoa học máy tính",
-"field_en": "Computer science",
+"field": "Trí tuệ nhân tạo; Xử lý ngôn ngữ tự nhiên; Mô hình ngôn ngữ lớn",
+"field_en": "Artificial intelligence; Natural language processing; Large language models",
 "unit": "Khoa Khoa học dữ liệu và Trí tuệ nhân tạo",
 "k": "dsai",
 "pid": "",
 "email": "",
 "photo": "assets/people/le-hong-phuong.jpg",
-"sec": {}
+"sec": {},
+"intro": "Nhà khoa học có uy tín quốc tế về trí tuệ nhân tạo, chuyên sâu trong xử lý ngôn ngữ tự nhiên và các mô hình ngôn ngữ lớn. Chuyên gia công nghệ tư vấn cho các tập đoàn công nghệ hàng đầu Việt Nam, các công ty khởi nghiệp tại Nhật Bản và Ngân hàng Thế giới tại Việt Nam."
 },
 {
 "id": "phung-duy-quang",
