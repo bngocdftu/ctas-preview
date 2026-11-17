@@ -46,7 +46,11 @@ section{padding:80px 0}
 .panel li a.node{display:block;margin:0;padding:6px 12px;background:var(--soft);color:var(--fg);font-weight:600;font-size:13px}.panel li a.node.on,.panel li a.node:hover{background:var(--blue);color:#fff}.panel #rel{margin-top:10px}
 /* blocks */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:50px}
-.duties{display:grid;gap:12px}.duties div{padding:18px 20px;border-left:3px solid var(--blue);background:var(--soft);border-radius:0;font-size:15px}
+.duties{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.duties div{padding:22px 22px 20px;border-top:3px solid var(--blue);background:var(--soft);display:flex;flex-direction:column;gap:6px}
+.duties i{font:700 13px/1 'Open Sans',sans-serif;font-style:normal;color:var(--blue);letter-spacing:.08em}.duties b{font-size:18px;line-height:1.3}.duties span{font-size:14.5px;line-height:1.55;opacity:.8}
+.fn{margin-top:22px;font-size:17px;line-height:1.65;max-width:460px}.fn b{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.duties div:last-child:nth-child(odd){grid-column:1/-1}
+@media(max-width:560px){.duties{grid-template-columns:1fr}}
 .units{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
 .unit{padding:28px;border-radius:0;border:1px solid var(--line);background:var(--card)}.unit small{font-size:12px;letter-spacing:.14em;color:var(--blue);font-weight:700}[data-theme=dark] .unit small{color:#FFB4A8}
 .unit h3{font-size:21px;margin:10px 0 8px}.unit p{font-size:14px;color:var(--mut)}
@@ -217,16 +221,16 @@ const D={
   acts:[]},
  ln:{name:t('Khoa Công nghệ liên ngành','Department of Interdisciplinary Technology'),short:t('CNLN','IT'),lead:t('Khoa phụ trách các chương trình đào tạo liên ngành, kết hợp khoa học máy tính, trí tuệ nhân tạo và khoa học dữ liệu với các lĩnh vực thế mạnh của Trường Đại học Ngoại thương như kinh doanh, tài chính, chuỗi cung ứng và logistics.','The department for interdisciplinary programmes that combine computer science, AI and data science with Foreign Trade University strengths such as business, finance, supply chain and logistics.'),serve:[],rel:{},facts:[['2',t('chương trình liên ngành dự kiến','planned interdisciplinary programmes')]],duties:[],units:[],people:[],courses:[],acts:[]}};
 /* Chức năng - nhiệm vụ theo Đề án thành lập Trường (mục 5.3.3, 5.3.4). Khoa không còn bộ môn; tin sinh hoạt chuyên môn xem ở mục Tin tức. */
-const FN_NG=t('Khoa phụ trách ngành là đơn vị chuyên môn thuộc Trường Công nghệ và Khoa học ứng dụng, có chức năng tham mưu, giúp Hiệu trưởng Trường phát triển và quản lý giảng dạy, nghiên cứu khoa học và phục vụ cộng đồng trong các ngành được phân công.','A degree-granting department of CTAS, advising and assisting the Dean in developing and managing teaching, research and community service in its assigned majors.');
-const FN_DC=t('Khoa phụ trách học phần giáo dục đại cương là đơn vị chuyên môn thuộc Trường Công nghệ và Khoa học ứng dụng, có chức năng tham mưu, giúp Hiệu trưởng Trường phát triển và quản lý giảng dạy các học phần giáo dục đại cương được phân công.','The general-education department of CTAS, advising and assisting the Dean in developing and managing the general-education courses assigned to it.');
+const FN_NG=t('Tham mưu cho Hiệu trưởng về phát triển và quản lý giảng dạy, nghiên cứu khoa học và phục vụ cộng đồng trong các ngành được giao.','Advises the Dean on developing and managing teaching, research and community service in its assigned majors.');
+const FN_DC=t('Tham mưu cho Hiệu trưởng về phát triển và quản lý giảng dạy các học phần giáo dục đại cương được giao.','Advises the Dean on developing and managing the general-education courses assigned to it.');
+/* Nhiệm vụ: [tiêu đề, mô tả ngắn] */
 const NV=(dc)=>[
- t('<b>Nhân sự:</b> đề xuất chương trình, hoạt động phát triển đội ngũ chuyên môn; đề xuất, giới thiệu nhà khoa học, chuyên gia tham gia giảng dạy và nghiên cứu; đánh giá hoạt động đào tạo, khoa học và công nghệ theo quy định.','<b>Staff:</b> propose staff-development activities; nominate scientists and experts for teaching and research; evaluate teaching and research activities as regulated.'),
- dc?t('<b>Đào tạo:</b> chịu trách nhiệm về nội dung, chất lượng, tiến độ giảng dạy các học phần được giao; xây dựng đề cương, giáo trình, tài liệu; đổi mới phương pháp giảng dạy và đánh giá; tham gia xây dựng, mở mới và cải tiến chương trình đào tạo.','<b>Teaching:</b> responsible for the content, quality and schedule of assigned courses; syllabi, textbooks and materials; innovative teaching and assessment; contributing to new and improved programmes.')
-   :t('<b>Đào tạo:</b> chịu trách nhiệm về nội dung, chất lượng, tiến độ giảng dạy các chương trình được giao; xây dựng đề cương, giáo trình, tài liệu, hoạt động thực tập, thực hành; đổi mới phương pháp giảng dạy và đánh giá; đề xuất mở ngành, rà soát và cải tiến chương trình đào tạo.','<b>Teaching:</b> responsible for the content, quality and schedule of assigned programmes; syllabi, textbooks, internships and practice; innovative teaching and assessment; proposing new majors and improving programmes.'),
- ...(dc?[]:[t('<b>Công tác sinh viên:</b> tư vấn cho người học về chuyên môn, lộ trình học tập và hướng nghiệp.','<b>Students:</b> advising students on their field, study path and careers.')]),
- t('<b>Khảo thí và đảm bảo chất lượng:</b> tham gia khảo thí, đảm bảo chất lượng, kiểm định và cải tiến chất lượng.','<b>Assessment & QA:</b> take part in assessment, quality assurance, accreditation and improvement.'),
- t('<b>Khoa học, công nghệ và đổi mới sáng tạo:</b> nghiên cứu, đề xuất và thực hiện hoạt động khoa học, công nghệ, đổi mới sáng tạo và hợp tác phát triển.','<b>Research & innovation:</b> propose and carry out research, technology, innovation and partnership activities.'),
- t('<b>Truyền thông:</b> phối hợp tư vấn tuyển sinh, truyền thông về ngành, chương trình đào tạo và hoạt động của Trường.','<b>Communication:</b> support admissions and communication about majors, programmes and the College.')];
+ [t('Đào tạo','Teaching'),dc?t('Chất lượng học phần được giao, đổi mới giảng dạy và đánh giá.','Quality of assigned courses; better teaching and assessment.'):t('Chất lượng chương trình, đổi mới giảng dạy, đề xuất mở ngành.','Programme quality, better teaching, new majors.')],
+ [t('Nghiên cứu & ĐMST','Research & innovation'),t('Nghiên cứu, đổi mới sáng tạo và hợp tác phát triển.','Research, innovation and partnerships.')],
+ [t('Đội ngũ','Faculty'),t('Phát triển giảng viên, mời chuyên gia tham gia giảng dạy.','Develop lecturers, invite experts to teach.')],
+ ...(dc?[]:[[t('Sinh viên','Students'),t('Tư vấn chuyên môn, lộ trình học tập, hướng nghiệp.','Advising on field, study path and careers.')]]),
+ [t('Chất lượng','Quality'),t('Khảo thí, kiểm định và cải tiến chất lượng.','Assessment, accreditation and improvement.')],
+ [t('Truyền thông','Outreach'),t('Tư vấn tuyển sinh, giới thiệu ngành và chương trình.','Admissions and promoting programmes.')]];
 for(const x in D){const dc=x==='qt';D[x].fn=dc?FN_DC:FN_NG;D[x].duties=NV(dc);D[x].units=[];D[x].acts=[];D[x].facts=D[x].facts.filter(f=>!/^\d{2,3}$/.test(f[0])||/^20\d\d$/.test(f[0]));D[x].people.forEach(p=>{if(/Bộ môn|Head of Informatics/.test(p[1]))p[1]=''})}
 const TX=E?{map:'Department ↔ Majors',click:'Click a major to see how the department supports it',open:'Open major page',about:'Functions & duties',units:'Divisions',people:'Lecturers',all:'All',courses:'Courses taught',acts:'Academic activities',contact:'Contact the department',upd:'Content coming soon.',src:'Staff list updated November 2026.',back:'← Home',read:'Read',more:'More'}
 :{map:'Khoa ↔ Ngành',click:'Bấm vào một ngành để xem khoa hỗ trợ ngành đó thế nào',open:'Mở trang ngành',about:'Chức năng - nhiệm vụ',units:'Bộ môn',people:'Đội ngũ giảng viên',all:'Tất cả',courses:'Học phần phụ trách',acts:'Hoạt động học thuật',contact:'Liên hệ khoa',upd:'Nội dung đang được cập nhật.',src:'Danh sách giảng viên cập nhật tháng 11/2026.',back:'← Trang chủ',read:'Đọc',more:'Xem thêm'};
@@ -246,8 +250,8 @@ app.innerHTML=`
  <div class="map"><img src="assets/photos/${PH[k]}.jpg" alt="${d.name}"><div class="panel" id="panel">${d.serve.length?`<h4>${TX.map}</h4><ul>${d.serve.map(m=>`<li><a class="node" data-m="${m}" href="${MAJ[m][1]}&lang=${LANG}">${MAJ[m][0]}</a></li>`).join('')}</ul><p id="rel"></p>`:`<p>${TX.upd}</p>`}</div></div>
 </div>
 <section><div class="c grid2">
- <div><div class="eyebrow">${TX.about}</div><h2>${d.name}</h2></div>
- <div class="duties rv">${d.fn?`<div><b>${E?'Function':'Chức năng'}:</b> ${d.fn}</div>`:''}${d.duties.length?d.duties.map(x=>`<div>${x}</div>`).join(''):empty}</div>
+ <div><div class="eyebrow">${TX.about}</div><h2>${d.name}</h2>${d.fn?`<p class="fn"><b>${E?'Function':'Chức năng'}</b>${d.fn}</p>`:''}</div>
+ <div class="duties rv">${d.duties.length?d.duties.map((x,i)=>`<div><i>${String(i+1).padStart(2,'0')}</i><b>${x[0]}</b><span>${x[1]}</span></div>`).join(''):empty}</div>
 </div></section>
 <section style="padding-top:0"><div class="c"><div class="eyebrow">${TX.people}</div><h2>${TX.people}</h2>
  <div class="people">${d.people.length?d.people.map(p=>`<a class="person rv" href="giang-vien.html?id=${pslug(p[0])}"><div class="av">${ini(p[0])}</div><div><h4>${p[0]}</h4>${p[1]?`<div class="r">${p[1]}</div>`:''}<p>${p[2]}</p></div></a>`).join(''):empty}</div>

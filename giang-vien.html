@@ -633,24 +633,26 @@ html:not([data-theme=dark]) .hw-school strong{color:#1F0607}html:not([data-theme
 <div class="container pg-head"><div class="crumb"><a href="index.html">Trang chủ</a> » <a href="co-cau.html">Đội ngũ</a> » <span id="crN"></span></div></div>
 <section class="xsec" style="padding-top:0"><div class="container" id="pf"></div></section>
 <style>
-.pf-top{display:grid;grid-template-columns:220px 1fr;gap:36px;align-items:start;padding-bottom:28px;border-bottom:1px solid rgba(128,128,128,.3)}
-.pf-ph{width:220px;aspect-ratio:3/4;background:rgba(179,21,27,.08);display:flex;align-items:center;justify-content:center;overflow:hidden;font:700 64px/1 'Source Serif 4',Georgia,serif;color:#B3151B}
+.pf{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:48px;align-items:start;padding-bottom:40px}
+.pf-ph{width:100%;aspect-ratio:3/4;background:rgba(179,21,27,.08);display:flex;align-items:center;justify-content:center;overflow:hidden;font:700 96px/1 'Source Serif 4',Georgia,serif;color:#B3151B}
 .pf-ph img{width:100%;height:100%;object-fit:cover}
-.pf-top h1{font-size:clamp(28px,3.4vw,40px);margin:0 0 12px}
-.pf-top .ln{font-weight:700;margin:2px 0}
-.pf-top .dg{margin:10px 0 2px;opacity:.85}
-.pf-top .ct{margin-top:14px;line-height:1.8}.pf-top .ct a{color:#B3151B}
-[data-theme="dark"] .pf-top .ct a{color:#FFB4A8}
-.pf-sec{padding:26px 0;border-bottom:1px solid rgba(128,128,128,.2)}
-.pf-sec h3{font:700 22px/1.25 'Source Serif 4',Georgia,serif;margin:0 0 14px}
-.pf-sec ul,.pf-sec ol{margin:0;padding-left:22px;line-height:1.7}
-.pf-sec li{margin:4px 0}
-.pf-sec li.sub{list-style:none;margin-left:-22px;font-weight:700;margin-top:12px}
-.pf-share{display:flex;gap:10px;flex-wrap:wrap;padding-top:22px}
-.pf-share a,.pf-share button{border:1px solid rgba(128,128,128,.4);background:none;color:inherit;padding:8px 14px;font:inherit;cursor:pointer}
-@media(max-width:700px){.pf-top{grid-template-columns:1fr}.pf-ph{width:160px}}
+.pf h1{font-size:clamp(28px,3vw,40px);margin:34px 0 16px;line-height:1.2}
+.pf .ln{font-weight:700;margin:0 0 6px;line-height:1.5}
+.pf .dg{margin:12px 0 0;line-height:1.7}
+.pf .ct{margin-top:12px;line-height:1.7}.pf .ct a{color:#B3151B}
+[data-theme="dark"] .pf .ct a{color:#FFB4A8}
+.pf-sec{margin:44px 0 0}.pf-r .pf-sec:first-child{margin-top:0}
+.pf-sec h3{font:400 clamp(22px,2.2vw,30px)/1.25 'Open Sans',sans-serif;text-transform:uppercase;margin:0 0 30px;position:relative}
+.pf-sec h3:after{content:"";position:absolute;left:0;bottom:-16px;width:48px;height:4px;background:#B3151B}
+.pf-sec p,.pf-sec li{line-height:1.75;text-align:justify}
+.pf-sec ul,.pf-sec ol{margin:0;padding-left:26px}
+.pf-sec ul{padding-left:52px}
+.pf-sec li{margin:0 0 10px}
+.pf-sec li.sub{list-style:none;margin-left:-26px;font-weight:700;margin-top:14px}
+.pf-sec .upd{opacity:.7;font-style:italic}
+@media(max-width:860px){.pf{grid-template-columns:1fr;gap:0}.pf-ph{max-width:360px}.pf-r .pf-sec:first-child{margin-top:44px}}
 </style>
-<script src="assets/people.js?v=20261117c"></script>
+<script src="assets/people.js?v=20261117d"></script>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
 var E=(localStorage.getItem('ctas-lang')||'vi')==='en',el=document.getElementById('pf'),id=new URLSearchParams(location.search).get('id');
@@ -663,18 +665,21 @@ var DEG={GS:E?'Professor':'Giáo sư',PGS:E?'Associate Professor':'Phó giáo s�
 var dg=pre.trim().split(/\s+/).filter(Boolean).map(function(x){return DEG[x]||x}).join(', ');
 var UNIT_EN={'Khoa Khoa học tính toán và định lượng':'Department of Computational & Quantitative Science','Khoa Khoa học máy tính':'Department of Computer Science','Khoa Khoa học dữ liệu và Trí tuệ nhân tạo':'Department of Data Science and AI','Khoa Công nghệ liên ngành':'Department of Interdisciplinary Technology'};
 var lines=[];if(p.role)lines.push((E&&p.role_en)||p.role);lines.push(E?(UNIT_EN[p.unit]||'Lecturer'):(p.unit?'Giảng viên, '+p.unit:'Giảng viên'));lines.push(E?'College of Technology and Applied Sciences':'Trường Công nghệ và Khoa học ứng dụng');
-var h='<div class="pf-top"><div class="pf-ph">'+(p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(nm)+'">':esc(nm.split(' ').slice(-1)[0][0]))+'</div><div><h1>'+esc(nm)+'</h1>'+lines.map(function(l){return '<p class="ln">'+esc(l)+'</p>'}).join('')+(dg?'<p class="dg">'+esc(dg)+'</p>':'')+'<div class="ct">'+(p.email?'<b>Email:</b> <a href="mailto:'+esc(p.email)+'">'+esc(p.email)+'</a><br>':'')+'<b>Web:</b> <a href="'+location.href.split('#')[0]+'">'+esc(location.host+location.pathname)+'?id='+esc(p.id)+'</a></div></div></div>';
-var sec=function(t,arr,ol){if(!arr||!arr.length)return '';return '<div class="pf-sec"><h3>'+t+'</h3><'+(ol?'ol':'ul')+'>'+arr.map(function(l){return /^\d+\.\s/.test(l)&&l.length<90?'<li class="sub">'+esc(l)+'</li>':'<li>'+esc(l.replace(/^\d+\s·\s/,''))+'</li>'}).join('')+'</'+(ol?'ol':'ul')+'></div>'};
+var UPD='<p class="upd">'+(E?'Being updated.':'Đang cập nhật.')+'</p>';
 var S=p.sec||{};
-h+=sec(E?'Research areas':'Lĩnh vực nghiên cứu',p.field?((E&&p.field_en)||p.field).split(/;\s*/):[]);
-if(p.intro&&!E)h+='<div class="pf-sec"><h3>Giới thiệu</h3><p style="line-height:1.75;max-width:900px">'+esc(p.intro)+'</p></div>';
-h+=sec(E?'Education':'Quá trình đào tạo',S['dao-tao']);
-h+=sec(E?'Career':'Quá trình công tác',S['cong-tac']);
-h+=sec(E?'Selected publications and research projects':'Các công trình khoa học tiêu biểu',S['cong-trinh']);
-h+=sec(E?'Other information':'Thông tin khác',S['khac']);
-if(!p.intro&&!S['dao-tao']&&!S['cong-tac']&&!S['cong-trinh']&&!S['khac'])h+='<div class="pf-sec"><p>'+(E?'Detailed profile is being updated.':'Lý lịch khoa học chi tiết đang được cập nhật.')+'</p></div>';
-h+='<div class="pf-share"><a href="https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href)+'" target="_blank" rel="noopener">Facebook</a><a href="https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href)+'" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:?subject='+encodeURIComponent(nm)+'&body='+encodeURIComponent(location.href)+'">Email</a><button type="button" id="cpL">'+(E?'Copy link':'Sao chép liên kết')+'</button></div>';
-el.innerHTML=h;document.getElementById('cpL').onclick=function(e){navigator.clipboard&&navigator.clipboard.writeText(location.href);e.target.textContent=E?'Copied ✓':'Đã sao chép ✓'};
+/* Mỗi mục: tiêu đề + danh sách; không có dữ liệu thì ghi "Đang cập nhật" */
+var sec=function(t,arr,ol){var b;if(!arr||!arr.length)b=UPD;else b='<'+(ol?'ol':'ul')+'>'+arr.map(function(l){return /^\d+\.\s/.test(l)&&l.length<90?'<li class="sub">'+esc(l)+'</li>':'<li>'+esc(l.replace(/^\d+\s·\s/,''))+'</li>'}).join('')+'</'+(ol?'ol':'ul')+'>';return '<div class="pf-sec"><h3>'+t+'</h3>'+b+'</div>'};
+var txt=function(t,s){return '<div class="pf-sec"><h3>'+t+'</h3>'+(s?'<p>'+esc(s)+'</p>':UPD)+'</div>'};
+var L='<div class="pf-l"><div class="pf-ph">'+(p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(nm)+'">':esc(nm.split(' ').slice(-1)[0][0]))+'</div><h1>'+esc(nm)+'</h1>'+lines.map(function(l){return '<p class="ln">'+esc(l)+'</p>'}).join('')+(dg?'<p class="dg">'+esc(dg)+'</p>':'')+(p.email?'<div class="ct">Email: <a href="mailto:'+esc(p.email)+'">'+esc(p.email)+'</a></div>':'');
+L+=sec(E?'Research areas':'Lĩnh vực nghiên cứu',p.field?((E&&p.field_en)||p.field).split(/;\s*/):[]);
+L+=sec(E?'Research interests':'Các nghiên cứu quan tâm',p.interests);
+L+=sec(E?'Education':'Quá trình đào tạo',S['dao-tao']);
+L+=sec(E?'Ongoing projects':'Các dự án đang thực hiện',p.projects,true)+'</div>';
+var R='<div class="pf-r">'+txt(E?'About':'Giới thiệu',E?(p.intro_en||''):p.intro);
+R+=sec(E?'Career':'Quá trình công tác',S['cong-tac']);
+R+=sec(E?'Selected publications':'Các công trình khoa học tiêu biểu',S['cong-trinh'],true);
+R+=sec(E?'Awards':'Giải thưởng, khen thưởng',p.awards)+'</div>';
+el.className='container pf';el.innerHTML=L+R;
 });
 </script>
 <footer>

@@ -686,7 +686,7 @@ html:not([data-theme=dark]) .hw-school strong{color:#1F0607}html:not([data-theme
 @media(max-width:560px){.ns-news{grid-template-columns:1fr}.ns-ev a{grid-template-columns:64px 1fr}.ns-ev .th{display:none}}
 </style>
 <script>
-document.addEventListener('DOMContentLoaded',function(){if(!window.POSTS)return;var E=(localStorage.getItem('ctas-lang')||'vi')==='en';
+window.nsRender=function(lang){if(!window.POSTS||!document.getElementById('nsNews'))return;var E=lang==='en';
 var CE={"Thành tích":"Achievements","Thông báo":"Notices","Doanh nghiệp":"Industry","Nghiên cứu":"Research","Đào tạo":"Education","Sự kiện":"Events","Giảng viên":"Lecturers"};
 var esc=function(x){return String(x||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var tt=function(p){return esc(E&&p.te?p.te:p.t)},ex=function(p){return esc(E&&p.pe?p.pe:p.ex)};
@@ -696,7 +696,8 @@ var EV=L.filter(function(p){return p.c==='Sự kiện'}).sort(function(a,b){retu
 var NW=L.filter(function(p){return p.c!=='Sự kiện'}).sort(function(a,b){return (b.feat?1:0)-(a.feat?1:0)});
 document.getElementById('nsNews').innerHTML=NW.slice(0,4).map(function(p){var im=p.th||p.cover;return '<a class="ns-card" href="bai-viet.html?id='+p.id+'"><div class="im">'+(im?'<img src="'+im+'" alt="" loading="lazy">':'')+'</div><small>'+esc(E?(CE[p.c]||p.c):p.c)+'</small><h4>'+tt(p)+'</h4><p>'+ex(p)+'</p></a>'}).join('');
 document.getElementById('nsEv').innerHTML=EV.slice(0,5).map(function(p){var d=(p.iso||'').split('-'),im=p.th||p.cover;return '<a href="bai-viet.html?id='+p.id+'">'+(im?'<img class="th" src="'+im+'" alt="" loading="lazy">':'<span class="th"></span>')+'<span class="bd"><b>'+(d[2]||'')+'</b><span>'+(E?'MON ':'TH ')+(+d[1]||'')+'</span></span><h4>'+tt(p)+'</h4></a>'}).join('');
-});
+};
+document.addEventListener('DOMContentLoaded',function(){nsRender(localStorage.getItem('ctas-lang')||'vi')});
 </script>
 </section>
 
@@ -962,7 +963,7 @@ const I18N={"Đào tạo - Tuyển sinh": "Education - Admissions", "Kiến tạ
   // hero headline (word-split)
   const h=document.querySelector('.hero h1');if(h&&h.dataset.lang!==lang){h.dataset.lang=lang;h.innerHTML=H1SRC[lang];i=0;split(h)}
   root.lang=lang;document.title=lang==='en'?'CTAS - College of Technology and Applied Sciences | Foreign Trade University':'CTAS - Trường Công nghệ và Khoa học ứng dụng | Trường Đại học Ngoại thương';
-  document.querySelectorAll('#langBtn span').forEach(s=>s.classList.toggle('on',s.dataset.l===lang));localStorage.setItem('ctas-lang',lang);
+  document.querySelectorAll('#langBtn span').forEach(s=>s.classList.toggle('on',s.dataset.l===lang));localStorage.setItem('ctas-lang',lang);if(window.nsRender)window.nsRender(lang);
   document.querySelectorAll('a[href^="nganh.html"]').forEach(a=>{a.href=a.href.replace(/&lang=\w+/,'')+'&lang='+lang})}
  window.setLang=apply;document.getElementById('langBtn').onclick=()=>apply(root.lang==='en'?'vi':'en');
  const init=localStorage.getItem('ctas-lang')||'vi';document.querySelector('.hero h1').dataset.lang='vi';setTimeout(()=>apply(init),0)})();
