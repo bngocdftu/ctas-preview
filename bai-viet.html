@@ -95,7 +95,7 @@ nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdro
 .crumb{padding-top:34px;font-size:13px;color:var(--mut);font-weight:600}.crumb a:hover{color:var(--blue)}
 .ameta{display:flex;gap:0;margin-top:18px;font-size:13px;font-weight:600;color:var(--mut)}.ameta span+span::before{content:"";margin:0 8px}
 .cover{border-top:4px solid var(--blue);background:var(--card)}.cover img{width:100%;max-height:560px;object-fit:cover;display:block}
-.lay{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;margin-top:44px}
+.lay{display:block;max-width:860px;margin-top:44px}
 .body{font-size:17px;line-height:1.8;max-width:760px}.body p{margin:0 0 1.1em}.body a{color:var(--blue);text-decoration:underline}
 .body img{max-width:100%;height:auto;display:block;margin:22px 0;cursor:zoom-in}.body figure{margin:22px 0}.body figcaption{font-size:13px;color:var(--mut)}
 .body ul,.body ol{padding-left:22px;margin-bottom:1.1em}.body h2,.body h3,.body h4{margin:1.4em 0 .6em;line-height:1.3}
@@ -110,7 +110,7 @@ aside dl{display:grid;gap:4px;font-size:14px}aside dt{font-size:11px;font-weight
 @media(max-width:900px){.lay{grid-template-columns:1fr;gap:30px}aside .box{position:static}}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/extra.css?v=20261118a">
+<link rel="stylesheet" href="assets/extra.css?v=20261118b">
 <link rel="stylesheet" href="assets/style2.css?v=20261117c">
 </head>
 <body>
@@ -158,7 +158,7 @@ aside dl{display:grid;gap:4px;font-size:14px}aside dt{font-size:11px;font-weight
 <div class="crumb"><a href="index.html">Trang chủ</a> / <a href="tin-tuc.html">Tin tức</a> / <span id="cb"></span></div>
 <header><div class="eyebrow" id="eb"></div><h1 id="h1"></h1><div class="ameta" id="am"></div></header>
 <div class="cover" id="cv"></div>
-<div class="lay"><article class="body" id="body"></article><aside id="side"></aside></div>
+<div class="lay"><article class="body" id="body"></article></div>
 <div id="gal"></div>
 <section class="rel"><div class="yr" id="rh"></div><div class="grid" id="rel"></div></section>
 </div>
@@ -189,8 +189,6 @@ const rest=B.imgs.filter(u=>u!==P.cover&&!inBody.has(u));
 if(rest.length)document.getElementById('gal').innerHTML=`<div class="yr">${T.photos}</div><div class="gal">${rest.map(u=>`<img src="${u}" loading="lazy" alt="">`).join('')}</div>`;
 }).catch(()=>{body.innerHTML='<p>'+(E?'Could not load this article. Please reload the page.':'Không tải được bài viết. Vui lòng tải lại trang.')+'</p>'});
 const src=P.src.includes('facebook')?'fanpage KHOACNKHDL':P.src.includes('ftulabs')?'FTU Labs (ftulabs.github.io)':'cnkhdl.ftu.edu.vn';
-document.getElementById('side').innerHTML=`<div class="box"><dl><dt>${T.cat}</dt><dd>${cc(P)}</dd></dl><button class="cp" id="cp">${T.share}</button><a class="bk" href="tin-tuc.html">${T.back}</a></div>`;
-document.getElementById('cp').onclick=e=>{navigator.clipboard?.writeText(location.href);e.target.textContent=T.copied};
 const L=POSTS.filter(p=>p.news&&p.id!==P.id);const R=[...L.filter(p=>p.c===P.c),...L.filter(p=>p.c!==P.c)].slice(0,3);
 document.getElementById('rh').textContent=T.rel;
 document.getElementById('rel').innerHTML=R.map(n=>`<a class="card" href="bai-viet.html?id=${n.id}"><div class="im">${PIC(n)}</div><div class="tx"><div class="meta"><b>${cc(n)}</b></div><h3>${tt(n)}</h3><p>${E&&n.pe?n.pe:n.ex}</p></div></a>`).join('');

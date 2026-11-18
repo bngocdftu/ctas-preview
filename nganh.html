@@ -107,7 +107,7 @@ nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdro
 @media(max-width:1000px){.gh .menu{display:none}}@media(max-width:640px){.gh .nav-r>a{display:none}}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/extra.css?v=20261118a">
+<link rel="stylesheet" href="assets/extra.css?v=20261118b">
 <link rel="stylesheet" href="assets/style2.css?v=20261117c">
 </head>
 <body>
@@ -212,7 +212,7 @@ const lb=document.getElementById('langBtn');lb.onclick=()=>{const q=new URLSearc
 const th=document.getElementById('themeBtn');const st=()=>th.textContent=root.dataset.theme==='dark'?'☀︎':'☾';st();th.onclick=()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('ctas-theme',root.dataset.theme);st()};
 const N=m.st.length+3,pad=i=>String(i).padStart(2,'0'),no=i=>`<span class="no">${pad(i)} / ${pad(N)}</span>`;
 const body=m.st;
-let h=`<section class="sl cover" id="s1"><span class="tg">${m.khoa}</span><div class="tx"><h1>${m.name}</h1><h2 style="font-size:clamp(20px,2.2vw,32px);font-weight:600">${m.role}</h2><p>${m.intro}</p>
+let h=`<section class="sl cover" id="s1"><span class="tg">${m.khoa}</span><div class="tx"><h1>${m.name}</h1><p>${m.intro}</p>
 <div class="meta"><div><small>${T.prog}</small><b>${m.prog}</b></div>${m.code?`<div><small>${E?'Major code':'Mã ngành'}</small><b>${m.code}</b></div>`:''}<div><small>${T.unit}</small><b>${T.unitv}</b></div></div></div><div class="img"><img src="${U(COVER[key])}" alt=""></div>${no(1)}</section>`;
 h+=`<section class="sl agenda" id="s2"><span class="tg">${T.agenda}</span><div><h2>${T.agh}</h2><p style="margin-top:18px">${T.agp}</p></div><div class="ag-list">${m.st.map((s,i)=>`<a href="#s${i+3}"><i>${pad(i+1)}</i>${s.h}<span>${s.t}</span></a>`).join('')}</div>${no(2)}</section>`;
 body.forEach((s,i)=>{h+=`<section class="sl ct ${i%2?'rev':''}" id="s${i+3}"><span class="tg">${T.stage} ${pad(i+1)}, ${s.t}</span><span class="big">${pad(i+1)}</span><div class="tx"><h2>${s.h}</h2><p>${s.p}</p>${s.l.length?`<div class="chips">${s.l.map(x=>`<span>${x}</span>`).join('')}</div>`:''}</div><div class="img"><img src="${U(IMG[s.k]||COVER[key])}" alt="" loading="lazy"><span class="cap">${s.t}</span></div>${no(i+3)}</section>`});
