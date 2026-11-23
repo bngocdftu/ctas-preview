@@ -634,7 +634,7 @@ html:not([data-theme=dark]) .hw-school strong{color:#1F0607}html:not([data-theme
 <style>
 .pf{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:48px;align-items:start;padding-bottom:40px}
 .pf-ph{width:100%;aspect-ratio:3/4;background:rgba(179,21,27,.08);display:flex;align-items:center;justify-content:center;overflow:hidden;font:700 96px/1 'Source Serif 4',Georgia,serif;color:#B3151B}
-.pf-ph img{width:100%;height:100%;object-fit:cover}
+.pf-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 15%}
 .pf h1{font-size:clamp(28px,3vw,40px);margin:34px 0 16px;line-height:1.2}
 .pf .ln{font-weight:700;margin:0 0 6px;line-height:1.5}
 .pf .dg{margin:12px 0 0;line-height:1.7}
@@ -652,7 +652,7 @@ html:not([data-theme=dark]) .hw-school strong{color:#1F0607}html:not([data-theme
 .pf-sec .upd{opacity:.7;font-style:italic}
 @media(max-width:860px){.pf{grid-template-columns:1fr;gap:0}.pf-ph{max-width:360px}.pf-r .pf-sec:first-child{margin-top:44px}}
 </style>
-<script src="assets/people.js?v=20261123"></script>
+<script src="assets/people.js?v=20261123b"></script>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
 var E=(localStorage.getItem('ctas-lang')||'vi')==='en',el=document.getElementById('pf'),id=new URLSearchParams(location.search).get('id');
@@ -664,23 +664,24 @@ document.title=nm+' - CTAS';document.getElementById('crN').textContent=nm;
 var DEG={GS:E?'Professor':'Giáo sư',PGS:E?'Associate Professor':'Phó giáo sư',TS:E?'PhD':'Tiến sĩ',ThS:E?'Master':'Thạc sĩ',CN:E?'Bachelor':'Cử nhân',GVC:E?'Senior Lecturer':'Giảng viên chính',NCS:E?'PhD candidate':'Nghiên cứu sinh'};
 var dg=pre.trim().split(/\s+/).filter(Boolean).map(function(x){return DEG[x]||x}).join(', ');
 var UNIT_EN={'Khoa Khoa học tính toán và định lượng':'Department of Computational & Quantitative Science','Khoa Khoa học máy tính':'Department of Computer Science','Khoa Khoa học dữ liệu và Trí tuệ nhân tạo':'Department of Data Science and AI','Khoa Công nghệ liên ngành':'Department of Interdisciplinary Technology'};
-var lines=[];if(p.role)lines.push((E&&p.role_en)||p.role);lines.push(E?(UNIT_EN[p.unit]||'Lecturer'):(p.unit?'Giảng viên, '+p.unit:'Giảng viên'));lines.push(E?'College of Technology and Applied Sciences':'Trường Công nghệ và Khoa học ứng dụng');
+var S=p.sec||{},EN=p.en||{},V=function(k){return E&&EN[k]&&EN[k].length?EN[k]:(k==='dao-tao'||k==='cong-tac'?S[k]:p[k])};
+var lines=[];if(p.role)lines.push((E&&(EN.role||p.role_en))||p.role);lines.push(E?(UNIT_EN[p.unit]||'Lecturer'):(p.unit?'Giảng viên, '+p.unit:'Giảng viên'));lines.push(E?'College of Technology and Applied Sciences':'Trường Công nghệ và Khoa học ứng dụng');
 var UPD='<p class="upd">'+(E?'Being updated.':'Đang cập nhật.')+'</p>';
-var S=p.sec||{};
+
 /* Mỗi mục: tiêu đề + danh sách; không có dữ liệu thì ghi "Đang cập nhật" */
 var sec=function(t,arr,ol){var b;if(!arr||!arr.length)b=UPD;else b='<'+(ol?'ol':'ul')+'>'+arr.map(function(l){return /^\d+\.\s/.test(l)&&l.length<90?'<li class="sub">'+esc(l)+'</li>':'<li>'+esc(l.replace(/^\d+\s·\s/,''))+'</li>'}).join('')+'</'+(ol?'ol':'ul')+'>';return '<div class="pf-sec"><h3>'+t+'</h3>'+b+'</div>'};
 var txt=function(t,s){return '<div class="pf-sec"><h3>'+t+'</h3>'+(s?'<p>'+esc(s)+'</p>':UPD)+'</div>'};
-var ed=(S['dao-tao']||[]).map(function(l){return '<p class="ed">'+esc(l)+'</p>'}).join('');
+var ed=(V('dao-tao')||[]).map(function(l){return '<p class="ed">'+esc(l)+'</p>'}).join('');
 var web=(p.links||[])[0];
 var L='<div class="pf-l"><div class="pf-ph">'+(p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(nm)+'">':esc(nm.split(' ').slice(-1)[0][0]))+'</div><h1>'+esc(nm)+'</h1>'+lines.map(function(l){return '<p class="ln"><b>'+esc(l)+'</b></p>'}).join('')+(dg?'<p class="dg">'+esc(dg)+'</p>':'')+(ed?'<div class="eds">'+ed+'</div>':'')+'<div class="ct">'+(p.email?'Email: <a href="mailto:'+esc(p.email)+'">'+esc(p.email)+'</a>':'')+(web?(p.email?'<br>':'')+'Web: <a href="'+esc(web)+'" target="_blank" rel="noopener">'+esc(/scholar\.google/.test(web)?'Google Scholar':web.replace(/^https?:\/\//,''))+'</a>':'')+'</div>';
-L+=sec(E?'Research areas':'Lĩnh vực nghiên cứu',p.field?((E&&p.field_en)||p.field).split(/;\s*/):[]);
-L+=sec(E?'Research interests':'Các nghiên cứu quan tâm',p.interests);
-L+=sec(E?'Ongoing projects':'Các dự án đang thực hiện',p.projects,true)+'</div>';
-var R='<div class="pf-r">'+txt(E?'About':'Giới thiệu',E?(p.intro_en||''):p.intro);
-if(S['cong-tac']&&S['cong-tac'].length)R+=sec(E?'Career':'Quá trình công tác',S['cong-tac']);
+L+=sec(E?'Research areas':'Lĩnh vực nghiên cứu',p.field?((E&&(EN.field||p.field_en))||p.field).split(/;\s*/):[]);
+L+=sec(E?'Research interests':'Các nghiên cứu quan tâm',V('interests'));
+L+=sec(E?'Ongoing projects':'Các dự án đang thực hiện',V('projects'),true)+'</div>';
+var R='<div class="pf-r">'+txt(E?'About':'Giới thiệu',E?(EN.intro||p.intro_en||''):p.intro);
+if(S['cong-tac']&&S['cong-tac'].length)R+=sec(E?'Career':'Quá trình công tác',V('cong-tac'));
 R+=sec(E?'Selected publications':'Các công trình khoa học tiêu biểu',S['cong-trinh'],true);
-R+=sec(E?'Awards':'Giải thưởng, khen thưởng',p.awards);
-R+=sec(E?'Teaching':'Giảng dạy',p.courses)+'</div>';
+R+=sec(E?'Awards':'Giải thưởng, khen thưởng',V('awards'));
+R+=sec(E?'Teaching':'Giảng dạy',V('courses'))+'</div>';
 el.className='container pf';el.innerHTML=L+R;
 });
 </script>
