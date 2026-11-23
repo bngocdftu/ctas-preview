@@ -638,6 +638,7 @@ html:not([data-theme=dark]) .hw-school strong{color:#1F0607}html:not([data-theme
 .pf h1{font-size:clamp(28px,3vw,40px);margin:34px 0 16px;line-height:1.2}
 .pf .ln{font-weight:700;margin:0 0 6px;line-height:1.5}
 .pf .dg{margin:12px 0 0;line-height:1.7}
+.pf .eds{margin-top:12px}.pf .ed{margin:0;line-height:1.7}
 .pf .ct{margin-top:12px;line-height:1.7}.pf .ct a{color:#B3151B}
 [data-theme="dark"] .pf .ct a{color:#FFB4A8}
 .pf-sec{margin:44px 0 0}.pf-r .pf-sec:first-child{margin-top:0}
@@ -669,15 +670,17 @@ var S=p.sec||{};
 /* Mỗi mục: tiêu đề + danh sách; không có dữ liệu thì ghi "Đang cập nhật" */
 var sec=function(t,arr,ol){var b;if(!arr||!arr.length)b=UPD;else b='<'+(ol?'ol':'ul')+'>'+arr.map(function(l){return /^\d+\.\s/.test(l)&&l.length<90?'<li class="sub">'+esc(l)+'</li>':'<li>'+esc(l.replace(/^\d+\s·\s/,''))+'</li>'}).join('')+'</'+(ol?'ol':'ul')+'>';return '<div class="pf-sec"><h3>'+t+'</h3>'+b+'</div>'};
 var txt=function(t,s){return '<div class="pf-sec"><h3>'+t+'</h3>'+(s?'<p>'+esc(s)+'</p>':UPD)+'</div>'};
-var L='<div class="pf-l"><div class="pf-ph">'+(p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(nm)+'">':esc(nm.split(' ').slice(-1)[0][0]))+'</div><h1>'+esc(nm)+'</h1>'+lines.map(function(l){return '<p class="ln">'+esc(l)+'</p>'}).join('')+(dg?'<p class="dg">'+esc(dg)+'</p>':'')+(p.email?'<div class="ct">Email: <a href="mailto:'+esc(p.email)+'">'+esc(p.email)+'</a></div>':'');
+var ed=(S['dao-tao']||[]).map(function(l){return '<p class="ed">'+esc(l)+'</p>'}).join('');
+var web=(p.links||[])[0];
+var L='<div class="pf-l"><div class="pf-ph">'+(p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(nm)+'">':esc(nm.split(' ').slice(-1)[0][0]))+'</div><h1>'+esc(nm)+'</h1>'+lines.map(function(l){return '<p class="ln"><b>'+esc(l)+'</b></p>'}).join('')+(dg?'<p class="dg">'+esc(dg)+'</p>':'')+(ed?'<div class="eds">'+ed+'</div>':'')+'<div class="ct">'+(p.email?'Email: <a href="mailto:'+esc(p.email)+'">'+esc(p.email)+'</a>':'')+(web?(p.email?'<br>':'')+'Web: <a href="'+esc(web)+'" target="_blank" rel="noopener">'+esc(/scholar\.google/.test(web)?'Google Scholar':web.replace(/^https?:\/\//,''))+'</a>':'')+'</div>';
 L+=sec(E?'Research areas':'Lĩnh vực nghiên cứu',p.field?((E&&p.field_en)||p.field).split(/;\s*/):[]);
 L+=sec(E?'Research interests':'Các nghiên cứu quan tâm',p.interests);
-L+=sec(E?'Education':'Quá trình đào tạo',S['dao-tao']);
 L+=sec(E?'Ongoing projects':'Các dự án đang thực hiện',p.projects,true)+'</div>';
 var R='<div class="pf-r">'+txt(E?'About':'Giới thiệu',E?(p.intro_en||''):p.intro);
-R+=sec(E?'Career':'Quá trình công tác',S['cong-tac']);
+if(S['cong-tac']&&S['cong-tac'].length)R+=sec(E?'Career':'Quá trình công tác',S['cong-tac']);
 R+=sec(E?'Selected publications':'Các công trình khoa học tiêu biểu',S['cong-trinh'],true);
-R+=sec(E?'Awards':'Giải thưởng, khen thưởng',p.awards)+'</div>';
+R+=sec(E?'Awards':'Giải thưởng, khen thưởng',p.awards);
+R+=sec(E?'Teaching':'Giảng dạy',p.courses)+'</div>';
 el.className='container pf';el.innerHTML=L+R;
 });
 </script>
