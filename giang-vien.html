@@ -654,7 +654,7 @@ html:not([data-theme=dark]) .hw-school strong{color:#1F0607}html:not([data-theme
 </style>
 <script src="assets/people.js?v=20261123b"></script>
 <script>
-document.addEventListener('DOMContentLoaded',function(){
+window.renderPF=function(){
 var E=(localStorage.getItem('ctas-lang')||'vi')==='en',el=document.getElementById('pf'),id=new URLSearchParams(location.search).get('id');
 var esc=function(x){return String(x||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var p=(window.PEOPLE||[]).find(function(x){return x.id===id});
@@ -683,7 +683,8 @@ R+=sec(E?'Selected publications':'Các công trình khoa học tiêu biểu',S['
 R+=sec(E?'Awards':'Giải thưởng, khen thưởng',V('awards'));
 R+=sec(E?'Teaching':'Giảng dạy',V('courses'))+'</div>';
 el.className='container pf';el.innerHTML=L+R;
-});
+};
+document.addEventListener('DOMContentLoaded',window.renderPF);
 </script>
 <footer>
   <div class="container">
@@ -705,7 +706,7 @@ const I18N={"Tuyển dụng": "Careers", "Gia nhập CTAS": "Join CTAS", "Trư�
   if(lang==='en'&&I18N[k]){const lead=o.match(/^\s*/)[0],tail=o.match(/\s*$/)[0];n.nodeValue=lead+I18N[k]+tail}else n.nodeValue=o});
   root.lang=lang;document.querySelectorAll('#langBtn span').forEach(s=>s.classList.toggle('on',s.dataset.l===lang));localStorage.setItem('ctas-lang',lang);
   document.querySelectorAll('a[href^="nganh.html"],a[href^="khoa.html"]').forEach(a=>{a.href=a.href.replace(/&lang=\w+/,'')+'&lang='+lang})}
- document.getElementById('langBtn').onclick=()=>apply(root.lang==='en'?'vi':'en');apply(localStorage.getItem('ctas-lang')||'vi')})();
+ document.getElementById('langBtn').onclick=()=>{apply(root.lang==='en'?'vi':'en');if(window.renderPF)window.renderPF()};apply(localStorage.getItem('ctas-lang')||'vi')})();
 if(location.hash){const t=document.querySelector(location.hash);if(t)setTimeout(()=>t.scrollIntoView(),60)}
 </script>
 <script src="assets/news/data.js?v=20261117c"></script>
