@@ -331,3 +331,5 @@ section+section::before{content:"";position:absolute;top:0;left:50%;transform:tr
 /* header: bỏ nút Đăng ký, tách menu khỏi cụm nút phải */
 .menu{margin-right:28px}
 .nav-r{flex-shrink:0}
+
+.org-staff span{white-space:nowrap}
