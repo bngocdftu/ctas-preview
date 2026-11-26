@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<script>(function(){try{var h=document.documentElement,L=localStorage;if(L.getItem("ctas-def")!="3"){L.removeItem("ctas-logo");L.removeItem("ctas-theme");L.setItem("ctas-def","3");L.removeItem("ctas-style")}h.dataset.logo="color";var q=(location.search.match(/[?&]style=([12])/)||[])[1];if(q)L.setItem("ctas-style",q);h.dataset.style=L.getItem("ctas-style")||"1";if(h.dataset.style=="2")document.write('<link id="s2f" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Archivo+Narrow:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap">');h.dataset.theme=localStorage.getItem("ctas-theme")||"light"}catch(e){}})()</script>
+<script>(function(){try{var h=document.documentElement,L=localStorage;if(L.getItem("ctas-def")!="3"){L.removeItem("ctas-logo");L.removeItem("ctas-theme2");L.setItem("ctas-def","3");L.removeItem("ctas-style")}h.dataset.logo="color";var q=(location.search.match(/[?&]style=([12])/)||[])[1];if(q)L.setItem("ctas-style",q);h.dataset.style=L.getItem("ctas-style")||"1";if(h.dataset.style=="2")document.write('<link id="s2f" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Archivo+Narrow:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap">');h.dataset.theme=localStorage.getItem("ctas-theme2")||"light"}catch(e){}})()</script>
 
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Khoa - CTAS</title>
@@ -167,11 +167,11 @@ nav.gh{position:sticky;top:0;z-index:50;background:rgba(255,254,244,.92);backdro
 <div class="subbar"><div class="sb-in"><a id="back" href="index.html">← Về trang chủ</a><div class="tabs" id="tabs"></div></div></div>
 <main id="app"></main>
 <footer class="sf"><div class="sf-in"><div class="talk"><h2>LET'S TALK</h2><a href="mailto:ctas@ftu.edu.vn" class="round">Liên hệ</a></div><div class="foot-grid"><div class="f-brand"><a href="index.html" class="f-logo f-ctas"><img class="ctas-logo ctas-logo-ft" src="assets/logo/ctas-color/ctas-logo-160.png" alt="CTAS" width="160" height="56"><img class="logo-b logo-b-ft" src="assets/logo/ctas-mono/ctas-b2-white-160.png" alt="" width="190" height="60"><span><small>Trường Công nghệ<br>và Khoa học ứng dụng</small></span></a><p>Đơn vị thành viên của Trường Đại học Ngoại thương</p><p class="f-meta">91 Chùa Láng, Đống Đa, Hà Nội<br><a href="mailto:ctas@ftu.edu.vn">ctas@ftu.edu.vn</a></p></div><div><h5>Giới thiệu</h5><a href="gioi-thieu.html">Lịch sử, sứ mạng, tầm nhìn</a><a href="co-cau.html">Cơ cấu tổ chức</a><a href="tin-tuc.html">Tin tức</a><a href="khong-gian.html">Không gian học tập &amp; nghiên cứu</a></div><div><h5>Đào tạo</h5><a href="dao-tao.html">Tổng quan đào tạo</a><a href="nganh.html?m=cs">Khoa học máy tính</a><a href="nganh.html?m=ds">Khoa học dữ liệu</a><a href="nganh.html?m=ai">Trí tuệ nhân tạo</a><a href="dinh-huong.html">Định hướng phát triển</a></div><div><h5>Nghiên cứu</h5><a href="lms.html">FTU LMS</a><a href="ftullm.html">FTULLM Assistant</a><a href="cloud.html">FTU Cloud</a><a href="techlab.html">FTU Techlab</a><a href="hoi-thao.html">Hội thảo khoa học 2026</a><a href="du-an-sinh-vien.html">Dự án sinh viên</a><a href="tuyen-dung.html">Tuyển dụng</a></div><div><h5>Liên kết</h5><a href="https://ftu.edu.vn" target="_blank" rel="noopener">Trường Đại học Ngoại thương</a><a href="https://ftds.online" target="_blank" rel="noopener">Hệ thống học tập LMS</a><a href="https://cloud.ftds.online" target="_blank" rel="noopener">FTU Cloud</a><a href="https://ftulabs.github.io" target="_blank" rel="noopener">FTU Labs</a></div></div><div class="copy"><span>© 2026 Trường Công nghệ và Khoa học ứng dụng, Trường Đại học Ngoại thương</span><span>Nexus of Excellence</span></div></div></footer>
-<script src="assets/people.js?v=20261123b"></script>
+<script src="assets/people.js?v=20261126b"></script>
 <script>
 const root=document.documentElement;
 const LANG=new URLSearchParams(location.search).get('lang')||localStorage.getItem('ctas-lang')||'vi';localStorage.setItem('ctas-lang',LANG);root.lang=LANG;
-root.dataset.theme=localStorage.getItem('ctas-theme')||'dark';
+root.dataset.theme=localStorage.getItem('ctas-theme2')||'light';
 const E=LANG==='en';const t=(vi,en)=>E&&en?en:vi;
 const SRC='bai-viet.html?id=';
 const pslug=n=>String(n).replace(/^(GS|PGS|TS|ThS|Th\.S|CN|GVC|NCS|[.,\s])+/g,'').trim().replace(/đ/g,'d').replace(/Đ/g,'D').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -239,7 +239,7 @@ const k=D[new URLSearchParams(location.search).get('k')]?new URLSearchParams(loc
 document.title=d.name+' - CTAS';
 document.getElementById('tabs').innerHTML=Object.entries(D).map(([x,v])=>`<a href="?k=${x}&lang=${LANG}" class="${x===k?'on':''}">${v.short}</a>`).join('');
 const lb=document.getElementById('langBtn');lb.onclick=()=>{const q=new URLSearchParams(location.search);q.set('lang',E?'vi':'en');localStorage.setItem('ctas-lang',q.get('lang'));location.search=q};
-const th=document.getElementById('themeBtn');const st=()=>th.textContent=root.dataset.theme==='dark'?'☀︎':'☾';st();th.onclick=()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('ctas-theme',root.dataset.theme);st()};
+const th=document.getElementById('themeBtn');const st=()=>th.textContent=root.dataset.theme==='dark'?'☀︎':'☾';st();th.onclick=()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('ctas-theme2',root.dataset.theme);st()};
 const ini=n=>n.split(' ').slice(-2).map(w=>w[0]).join('');
 const empty=`<div class="empty">${TX.upd}</div>`;
 const PH={qt:'giang-vien-ctdt',cs:'lop-hoc-ftds',dsai:'hoi-thao-smu',ln:'blockchain-workshop'};
@@ -273,7 +273,7 @@ if(!E)return;const T={"Giới thiệu ▾":"About ▾","Lịch sử":"History","
 const w=document.createTreeWalker(document.querySelector('nav.gh'),NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const k=n.nodeValue.trim();if(T[k])n.nodeValue=n.nodeValue.replace(k,T[k])}})();
 </script>
 <script src="assets/news/data.js?v=20261117c"></script>
-<script src="assets/i18n-en.js?v=20261126a"></script>
-<script src="assets/extra.js?v=20261117c"></script>
+<script src="assets/i18n-en.js?v=20261126b"></script>
+<script src="assets/extra.js?v=20261126b"></script>
 </body>
 </html>

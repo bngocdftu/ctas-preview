@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<script>(function(){try{var h=document.documentElement,L=localStorage;if(L.getItem("ctas-def")!="3"){L.removeItem("ctas-logo");L.removeItem("ctas-theme");L.setItem("ctas-def","3");L.removeItem("ctas-style")}h.dataset.logo="color";var q=(location.search.match(/[?&]style=([12])/)||[])[1];if(q)L.setItem("ctas-style",q);h.dataset.style=L.getItem("ctas-style")||"1";if(h.dataset.style=="2")document.write('<link id="s2f" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Archivo+Narrow:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap">');h.dataset.theme=localStorage.getItem("ctas-theme")||"light"}catch(e){}})()</script>
+<script>(function(){try{var h=document.documentElement,L=localStorage;if(L.getItem("ctas-def")!="3"){L.removeItem("ctas-logo");L.removeItem("ctas-theme2");L.setItem("ctas-def","3");L.removeItem("ctas-style")}h.dataset.logo="color";var q=(location.search.match(/[?&]style=([12])/)||[])[1];if(q)L.setItem("ctas-style",q);h.dataset.style=L.getItem("ctas-style")||"1";if(h.dataset.style=="2")document.write('<link id="s2f" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Archivo+Narrow:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap">');h.dataset.theme=localStorage.getItem("ctas-theme2")||"light"}catch(e){}})()</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -658,8 +658,8 @@ el.innerHTML=J.length?J.map(function(p){return '<a class="pc" href="bai-viet.htm
 </footer>
 <script>
 const root=document.documentElement,tb=document.getElementById('themeBtn');
-const setTheme=t=>{root.dataset.theme=t;tb.textContent=t==='dark'?'☀︎':'☾';localStorage.setItem('ctas-theme',t)};
-setTheme(localStorage.getItem('ctas-theme')||'dark');tb.onclick=()=>setTheme(root.dataset.theme==='dark'?'light':'dark');
+const setTheme=t=>{root.dataset.theme=t;tb.textContent=t==='dark'?'☀︎':'☾';localStorage.setItem('ctas-theme2',t)};
+setTheme(localStorage.getItem('ctas-theme2')||'light');tb.onclick=()=>setTheme(root.dataset.theme==='dark'?'light':'dark');
 document.querySelectorAll('.eyebrow,h2,.card,.news,.feat,.grid4>div,.box,.foot-grid>div,.dept,.maj-card,.svc-card,.unit,.prog-list,.explore,.conf,.ab-stats,.ab-col,.ab-txt').forEach(el=>el.classList.add('rv'));
 function countUp(){document.querySelectorAll('.ab-stats b').forEach(b=>{const m=b.textContent.match(/(\d+)(.*)/);if(!m)return;const end=+m[1],suf=m[2];let t0;const step=t=>{t0??=t;const p=Math.min((t-t0)/1800,1),e=1-Math.pow(1-p,4);b.textContent=Math.round(end*e)+suf;if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)})}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);if(e.target.classList.contains('ab-stats'))countUp()}}),{threshold:.12});
@@ -675,7 +675,7 @@ const I18N={"Tuyển dụng": "Careers", "Gia nhập CTAS": "Join CTAS", "Trư�
 if(location.hash){const t=document.querySelector(location.hash);if(t)setTimeout(()=>t.scrollIntoView(),60)}
 </script>
 <script src="assets/news/data.js?v=20261117c"></script>
-<script src="assets/i18n-en.js?v=20261126a"></script>
-<script src="assets/extra.js?v=20261117c"></script>
+<script src="assets/i18n-en.js?v=20261126b"></script>
+<script src="assets/extra.js?v=20261126b"></script>
 </body>
 </html>

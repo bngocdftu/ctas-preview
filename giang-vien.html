@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<script>(function(){try{var h=document.documentElement,L=localStorage;if(L.getItem("ctas-def")!="3"){L.removeItem("ctas-logo");L.removeItem("ctas-theme");L.setItem("ctas-def","3");L.removeItem("ctas-style")}h.dataset.logo="color";var q=(location.search.match(/[?&]style=([12])/)||[])[1];if(q)L.setItem("ctas-style",q);h.dataset.style=L.getItem("ctas-style")||"1";if(h.dataset.style=="2")document.write('<link id="s2f" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Archivo+Narrow:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap">');h.dataset.theme=localStorage.getItem("ctas-theme")||"light"}catch(e){}})()</script>
+<script>(function(){try{var h=document.documentElement,L=localStorage;if(L.getItem("ctas-def")!="3"){L.removeItem("ctas-logo");L.removeItem("ctas-theme2");L.setItem("ctas-def","3");L.removeItem("ctas-style")}h.dataset.logo="color";var q=(location.search.match(/[?&]style=([12])/)||[])[1];if(q)L.setItem("ctas-style",q);h.dataset.style=L.getItem("ctas-style")||"1";if(h.dataset.style=="2")document.write('<link id="s2f" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Archivo+Narrow:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap">');h.dataset.theme=localStorage.getItem("ctas-theme2")||"light"}catch(e){}})()</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -652,7 +652,7 @@ html:not([data-theme=dark]) .hw-school strong{color:#1F0607}html:not([data-theme
 .pf-sec .upd{opacity:.7;font-style:italic}
 @media(max-width:860px){.pf{grid-template-columns:1fr;gap:0}.pf-ph{max-width:360px}.pf-r .pf-sec:first-child{margin-top:44px}}
 </style>
-<script src="assets/people.js?v=20261123b"></script>
+<script src="assets/people.js?v=20261126b"></script>
 <script>
 window.renderPF=function(){
 var E=(localStorage.getItem('ctas-lang')||'vi')==='en',el=document.getElementById('pf'),id=new URLSearchParams(location.search).get('id');
@@ -665,7 +665,7 @@ var DEG={GS:E?'Professor':'Giáo sư',PGS:E?'Associate Professor':'Phó giáo s�
 var dg=pre.trim().split(/\s+/).filter(Boolean).map(function(x){return DEG[x]||x}).join(', ');
 var UNIT_EN={'Khoa Khoa học tính toán và định lượng':'Department of Computational & Quantitative Science','Khoa Khoa học máy tính':'Department of Computer Science','Khoa Khoa học dữ liệu và Trí tuệ nhân tạo':'Department of Data Science and AI','Khoa Công nghệ liên ngành':'Department of Interdisciplinary Technology'};
 var S=p.sec||{},EN=p.en||{},V=function(k){return E&&EN[k]&&EN[k].length?EN[k]:(k==='dao-tao'||k==='cong-tac'?S[k]:p[k])};
-var lines=[];if(p.role)lines.push((E&&(EN.role||p.role_en))||p.role);lines.push(E?(UNIT_EN[p.unit]||'Lecturer'):(p.unit?'Giảng viên, '+p.unit:'Giảng viên'));lines.push(E?'College of Technology and Applied Sciences':'Trường Công nghệ và Khoa học ứng dụng');
+var lines=[];if(p.role)lines.push((E&&(EN.role||p.role_en))||p.role);lines.push(p.staff?(E?'Office':p.unit):E?(UNIT_EN[p.unit]||'Lecturer'):(p.unit?'Giảng viên, '+p.unit:'Giảng viên'));lines.push(E?'College of Technology and Applied Sciences':'Trường Công nghệ và Khoa học ứng dụng');
 var UPD='<p class="upd">'+(E?'Being updated.':'Đang cập nhật.')+'</p>';
 
 /* Mỗi mục: tiêu đề + danh sách; không có dữ liệu thì ghi "Đang cập nhật" */
@@ -674,6 +674,7 @@ var txt=function(t,s){return '<div class="pf-sec"><h3>'+t+'</h3>'+(s?'<p>'+esc(s
 var ed=(V('dao-tao')||[]).map(function(l){return '<p class="ed">'+esc(l)+'</p>'}).join('');
 var web=(p.links||[])[0];
 var L='<div class="pf-l"><div class="pf-ph">'+(p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(nm)+'">':esc(nm.split(' ').slice(-1)[0][0]))+'</div><h1>'+esc(nm)+'</h1>'+lines.map(function(l){return '<p class="ln"><b>'+esc(l)+'</b></p>'}).join('')+(dg?'<p class="dg">'+esc(dg)+'</p>':'')+(ed?'<div class="eds">'+ed+'</div>':'')+'<div class="ct">'+(p.email?'Email: <a href="mailto:'+esc(p.email)+'">'+esc(p.email)+'</a>':'')+(web?(p.email?'<br>':'')+'Web: <a href="'+esc(web)+'" target="_blank" rel="noopener">'+esc(/scholar\.google/.test(web)?'Google Scholar':web.replace(/^https?:\/\//,''))+'</a>':'')+'</div>';
+if(p.staff){el.className='container pf';el.innerHTML=L+'</div><div class="pf-r">'+txt(E?'About':'Giới thiệu',E?(EN.intro||p.intro_en||''):p.intro)+'</div>';return}
 L+=sec(E?'Research areas':'Lĩnh vực nghiên cứu',p.field?((E&&(EN.field||p.field_en))||p.field).split(/;\s*/):[]);
 L+=sec(E?'Research interests':'Các nghiên cứu quan tâm',V('interests'));
 L+=sec(E?'Ongoing projects':'Các dự án đang thực hiện',V('projects'),true)+'</div>';
@@ -693,8 +694,8 @@ document.addEventListener('DOMContentLoaded',window.renderPF);
 </footer>
 <script>
 const root=document.documentElement,tb=document.getElementById('themeBtn');
-const setTheme=t=>{root.dataset.theme=t;tb.textContent=t==='dark'?'☀︎':'☾';localStorage.setItem('ctas-theme',t)};
-setTheme(localStorage.getItem('ctas-theme')||'dark');tb.onclick=()=>setTheme(root.dataset.theme==='dark'?'light':'dark');
+const setTheme=t=>{root.dataset.theme=t;tb.textContent=t==='dark'?'☀︎':'☾';localStorage.setItem('ctas-theme2',t)};
+setTheme(localStorage.getItem('ctas-theme2')||'light');tb.onclick=()=>setTheme(root.dataset.theme==='dark'?'light':'dark');
 document.querySelectorAll('.eyebrow,h2,.card,.news,.feat,.grid4>div,.box,.foot-grid>div,.dept,.maj-card,.svc-card,.unit,.prog-list,.explore,.conf,.ab-stats,.ab-col,.ab-txt').forEach(el=>el.classList.add('rv'));
 function countUp(){document.querySelectorAll('.ab-stats b').forEach(b=>{const m=b.textContent.match(/(\d+)(.*)/);if(!m)return;const end=+m[1],suf=m[2];let t0;const step=t=>{t0??=t;const p=Math.min((t-t0)/1800,1),e=1-Math.pow(1-p,4);b.textContent=Math.round(end*e)+suf;if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)})}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);if(e.target.classList.contains('ab-stats'))countUp()}}),{threshold:.12});
@@ -710,7 +711,7 @@ const I18N={"Tuyển dụng": "Careers", "Gia nhập CTAS": "Join CTAS", "Trư�
 if(location.hash){const t=document.querySelector(location.hash);if(t)setTimeout(()=>t.scrollIntoView(),60)}
 </script>
 <script src="assets/news/data.js?v=20261117c"></script>
-<script src="assets/i18n-en.js?v=20261126a"></script>
-<script src="assets/extra.js?v=20261117c"></script>
+<script src="assets/i18n-en.js?v=20261126b"></script>
+<script src="assets/extra.js?v=20261126b"></script>
 </body>
 </html>
