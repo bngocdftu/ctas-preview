@@ -669,7 +669,7 @@ var lines=[];if(p.role)lines.push((E&&(EN.role||p.role_en))||p.role);lines.push(
 var UPD='<p class="upd">'+(E?'Being updated.':'Đang cập nhật.')+'</p>';
 
 /* Mỗi mục: tiêu đề + danh sách; không có dữ liệu thì ghi "Đang cập nhật" */
-var sec=function(t,arr,ol){var b;if(!arr||!arr.length)b=UPD;else b='<'+(ol?'ol':'ul')+'>'+arr.map(function(l){return /^\d+\.\s/.test(l)&&l.length<90?'<li class="sub">'+esc(l)+'</li>':'<li>'+esc(l.replace(/^\d+\s·\s/,''))+'</li>'}).join('')+'</'+(ol?'ol':'ul')+'>';return '<div class="pf-sec"><h3>'+t+'</h3>'+b+'</div>'};
+var sec=function(t,arr,ol){var b;if(!arr||!arr.length)b=UPD;else if(arr.length===1)b='<p>'+esc(arr[0].replace(/^\d+\s·\s/,''))+'</p>';else b='<'+(ol?'ol':'ul')+'>'+arr.map(function(l){return /^\d+\.\s/.test(l)&&l.length<90?'<li class="sub">'+esc(l)+'</li>':'<li>'+esc(l.replace(/^\d+\s·\s/,''))+'</li>'}).join('')+'</'+(ol?'ol':'ul')+'>';return '<div class="pf-sec"><h3>'+t+'</h3>'+b+'</div>'};
 var txt=function(t,s){return '<div class="pf-sec"><h3>'+t+'</h3>'+(s?'<p>'+esc(s)+'</p>':UPD)+'</div>'};
 var ed=(V('dao-tao')||[]).map(function(l){return '<p class="ed">'+esc(l)+'</p>'}).join('');
 var web=(p.links||[])[0];
